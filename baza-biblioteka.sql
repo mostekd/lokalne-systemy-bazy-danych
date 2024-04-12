@@ -133,7 +133,7 @@ CREATE TABLE uzytkownik (
     haslo VARCHAR(100),
     FOREIGN KEY (id_biblioteka) REFERENCES biblioteka(id_biblioteka),
     FOREIGN KEY (id_stanowisko) REFERENCES stanowisko(id_stanowisko),
-    FOREIGN KEY (id_kary_czlonkowskiej) REFERENCES karta_czlonkowska(id_karty_czlonkowskiej)
+    FOREIGN KEY (id_karty_czlonkowskiej) REFERENCES karta_czlonkowska(id_karty_czlonkowskiej)
 );
 
 CREATE TABLE wypozyczenia (
