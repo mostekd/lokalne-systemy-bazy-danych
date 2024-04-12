@@ -1,27 +1,27 @@
 CREATE TABLE kraje (
-    id_kraju PRIMARY KEY,
+    id_kraju INT PRIMARY KEY,
     nazwa_kraju VARCHAR(100)
 );
 
 CREATE TABLE gatunek (
-    id_gatunek PRIMARY KEY,
+    id_gatunek INT PRIMARY KEY,
     nazwa VARCHAR(50)
 );
 
 CREATE TABLE autorzy (
-    id_autor PRIMARY KEY,
+    id_autor INT PRIMARY KEY,
     imie VARCHAR(50),
     nazwisko VARCHAR(50),
     data_urodzenia DATE
 );
 
 CREATE TABLE wydawnictwo (
-    id_wydawnictwo PRIMARY KEY,
+    id_wydawnictwo INT PRIMARY KEY,
     nazwa VARCHAR(100)
 );
 
 CREATE TABLE rangi (
-    id_rangi PRIMARY KEY,
+    id_rangi INT PRIMARY KEY,
     id_rabatu INT,
     nazwa_rangi VARCHAR(100),
     ilosc_ptk INT,
@@ -30,12 +30,12 @@ CREATE TABLE rangi (
 );
 
 CREATE TABLE rabaty (
-    id_rabatu PRIMARY KEY,
+    id_rabatu INT PRIMARY KEY,
     wartosc_rabatu DECIMAL(5,2)
 );
 
 CREATE TABLE karta_czlonkowska (
-    id_karty_czlonkowskiej PRIMARY KEY,
+    id_karty_czlonkowskiej INT PRIMARY KEY,
     id_rangi INT,
     data_zalozenia_karty DATE,
     data_wygasniecia DATE,
@@ -44,7 +44,7 @@ CREATE TABLE karta_czlonkowska (
 );
 
 CREATE TABLE lokalizacje (
-    id_lokalizacja PRIMARY KEY,
+    id_lokalizacja INT PRIMARY KEY,
     id_kraju INT,
     id_biblioteka INT,
     adres VARCHAR(200),
@@ -57,13 +57,13 @@ CREATE TABLE lokalizacje (
 );
 
 CREATE TABLE biblioteka (
-    id_biblioteka PRIMARY KEY,
+    id_biblioteka INT PRIMARY KEY,
     nazwa VARCHAR(100),
     menadzer VARCHAR(100)
 );
 
 CREATE TABLE stanowisko (
-    id_stanowisko PRIMARY KEY,
+    id_stanowisko INT PRIMARY KEY,
     nazwa_stanowiska VARCHAR(100),
     opis TEXT
 );
@@ -87,7 +87,7 @@ CREATE TABLE autor_do_ksiazka (
 CREATE TABLE wydawnictwo_do_ksiazka (
     id_wydawnictwo INT,
     id_ksiazki INT,
-    id_wydawnictwo_do_ksiazka PRIMARY KEY,
+    id_wydawnictwo_do_ksiazka INT PRIMARY KEY,
     rok_wydania INT,
     cena DECIMAL(10,2),
     FOREIGN KEY (id_wydawnictwo) REFERENCES wydawnictwo(id_wydawnictwo),
@@ -95,7 +95,7 @@ CREATE TABLE wydawnictwo_do_ksiazka (
 );
 
 CREATE TABLE ksiazki (
-    id_ksiazki PRIMARY KEY,
+    id_ksiazki INT PRIMARY KEY,
     ibsn VARCHAR(20),
     aktywna BOOLEAN,
     nazwa VARCHAR(100),
@@ -103,7 +103,7 @@ CREATE TABLE ksiazki (
 );
 
 CREATE TABLE miejsce_ksiazki (
-    id_miejsce PRIMARY KEY,
+    id_miejsce INT PRIMARY KEY,
     id_wydawnictwo_do_ksiazka INT,
     id_lokalizacja INT,
     ilosc INT,
@@ -113,7 +113,7 @@ CREATE TABLE miejsce_ksiazki (
 );
 
 CREATE TABLE wypozyczenia (
-    id_wypozyczenia PRIMARY KEY,
+    id_wypozyczenia INT PRIMARY KEY,
     id_uzytkownika INT,
     id_uzytkownik_pracownik INT,
     id_wydawnictwo_do_ksiazka INT,
@@ -136,13 +136,13 @@ CREATE TABLE wypozyczenia_do_typ_problemu (
 );
 
 CREATE TABLE typ_problemu (
-    id_problemu PRIMARY KEY,
+    id_problemu INT PRIMARY KEY,
     nazwa VARCHAR(100),
     kwota DECIMAL(10,2)
 );
 
 CREATE TABLE uzytkownik (
-    id_uzytkownika PRIMARY KEY,
+    id_uzytkownika INT PRIMARY KEY,
     id_biblioteka INT,
     id_stanowisko INT,
     id_kary_czlonkowskiej INT,
@@ -159,7 +159,7 @@ CREATE TABLE uzytkownik (
 );
 
 CREATE TABLE wpisy_uzytkownikow (
-    id_wpisu PRIMARY KEY,
+    id_wpisu INT PRIMARY KEY,
     id_uzytkownik INT,
     id_uzytkownik_pracownik INT,
     tytul VARCHAR(200),
@@ -172,7 +172,7 @@ CREATE TABLE wpisy_uzytkownikow (
 );
 
 CREATE TABLE artykuly (
-    id_artykulu PRIMARY KEY,
+    id_artykulu INT PRIMARY KEY,
     id_biblioteka INT,
     id_uzytkownik_pracownik INT,
     tytul VARCHAR(200),
@@ -185,7 +185,7 @@ CREATE TABLE artykuly (
 );
 
 CREATE TABLE oplaty (
-    id_oplata PRIMARY KEY,
+    id_oplata INT PRIMARY KEY,
     id_karty_czlonkowskiej INT,
     data_oplacenia DATE,
     kwota DECIMAL(10,2),
