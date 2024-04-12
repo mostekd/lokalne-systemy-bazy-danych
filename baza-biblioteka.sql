@@ -15,9 +15,40 @@ CREATE TABLE autorzy (
     data_urodzenia DATE
 );
 
+CREATE TABLE biblioteka (
+    id_biblioteka INT PRIMARY KEY,
+    nazwa VARCHAR(100),
+    menadzer VARCHAR(100)
+);
+
+CREATE TABLE stanowisko (
+    id_stanowisko INT PRIMARY KEY,
+    nazwa_stanowiska VARCHAR(100),
+    opis TEXT
+);
+
 CREATE TABLE wydawnictwo (
     id_wydawnictwo INT PRIMARY KEY,
     nazwa VARCHAR(100)
+);
+
+CREATE TABLE rabaty (
+    id_rabatu INT PRIMARY KEY,
+    wartosc_rabatu DECIMAL(5,2)
+);
+
+CREATE TABLE ksiazki (
+    id_ksiazki INT PRIMARY KEY,
+    ibsn VARCHAR(20),
+    aktywna BOOLEAN,
+    nazwa VARCHAR(100),
+    ilosc_dni_wypozyczenia INT
+);
+
+CREATE TABLE typ_problemu (
+    id_problemu INT PRIMARY KEY,
+    nazwa VARCHAR(100),
+    kwota DECIMAL(10,2)
 );
 
 CREATE TABLE rangi (
@@ -29,10 +60,6 @@ CREATE TABLE rangi (
     FOREIGN KEY (id_rabatu) REFERENCES rabaty(id_rabatu)
 );
 
-CREATE TABLE rabaty (
-    id_rabatu INT PRIMARY KEY,
-    wartosc_rabatu DECIMAL(5,2)
-);
 
 CREATE TABLE karta_czlonkowska (
     id_karty_czlonkowskiej INT PRIMARY KEY,
@@ -54,18 +81,6 @@ CREATE TABLE lokalizacje (
     czy_magazyn BOOLEAN,
     FOREIGN KEY (id_kraju) REFERENCES kraje(id_kraju),
     FOREIGN KEY (id_biblioteka) REFERENCES biblioteka(id_biblioteka)
-);
-
-CREATE TABLE biblioteka (
-    id_biblioteka INT PRIMARY KEY,
-    nazwa VARCHAR(100),
-    menadzer VARCHAR(100)
-);
-
-CREATE TABLE stanowisko (
-    id_stanowisko INT PRIMARY KEY,
-    nazwa_stanowiska VARCHAR(100),
-    opis TEXT
 );
 
 CREATE TABLE gatunek_do_ksiazka (
@@ -94,14 +109,6 @@ CREATE TABLE wydawnictwo_do_ksiazka (
     FOREIGN KEY (id_ksiazki) REFERENCES ksiazki(id_ksiazki)
 );
 
-CREATE TABLE ksiazki (
-    id_ksiazki INT PRIMARY KEY,
-    ibsn VARCHAR(20),
-    aktywna BOOLEAN,
-    nazwa VARCHAR(100),
-    ilosc_dni_wypozyczenia INT
-);
-
 CREATE TABLE miejsce_ksiazki (
     id_miejsce INT PRIMARY KEY,
     id_wydawnictwo_do_ksiazka INT,
@@ -110,6 +117,23 @@ CREATE TABLE miejsce_ksiazki (
     regal VARCHAR(20),
     FOREIGN KEY (id_wydawnictwo_do_ksiazka) REFERENCES wydawnictwo_do_ksiazka(id_wydawnictwo_do_ksiazka),
     FOREIGN KEY (id_lokalizacja) REFERENCES lokalizacje(id_lokalizacja)
+);
+
+CREATE TABLE uzytkownik (
+    id_uzytkownika INT PRIMARY KEY,
+    id_biblioteka INT,
+    id_stanowisko INT,
+    id_kary_czlonkowskiej INT,
+    imie VARCHAR(50),
+    nazwisko VARCHAR(50),
+    nr_dowodu VARCHAR(20),
+    data_urodzenia DATE,
+    czarna_lista BOOLEAN,
+    login VARCHAR(50),
+    haslo VARCHAR(100),
+    FOREIGN KEY (id_biblioteka) REFERENCES biblioteka(id_biblioteka),
+    FOREIGN KEY (id_stanowisko) REFERENCES stanowisko(id_stanowisko),
+    FOREIGN KEY (id_kary_czlonkowskiej) REFERENCES karta_czlonkowska(id_karty_czlonkowskiej)
 );
 
 CREATE TABLE wypozyczenia (
@@ -133,29 +157,6 @@ CREATE TABLE wypozyczenia_do_typ_problemu (
     PRIMARY KEY (id_wypozyczenia, id_problemu),
     FOREIGN KEY (id_wypozyczenia) REFERENCES wypozyczenia(id_wypozyczenia),
     FOREIGN KEY (id_problemu) REFERENCES typ_problemu(id_problemu)
-);
-
-CREATE TABLE typ_problemu (
-    id_problemu INT PRIMARY KEY,
-    nazwa VARCHAR(100),
-    kwota DECIMAL(10,2)
-);
-
-CREATE TABLE uzytkownik (
-    id_uzytkownika INT PRIMARY KEY,
-    id_biblioteka INT,
-    id_stanowisko INT,
-    id_kary_czlonkowskiej INT,
-    imie VARCHAR(50),
-    nazwisko VARCHAR(50),
-    nr_dowodu VARCHAR(20),
-    data_urodzenia DATE,
-    czarna_lista BOOLEAN,
-    login VARCHAR(50),
-    haslo VARCHAR(100),
-    FOREIGN KEY (id_biblioteka) REFERENCES biblioteka(id_biblioteka),
-    FOREIGN KEY (id_stanowisko) REFERENCES stanowisko(id_stanowisko),
-    FOREIGN KEY (id_kary_czlonkowskiej) REFERENCES karta_czlonkowska(id_karty_czlonkowskiej)
 );
 
 CREATE TABLE wpisy_uzytkownikow (
