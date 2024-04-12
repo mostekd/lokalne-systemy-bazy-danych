@@ -1,4 +1,3 @@
-
 CREATE TABLE kraje (
     id_kraju PRIMARY KEY,
     nazwa_kraju VARCHAR(100)
