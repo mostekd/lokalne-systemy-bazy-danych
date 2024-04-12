@@ -123,7 +123,7 @@ CREATE TABLE uzytkownik (
     id_uzytkownika INT PRIMARY KEY,
     id_biblioteka INT,
     id_stanowisko INT,
-    id_kary_czlonkowskiej INT,
+    id_karty_czlonkowskiej INT,
     imie VARCHAR(50),
     nazwisko VARCHAR(50),
     nr_dowodu VARCHAR(20),
@@ -147,7 +147,7 @@ CREATE TABLE wypozyczenia (
     data_wypozyczenia DATE,
     data_oddania DATE,
     FOREIGN KEY (id_uzytkownika) REFERENCES uzytkownik(id_uzytkownika),
-    FOREIGN KEY (id_uzytkownik_pracownik) REFERENCES uzytkownik(id_uzytkownik),
+    FOREIGN KEY (id_uzytkownik_pracownik) REFERENCES uzytkownik(id_uzytkownika),
     FOREIGN KEY (id_wydawnictwo_do_ksiazka) REFERENCES wydawnictwo_do_ksiazka(id_wydawnictwo_do_ksiazka)
 );
 
@@ -161,15 +161,15 @@ CREATE TABLE wypozyczenia_do_typ_problemu (
 
 CREATE TABLE wpisy_uzytkownikow (
     id_wpisu INT PRIMARY KEY,
-    id_uzytkownik INT,
+    id_uzytkownika INT,
     id_uzytkownik_pracownik INT,
     tytul VARCHAR(200),
     tresc TEXT,
     link VARCHAR(200),
     data_zatwierdzenia DATE,
     data_dodania DATE,
-    FOREIGN KEY (id_uzytkownik) REFERENCES uzytkownik(id_uzytkownika),
-    FOREIGN KEY (id_uzytkownik_pracownik) REFERENCES uzytkownik(id_uzytkownik)
+    FOREIGN KEY (id_uzytkownika) REFERENCES uzytkownik(id_uzytkownika),
+    FOREIGN KEY (id_uzytkownik_pracownik) REFERENCES uzytkownik(id_uzytkownika)
 );
 
 CREATE TABLE artykuly (
@@ -182,7 +182,7 @@ CREATE TABLE artykuly (
     data_dodania DATE,
     data_wygasniecia DATE,
     FOREIGN KEY (id_biblioteka) REFERENCES biblioteka(id_biblioteka),
-    FOREIGN KEY (id_uzytkownik_pracownik) REFERENCES uzytkownik(id_uzytkownik)
+    FOREIGN KEY (id_uzytkownik_pracownik) REFERENCES uzytkownik(id_uzytkownika)
 );
 
 CREATE TABLE oplaty (
