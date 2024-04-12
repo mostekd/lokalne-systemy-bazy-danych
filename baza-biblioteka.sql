@@ -1,18 +1,18 @@
 -- Tworzenie tabeli kraje
 CREATE TABLE kraje (
-    id_kraju SERIAL PRIMARY KEY,
+    id_kraju PRIMARY KEY,
     nazwa_kraju VARCHAR(100)
 );
 
 -- Tworzenie tabeli gatunek
 CREATE TABLE gatunek (
-    id_gatunek SERIAL PRIMARY KEY,
+    id_gatunek PRIMARY KEY,
     nazwa VARCHAR(50)
 );
 
 -- Tworzenie tabeli autorzy
 CREATE TABLE autorzy (
-    id_autor SERIAL PRIMARY KEY,
+    id_autor PRIMARY KEY,
     imie VARCHAR(50),
     nazwisko VARCHAR(50),
     data_urodzenia DATE
@@ -20,13 +20,13 @@ CREATE TABLE autorzy (
 
 -- Tworzenie tabeli wydawnictwo
 CREATE TABLE wydawnictwo (
-    id_wydawnictwo SERIAL PRIMARY KEY,
+    id_wydawnictwo PRIMARY KEY,
     nazwa VARCHAR(100)
 );
 
 -- Tworzenie tabeli rangi
 CREATE TABLE rangi (
-    id_rangi SERIAL PRIMARY KEY,
+    id_rangi PRIMARY KEY,
     id_rabatu INT,
     nazwa_rangi VARCHAR(100),
     ilosc_ptk INT,
@@ -36,13 +36,13 @@ CREATE TABLE rangi (
 
 -- Tworzenie tabeli rabaty
 CREATE TABLE rabaty (
-    id_rabatu SERIAL PRIMARY KEY,
+    id_rabatu PRIMARY KEY,
     wartosc_rabatu DECIMAL(5,2)
 );
 
 -- Tworzenie tabeli karta_czlonkowska
 CREATE TABLE karta_czlonkowska (
-    id_karty_czlonkowskiej SERIAL PRIMARY KEY,
+    id_karty_czlonkowskiej PRIMARY KEY,
     id_rangi INT,
     data_zalozenia_karty DATE,
     data_wygasniecia DATE,
@@ -52,7 +52,7 @@ CREATE TABLE karta_czlonkowska (
 
 -- Tworzenie tabeli lokalizacje
 CREATE TABLE lokalizacje (
-    id_lokalizacja SERIAL PRIMARY KEY,
+    id_lokalizacja PRIMARY KEY,
     id_kraju INT,
     id_biblioteka INT,
     adres VARCHAR(200),
@@ -66,14 +66,14 @@ CREATE TABLE lokalizacje (
 
 -- Tworzenie tabeli biblioteka
 CREATE TABLE biblioteka (
-    id_biblioteka SERIAL PRIMARY KEY,
+    id_biblioteka PRIMARY KEY,
     nazwa VARCHAR(100),
     menadzer VARCHAR(100)
 );
 
 -- Tworzenie tabeli stanowisko
 CREATE TABLE stanowisko (
-    id_stanowisko SERIAL PRIMARY KEY,
+    id_stanowisko PRIMARY KEY,
     nazwa_stanowiska VARCHAR(100),
     opis TEXT
 );
@@ -100,7 +100,7 @@ CREATE TABLE autor_do_ksiazka (
 CREATE TABLE wydawnictwo_do_ksiazka (
     id_wydawnictwo INT,
     id_ksiazki INT,
-    id_wydawnictwo_do_ksiazka SERIAL PRIMARY KEY,
+    id_wydawnictwo_do_ksiazka PRIMARY KEY,
     rok_wydania INT,
     cena DECIMAL(10,2),
     FOREIGN KEY (id_wydawnictwo) REFERENCES wydawnictwo(id_wydawnictwo),
@@ -109,7 +109,7 @@ CREATE TABLE wydawnictwo_do_ksiazka (
 
 -- Tworzenie tabeli ksiazki
 CREATE TABLE ksiazki (
-    id_ksiazki SERIAL PRIMARY KEY,
+    id_ksiazki PRIMARY KEY,
     ibsn VARCHAR(20),
     aktywna BOOLEAN,
     nazwa VARCHAR(100),
@@ -118,7 +118,7 @@ CREATE TABLE ksiazki (
 
 -- Tworzenie tabeli miejsce_ksiazki
 CREATE TABLE miejsce_ksiazki (
-    id_miejsce SERIAL PRIMARY KEY,
+    id_miejsce PRIMARY KEY,
     id_wydawnictwo_do_ksiazka INT,
     id_lokalizacja INT,
     ilosc INT,
@@ -129,7 +129,7 @@ CREATE TABLE miejsce_ksiazki (
 
 -- Tworzenie tabeli wypozyczenia
 CREATE TABLE wypozyczenia (
-    id_wypozyczenia SERIAL PRIMARY KEY,
+    id_wypozyczenia PRIMARY KEY,
     id_uzytkownika INT,
     id_uzytkownik_pracownik INT,
     id_wydawnictwo_do_ksiazka INT,
@@ -154,14 +154,14 @@ CREATE TABLE wypozyczenia_do_typ_problemu (
 
 -- Tworzenie tabeli typ_problemu
 CREATE TABLE typ_problemu (
-    id_problemu SERIAL PRIMARY KEY,
+    id_problemu PRIMARY KEY,
     nazwa VARCHAR(100),
     kwota DECIMAL(10,2)
 );
 
 -- Tworzenie tabeli uzytkownik
 CREATE TABLE uzytkownik (
-    id_uzytkownika SERIAL PRIMARY KEY,
+    id_uzytkownika PRIMARY KEY,
     id_biblioteka INT,
     id_stanowisko INT,
     id_kary_czlonkowskiej INT,
@@ -179,7 +179,7 @@ CREATE TABLE uzytkownik (
 
 -- Tworzenie tabeli wpisy_uzytkownikow
 CREATE TABLE wpisy_uzytkownikow (
-    id_wpisu SERIAL PRIMARY KEY,
+    id_wpisu PRIMARY KEY,
     id_uzytkownik INT,
     id_uzytkownik_pracownik INT,
     tytul VARCHAR(200),
@@ -193,7 +193,7 @@ CREATE TABLE wpisy_uzytkownikow (
 
 -- Tworzenie tabeli artykuly
 CREATE TABLE artykuly (
-    id_artykulu SERIAL PRIMARY KEY,
+    id_artykulu PRIMARY KEY,
     id_biblioteka INT,
     id_uzytkownik_pracownik INT,
     tytul VARCHAR(200),
@@ -207,7 +207,7 @@ CREATE TABLE artykuly (
 
 -- Tworzenie tabeli oplaty
 CREATE TABLE oplaty (
-    id_oplata SERIAL PRIMARY KEY,
+    id_oplata PRIMARY KEY,
     id_karty_czlonkowskiej INT,
     data_oplacenia DATE,
     kwota DECIMAL(10,2),
