@@ -1,16 +1,14 @@
--- Tworzenie tabeli kraje
+
 CREATE TABLE kraje (
     id_kraju PRIMARY KEY,
     nazwa_kraju VARCHAR(100)
 );
 
--- Tworzenie tabeli gatunek
 CREATE TABLE gatunek (
     id_gatunek PRIMARY KEY,
     nazwa VARCHAR(50)
 );
 
--- Tworzenie tabeli autorzy
 CREATE TABLE autorzy (
     id_autor PRIMARY KEY,
     imie VARCHAR(50),
@@ -18,13 +16,11 @@ CREATE TABLE autorzy (
     data_urodzenia DATE
 );
 
--- Tworzenie tabeli wydawnictwo
 CREATE TABLE wydawnictwo (
     id_wydawnictwo PRIMARY KEY,
     nazwa VARCHAR(100)
 );
 
--- Tworzenie tabeli rangi
 CREATE TABLE rangi (
     id_rangi PRIMARY KEY,
     id_rabatu INT,
@@ -34,13 +30,11 @@ CREATE TABLE rangi (
     FOREIGN KEY (id_rabatu) REFERENCES rabaty(id_rabatu)
 );
 
--- Tworzenie tabeli rabaty
 CREATE TABLE rabaty (
     id_rabatu PRIMARY KEY,
     wartosc_rabatu DECIMAL(5,2)
 );
 
--- Tworzenie tabeli karta_czlonkowska
 CREATE TABLE karta_czlonkowska (
     id_karty_czlonkowskiej PRIMARY KEY,
     id_rangi INT,
@@ -50,7 +44,6 @@ CREATE TABLE karta_czlonkowska (
     FOREIGN KEY (id_rangi) REFERENCES rangi(id_rangi)
 );
 
--- Tworzenie tabeli lokalizacje
 CREATE TABLE lokalizacje (
     id_lokalizacja PRIMARY KEY,
     id_kraju INT,
@@ -64,21 +57,18 @@ CREATE TABLE lokalizacje (
     FOREIGN KEY (id_biblioteka) REFERENCES biblioteka(id_biblioteka)
 );
 
--- Tworzenie tabeli biblioteka
 CREATE TABLE biblioteka (
     id_biblioteka PRIMARY KEY,
     nazwa VARCHAR(100),
     menadzer VARCHAR(100)
 );
 
--- Tworzenie tabeli stanowisko
 CREATE TABLE stanowisko (
     id_stanowisko PRIMARY KEY,
     nazwa_stanowiska VARCHAR(100),
     opis TEXT
 );
 
--- Tworzenie tabeli gatunek_do_ksiazka
 CREATE TABLE gatunek_do_ksiazka (
     id_ksiazki INT,
     id_gatunek INT,
@@ -87,7 +77,6 @@ CREATE TABLE gatunek_do_ksiazka (
     FOREIGN KEY (id_gatunek) REFERENCES gatunek(id_gatunek)
 );
 
--- Tworzenie tabeli autor_do_ksiazka
 CREATE TABLE autor_do_ksiazka (
     id_ksiazki INT,
     id_autor INT,
@@ -96,7 +85,6 @@ CREATE TABLE autor_do_ksiazka (
     FOREIGN KEY (id_autor) REFERENCES autorzy(id_autor)
 );
 
--- Tworzenie tabeli wydawnictwo_do_ksiazka
 CREATE TABLE wydawnictwo_do_ksiazka (
     id_wydawnictwo INT,
     id_ksiazki INT,
@@ -107,7 +95,6 @@ CREATE TABLE wydawnictwo_do_ksiazka (
     FOREIGN KEY (id_ksiazki) REFERENCES ksiazki(id_ksiazki)
 );
 
--- Tworzenie tabeli ksiazki
 CREATE TABLE ksiazki (
     id_ksiazki PRIMARY KEY,
     ibsn VARCHAR(20),
@@ -116,7 +103,6 @@ CREATE TABLE ksiazki (
     ilosc_dni_wypozyczenia INT
 );
 
--- Tworzenie tabeli miejsce_ksiazki
 CREATE TABLE miejsce_ksiazki (
     id_miejsce PRIMARY KEY,
     id_wydawnictwo_do_ksiazka INT,
@@ -127,7 +113,6 @@ CREATE TABLE miejsce_ksiazki (
     FOREIGN KEY (id_lokalizacja) REFERENCES lokalizacje(id_lokalizacja)
 );
 
--- Tworzenie tabeli wypozyczenia
 CREATE TABLE wypozyczenia (
     id_wypozyczenia PRIMARY KEY,
     id_uzytkownika INT,
@@ -143,7 +128,6 @@ CREATE TABLE wypozyczenia (
     FOREIGN KEY (id_wydawnictwo_do_ksiazka) REFERENCES wydawnictwo_do_ksiazka(id_wydawnictwo_do_ksiazka)
 );
 
--- Tworzenie tabeli wypozyczenia_do_typ_problemu
 CREATE TABLE wypozyczenia_do_typ_problemu (
     id_wypozyczenia INT,
     id_problemu INT,
@@ -152,14 +136,12 @@ CREATE TABLE wypozyczenia_do_typ_problemu (
     FOREIGN KEY (id_problemu) REFERENCES typ_problemu(id_problemu)
 );
 
--- Tworzenie tabeli typ_problemu
 CREATE TABLE typ_problemu (
     id_problemu PRIMARY KEY,
     nazwa VARCHAR(100),
     kwota DECIMAL(10,2)
 );
 
--- Tworzenie tabeli uzytkownik
 CREATE TABLE uzytkownik (
     id_uzytkownika PRIMARY KEY,
     id_biblioteka INT,
@@ -177,7 +159,6 @@ CREATE TABLE uzytkownik (
     FOREIGN KEY (id_kary_czlonkowskiej) REFERENCES karta_czlonkowska(id_karty_czlonkowskiej)
 );
 
--- Tworzenie tabeli wpisy_uzytkownikow
 CREATE TABLE wpisy_uzytkownikow (
     id_wpisu PRIMARY KEY,
     id_uzytkownik INT,
@@ -191,7 +172,6 @@ CREATE TABLE wpisy_uzytkownikow (
     FOREIGN KEY (id_uzytkownik_pracownik) REFERENCES uzytkownik(id_uzytkownik)
 );
 
--- Tworzenie tabeli artykuly
 CREATE TABLE artykuly (
     id_artykulu PRIMARY KEY,
     id_biblioteka INT,
@@ -205,7 +185,6 @@ CREATE TABLE artykuly (
     FOREIGN KEY (id_uzytkownik_pracownik) REFERENCES uzytkownik(id_uzytkownik)
 );
 
--- Tworzenie tabeli oplaty
 CREATE TABLE oplaty (
     id_oplata PRIMARY KEY,
     id_karty_czlonkowskiej INT,
