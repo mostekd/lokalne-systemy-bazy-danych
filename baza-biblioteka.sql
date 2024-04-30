@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS biblioteka;
+
 CREATE TABLE kraje (
     id_kraju INT PRIMARY KEY,
     nazwa_kraju VARCHAR(100)
