@@ -134,6 +134,7 @@ CREATE TABLE uzytkownik (
     czarna_lista BOOLEAN,
     login VARCHAR(50),
     haslo VARCHAR(100),
+    czy_pracownik INT,
     FOREIGN KEY (id_biblioteka) REFERENCES biblioteka(id_biblioteka),
     FOREIGN KEY (id_stanowisko) REFERENCES stanowisko(id_stanowisko),
     FOREIGN KEY (id_karty_czlonkowskiej) REFERENCES karta_czlonkowska(id_karty_czlonkowskiej)
