@@ -1,4 +1,5 @@
 CREATE DATABASE IF NOT EXISTS biblioteka;
+USE biblioteka;
 
 CREATE TABLE kraje (
     id_kraju INT PRIMARY KEY,
