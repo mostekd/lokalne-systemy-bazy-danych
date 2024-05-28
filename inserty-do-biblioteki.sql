@@ -1,13 +1,24 @@
-INSERT INTO `artykuly`(`id_artykulu`, `id_biblioteka`, `id_uzytkownik_pracownik`, `tytul`, `tresc`, `link`, `data_dodania`, `data_wygasniecia`) VALUES ('4','4','1','test1','test1',NULL,'2024-04-25',NULL);
-INSERT INTO `artykuly`(`id_artykulu`, `id_biblioteka`, `id_uzytkownik_pracownik`, `tytul`, `tresc`, `link`, `data_dodania`, `data_wygasniecia`) VALUES ('5','5','2','test2','test2',NULL,'2024-04-25',NULL);
-INSERT INTO `artykuly`(`id_artykulu`, `id_biblioteka`, `id_uzytkownik_pracownik`, `tytul`, `tresc`, `link`, `data_dodania`, `data_wygasniecia`) VALUES ('6','6','2','test3','test3',NULL,'2024-04-25',NULL);
-INSERT INTO `artykuly`(`id_artykulu`, `id_biblioteka`, `id_uzytkownik_pracownik`, `tytul`, `tresc`, `link`, `data_dodania`, `data_wygasniecia`) VALUES ('7','7','3','test4','test4',NULL,'2024-04-25',NULL);
-INSERT INTO `artykuly`(`id_artykulu`, `id_biblioteka`, `id_uzytkownik_pracownik`, `tytul`, `tresc`, `link`, `data_dodania`, `data_wygasniecia`) VALUES ('8','8','3','test5','test5',NULL,'2024-04-25',NULL);
-INSERT INTO `artykuly`(`id_artykulu`, `id_biblioteka`, `id_uzytkownik_pracownik`, `tytul`, `tresc`, `link`, `data_dodania`, `data_wygasniecia`) VALUES ('9','9','1','test6','test6',NULL,'2024-04-25',NULL);
-INSERT INTO `artykuly`(`id_artykulu`, `id_biblioteka`, `id_uzytkownik_pracownik`, `tytul`, `tresc`, `link`, `data_dodania`, `data_wygasniecia`) VALUES ('10','10','1','test7','test7',NULL,'2024-04-25',NULL);
-INSERT INTO `artykuly`(`id_artykulu`, `id_biblioteka`, `id_uzytkownik_pracownik`, `tytul`, `tresc`, `link`, `data_dodania`, `data_wygasniecia`) VALUES ('11','11','3','test8','test8',NULL,'2024-04-25',NULL);
-INSERT INTO `artykuly`(`id_artykulu`, `id_biblioteka`, `id_uzytkownik_pracownik`, `tytul`, `tresc`, `link`, `data_dodania`, `data_wygasniecia`) VALUES ('12','12','1','test9','test9',NULL,'2024-04-25',NULL);
-INSERT INTO `artykuly`(`id_artykulu`, `id_biblioteka`, `id_uzytkownik_pracownik`, `tytul`, `tresc`, `link`, `data_dodania`, `data_wygasniecia`) VALUES ('13','13','1','test10','test10',NULL,'2024-04-25',NULL);
+INSERT INTO `kraje`(`id_kraju`, `nazwa_kraju`) VALUES ('4','Włochy');
+INSERT INTO `kraje`(`id_kraju`, `nazwa_kraju`) VALUES ('5','Słowacja');
+INSERT INTO `kraje`(`id_kraju`, `nazwa_kraju`) VALUES ('6','Słowenia');
+INSERT INTO `kraje`(`id_kraju`, `nazwa_kraju`) VALUES ('7','Portugalia');
+INSERT INTO `kraje`(`id_kraju`, `nazwa_kraju`) VALUES ('8','Hiszpania');
+INSERT INTO `kraje`(`id_kraju`, `nazwa_kraju`) VALUES ('9','Chorwacja');
+INSERT INTO `kraje`(`id_kraju`, `nazwa_kraju`) VALUES ('10','Austria');
+INSERT INTO `kraje`(`id_kraju`, `nazwa_kraju`) VALUES ('11','Belgia');
+INSERT INTO `kraje`(`id_kraju`, `nazwa_kraju`) VALUES ('12','Holandia');
+INSERT INTO `kraje`(`id_kraju`, `nazwa_kraju`) VALUES ('13','Francja');
+
+INSERT INTO `gatunek`(`id_gatunek`, `nazwa`) VALUES ('4','Romans');
+INSERT INTO `gatunek`(`id_gatunek`, `nazwa`) VALUES ('5','Fantastyka naukowa');
+INSERT INTO `gatunek`(`id_gatunek`, `nazwa`) VALUES ('6','Dreszczowiec');
+INSERT INTO `gatunek`(`id_gatunek`, `nazwa`) VALUES ('7','Powieść dystopijna');
+INSERT INTO `gatunek`(`id_gatunek`, `nazwa`) VALUES ('8','Historia alternatywna');
+INSERT INTO `gatunek`(`id_gatunek`, `nazwa`) VALUES ('9','Literatura przygodowa');
+INSERT INTO `gatunek`(`id_gatunek`, `nazwa`) VALUES ('10','Literatura dziecięca');
+INSERT INTO `gatunek`(`id_gatunek`, `nazwa`) VALUES ('11','Literatura młodzieżowa');
+INSERT INTO `gatunek`(`id_gatunek`, `nazwa`) VALUES ('12','Powieść');
+INSERT INTO `gatunek`(`id_gatunek`, `nazwa`) VALUES ('13','Fantastyka postapokaliptyczna');
 
 INSERT INTO `autorzy`(`id_autor`, `imie`, `nazwisko`, `data_urodzenia`) VALUES ('4','Stephen','King','1947-09-21');
 INSERT INTO `autorzy`(`id_autor`, `imie`, `nazwisko`, `data_urodzenia`) VALUES ('5','Cassandra','Clare','1973-07-27');
@@ -20,17 +31,6 @@ INSERT INTO `autorzy`(`id_autor`, `imie`, `nazwisko`, `data_urodzenia`) VALUES (
 INSERT INTO `autorzy`(`id_autor`, `imie`, `nazwisko`, `data_urodzenia`) VALUES ('12','Veronica','Roth','1988-08-19');
 INSERT INTO `autorzy`(`id_autor`, `imie`, `nazwisko`, `data_urodzenia`) VALUES ('13','Lucy Maud','Montgomery','1874-11-30');
 
-INSERT INTO `autor_do_ksiazka`(`id_ksiazki`, `id_autor`) VALUES ('9','4');
-INSERT INTO `autor_do_ksiazka`(`id_ksiazki`, `id_autor`) VALUES ('10','5');
-INSERT INTO `autor_do_ksiazka`(`id_ksiazki`, `id_autor`) VALUES ('11','6');
-INSERT INTO `autor_do_ksiazka`(`id_ksiazki`, `id_autor`) VALUES ('12','7');
-INSERT INTO `autor_do_ksiazka`(`id_ksiazki`, `id_autor`) VALUES ('13','8');
-INSERT INTO `autor_do_ksiazka`(`id_ksiazki`, `id_autor`) VALUES ('14','9');
-INSERT INTO `autor_do_ksiazka`(`id_ksiazki`, `id_autor`) VALUES ('15','10');
-INSERT INTO `autor_do_ksiazka`(`id_ksiazki`, `id_autor`) VALUES ('16','11');
-INSERT INTO `autor_do_ksiazka`(`id_ksiazki`, `id_autor`) VALUES ('17','12');
-INSERT INTO `autor_do_ksiazka`(`id_ksiazki`, `id_autor`) VALUES ('18','13');
-
 INSERT INTO `biblioteka`(`id_biblioteka`, `nazwa`, `menadzer`) VALUES ('4','Biblioteka Wesoła Szkoła - Działoszyn','Józef Nitkiewicz');
 INSERT INTO `biblioteka`(`id_biblioteka`, `nazwa`, `menadzer`) VALUES ('5','Biblioteka Wesoła Szkoła - Pajęczno','Jan Nowak');
 INSERT INTO `biblioteka`(`id_biblioteka`, `nazwa`, `menadzer`) VALUES ('6','Biblioteka Wesoła Szkoła - Gdańsk','Adam Kowalski');
@@ -42,16 +42,27 @@ INSERT INTO `biblioteka`(`id_biblioteka`, `nazwa`, `menadzer`) VALUES ('11','Bib
 INSERT INTO `biblioteka`(`id_biblioteka`, `nazwa`, `menadzer`) VALUES ('12','Biblioteka Wesoła Szkoła - Kraków','Kacper Stefanek');
 INSERT INTO `biblioteka`(`id_biblioteka`, `nazwa`, `menadzer`) VALUES ('13','Biblioteka Wesoła Szkoła - Łódź','Piotr Wawrzyczek');
 
-INSERT INTO `gatunek`(`id_gatunek`, `nazwa`) VALUES ('4','Romans');
-INSERT INTO `gatunek`(`id_gatunek`, `nazwa`) VALUES ('5','Fantastyka naukowa');
-INSERT INTO `gatunek`(`id_gatunek`, `nazwa`) VALUES ('6','Dreszczowiec');
-INSERT INTO `gatunek`(`id_gatunek`, `nazwa`) VALUES ('7','Powieść dystopijna');
-INSERT INTO `gatunek`(`id_gatunek`, `nazwa`) VALUES ('8','Historia alternatywna');
-INSERT INTO `gatunek`(`id_gatunek`, `nazwa`) VALUES ('9','Literatura przygodowa');
-INSERT INTO `gatunek`(`id_gatunek`, `nazwa`) VALUES ('10','Literatura dziecięca');
-INSERT INTO `gatunek`(`id_gatunek`, `nazwa`) VALUES ('11','Literatura młodzieżowa');
-INSERT INTO `gatunek`(`id_gatunek`, `nazwa`) VALUES ('12','Powieść');
-INSERT INTO `gatunek`(`id_gatunek`, `nazwa`) VALUES ('13','Fantastyka postapokaliptyczna');
+INSERT INTO `artykuly`(`id_artykulu`, `id_biblioteka`, `id_uzytkownik_pracownik`, `tytul`, `tresc`, `link`, `data_dodania`, `data_wygasniecia`) VALUES ('4','4','1','test1','test1',NULL,'2024-04-25',NULL);
+INSERT INTO `artykuly`(`id_artykulu`, `id_biblioteka`, `id_uzytkownik_pracownik`, `tytul`, `tresc`, `link`, `data_dodania`, `data_wygasniecia`) VALUES ('5','5','2','test2','test2',NULL,'2024-04-25',NULL);
+INSERT INTO `artykuly`(`id_artykulu`, `id_biblioteka`, `id_uzytkownik_pracownik`, `tytul`, `tresc`, `link`, `data_dodania`, `data_wygasniecia`) VALUES ('6','6','2','test3','test3',NULL,'2024-04-25',NULL);
+INSERT INTO `artykuly`(`id_artykulu`, `id_biblioteka`, `id_uzytkownik_pracownik`, `tytul`, `tresc`, `link`, `data_dodania`, `data_wygasniecia`) VALUES ('7','7','3','test4','test4',NULL,'2024-04-25',NULL);
+INSERT INTO `artykuly`(`id_artykulu`, `id_biblioteka`, `id_uzytkownik_pracownik`, `tytul`, `tresc`, `link`, `data_dodania`, `data_wygasniecia`) VALUES ('8','8','3','test5','test5',NULL,'2024-04-25',NULL);
+INSERT INTO `artykuly`(`id_artykulu`, `id_biblioteka`, `id_uzytkownik_pracownik`, `tytul`, `tresc`, `link`, `data_dodania`, `data_wygasniecia`) VALUES ('9','9','1','test6','test6',NULL,'2024-04-25',NULL);
+INSERT INTO `artykuly`(`id_artykulu`, `id_biblioteka`, `id_uzytkownik_pracownik`, `tytul`, `tresc`, `link`, `data_dodania`, `data_wygasniecia`) VALUES ('10','10','1','test7','test7',NULL,'2024-04-25',NULL);
+INSERT INTO `artykuly`(`id_artykulu`, `id_biblioteka`, `id_uzytkownik_pracownik`, `tytul`, `tresc`, `link`, `data_dodania`, `data_wygasniecia`) VALUES ('11','11','3','test8','test8',NULL,'2024-04-25',NULL);
+INSERT INTO `artykuly`(`id_artykulu`, `id_biblioteka`, `id_uzytkownik_pracownik`, `tytul`, `tresc`, `link`, `data_dodania`, `data_wygasniecia`) VALUES ('12','12','1','test9','test9',NULL,'2024-04-25',NULL);
+INSERT INTO `artykuly`(`id_artykulu`, `id_biblioteka`, `id_uzytkownik_pracownik`, `tytul`, `tresc`, `link`, `data_dodania`, `data_wygasniecia`) VALUES ('13','13','1','test10','test10',NULL,'2024-04-25',NULL);
+
+INSERT INTO `autor_do_ksiazka`(`id_ksiazki`, `id_autor`) VALUES ('9','4');
+INSERT INTO `autor_do_ksiazka`(`id_ksiazki`, `id_autor`) VALUES ('10','5');
+INSERT INTO `autor_do_ksiazka`(`id_ksiazki`, `id_autor`) VALUES ('11','6');
+INSERT INTO `autor_do_ksiazka`(`id_ksiazki`, `id_autor`) VALUES ('12','7');
+INSERT INTO `autor_do_ksiazka`(`id_ksiazki`, `id_autor`) VALUES ('13','8');
+INSERT INTO `autor_do_ksiazka`(`id_ksiazki`, `id_autor`) VALUES ('14','9');
+INSERT INTO `autor_do_ksiazka`(`id_ksiazki`, `id_autor`) VALUES ('15','10');
+INSERT INTO `autor_do_ksiazka`(`id_ksiazki`, `id_autor`) VALUES ('16','11');
+INSERT INTO `autor_do_ksiazka`(`id_ksiazki`, `id_autor`) VALUES ('17','12');
+INSERT INTO `autor_do_ksiazka`(`id_ksiazki`, `id_autor`) VALUES ('18','13');
 
 INSERT INTO `gatunek_do_ksiazka`(`id_ksiazki`, `id_gatunek`) VALUES ('9','2');
 INSERT INTO `gatunek_do_ksiazka`(`id_ksiazki`, `id_gatunek`) VALUES ('10','1');
@@ -74,17 +85,6 @@ INSERT INTO `karta_czlonkowska`(`id_karty_czlonkowskiej`, `id_rangi`, `data_zalo
 INSERT INTO `karta_czlonkowska`(`id_karty_czlonkowskiej`, `id_rangi`, `data_zalozenia_karty`, `data_wygasniecia`, `data_oplaty`) VALUES ('11','1','2024-05-28','2024-06-27','2024-05-28');
 INSERT INTO `karta_czlonkowska`(`id_karty_czlonkowskiej`, `id_rangi`, `data_zalozenia_karty`, `data_wygasniecia`, `data_oplaty`) VALUES ('12','1','2024-05-28','2024-06-27','2024-05-28');
 INSERT INTO `karta_czlonkowska`(`id_karty_czlonkowskiej`, `id_rangi`, `data_zalozenia_karty`, `data_wygasniecia`, `data_oplaty`) VALUES ('13','1','2024-05-28','2024-06-27','2024-05-28');
-
-INSERT INTO `kraje`(`id_kraju`, `nazwa_kraju`) VALUES ('4','Włochy');
-INSERT INTO `kraje`(`id_kraju`, `nazwa_kraju`) VALUES ('5','Słowacja');
-INSERT INTO `kraje`(`id_kraju`, `nazwa_kraju`) VALUES ('6','Słowenia');
-INSERT INTO `kraje`(`id_kraju`, `nazwa_kraju`) VALUES ('7','Portugalia');
-INSERT INTO `kraje`(`id_kraju`, `nazwa_kraju`) VALUES ('8','Hiszpania');
-INSERT INTO `kraje`(`id_kraju`, `nazwa_kraju`) VALUES ('9','Chorwacja');
-INSERT INTO `kraje`(`id_kraju`, `nazwa_kraju`) VALUES ('10','Austria');
-INSERT INTO `kraje`(`id_kraju`, `nazwa_kraju`) VALUES ('11','Belgia');
-INSERT INTO `kraje`(`id_kraju`, `nazwa_kraju`) VALUES ('12','Holandia');
-INSERT INTO `kraje`(`id_kraju`, `nazwa_kraju`) VALUES ('13','Francja');
 
 INSERT INTO `ksiazki`(`id_ksiazki`, `ibsn`, `aktywna`, `nazwa`, `ilosc_dni_wypozyczenia`) VALUES ('9','9788382156843','1','To',NULL);
 INSERT INTO `ksiazki`(`id_ksiazki`, `ibsn`, `aktywna`, `nazwa`, `ilosc_dni_wypozyczenia`) VALUES ('10','9781534406254','1','Miasto Kości',NULL);
