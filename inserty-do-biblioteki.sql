@@ -132,9 +132,27 @@ INSERT INTO `rabaty`(`id_rabatu`, `wartosc_rabatu`) VALUES ('11','0.11');
 INSERT INTO `rabaty`(`id_rabatu`, `wartosc_rabatu`) VALUES ('12','0.22');
 INSERT INTO `rabaty`(`id_rabatu`, `wartosc_rabatu`) VALUES ('13','0.33');
 
-INSERT INTO `rangi`(`id_rangi`, `id_rabatu`, `nazwa_rangi`, `ilosc_ptk`, `poziom`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]');
+INSERT INTO `rangi`(`id_rangi`, `id_rabatu`, `nazwa_rangi`, `ilosc_ptk`, `poziom`) VALUES ('4','4','Czytelniczy Entuzjasta','30','4');
+INSERT INTO `rangi`(`id_rangi`, `id_rabatu`, `nazwa_rangi`, `ilosc_ptk`, `poziom`) VALUES ('5','5','Młodszy Bibliotekarz','40','5');
+INSERT INTO `rangi`(`id_rangi`, `id_rabatu`, `nazwa_rangi`, `ilosc_ptk`, `poziom`) VALUES ('6','6','Czytelniczy Badacz','50','6');
+INSERT INTO `rangi`(`id_rangi`, `id_rabatu`, `nazwa_rangi`, `ilosc_ptk`, `poziom`) VALUES ('7','7','Książkowy Znawca','60','7');
+INSERT INTO `rangi`(`id_rangi`, `id_rabatu`, `nazwa_rangi`, `ilosc_ptk`, `poziom`) VALUES ('8','8','Młodszy Archiwista','70','8');
+INSERT INTO `rangi`(`id_rangi`, `id_rabatu`, `nazwa_rangi`, `ilosc_ptk`, `poziom`) VALUES ('9','9','Literacki Poszukiwacz','80','9');
+INSERT INTO `rangi`(`id_rangi`, `id_rabatu`, `nazwa_rangi`, `ilosc_ptk`, `poziom`) VALUES ('10','10','Bibliofilek','90','10');
+INSERT INTO `rangi`(`id_rangi`, `id_rabatu`, `nazwa_rangi`, `ilosc_ptk`, `poziom`) VALUES ('11','11','Bibliofil','100','11');
+INSERT INTO `rangi`(`id_rangi`, `id_rabatu`, `nazwa_rangi`, `ilosc_ptk`, `poziom`) VALUES ('12','12','Starszy Bibliotekarz','110','12');
+INSERT INTO `rangi`(`id_rangi`, `id_rabatu`, `nazwa_rangi`, `ilosc_ptk`, `poziom`) VALUES ('13','13','Książkowy Ekspert','120','13');
 
-INSERT INTO `stanowisko`(`id_stanowisko`, `nazwa_stanowiska`, `opis`) VALUES ('[value-1]','[value-2]','[value-3]');
+INSERT INTO `stanowisko`(`id_stanowisko`, `nazwa_stanowiska`, `opis`) VALUES ('4','Dyrektor biblioteki',NULL);
+INSERT INTO `stanowisko`(`id_stanowisko`, `nazwa_stanowiska`, `opis`) VALUES ('5','Zastępca dyrektora biblioteki',NULL);
+INSERT INTO `stanowisko`(`id_stanowisko`, `nazwa_stanowiska`, `opis`) VALUES ('6','Kierownik działu zbiorów specjalnych',NULL);
+INSERT INTO `stanowisko`(`id_stanowisko`, `nazwa_stanowiska`, `opis`) VALUES ('7','Bibliotekarz ds. katalogowania',NULL);
+INSERT INTO `stanowisko`(`id_stanowisko`, `nazwa_stanowiska`, `opis`) VALUES ('8','Bibliotekarz ds. informacji naukowej',NULL);
+INSERT INTO `stanowisko`(`id_stanowisko`, `nazwa_stanowiska`, `opis`) VALUES ('9','Bibliotekarz ds. wypożyczeń',NULL);
+INSERT INTO `stanowisko`(`id_stanowisko`, `nazwa_stanowiska`, `opis`) VALUES ('10','Bibliotekarz dziecięcy',NULL);
+INSERT INTO `stanowisko`(`id_stanowisko`, `nazwa_stanowiska`, `opis`) VALUES ('11','Archiwista',NULL);
+INSERT INTO `stanowisko`(`id_stanowisko`, `nazwa_stanowiska`, `opis`) VALUES ('12','Pracownik administracyjny',NULL);
+INSERT INTO `stanowisko`(`id_stanowisko`, `nazwa_stanowiska`, `opis`) VALUES ('13','Asystent bibliotekarza',NULL);
 
 INSERT INTO `typ_problemu`(`id_problemu`, `nazwa`, `kwota`) VALUES ('[value-1]','[value-2]','[value-3]');
 
