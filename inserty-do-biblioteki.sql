@@ -75,7 +75,16 @@ INSERT INTO `karta_czlonkowska`(`id_karty_czlonkowskiej`, `id_rangi`, `data_zalo
 INSERT INTO `karta_czlonkowska`(`id_karty_czlonkowskiej`, `id_rangi`, `data_zalozenia_karty`, `data_wygasniecia`, `data_oplaty`) VALUES ('12','1','2024-05-28','2024-06-27','2024-05-28');
 INSERT INTO `karta_czlonkowska`(`id_karty_czlonkowskiej`, `id_rangi`, `data_zalozenia_karty`, `data_wygasniecia`, `data_oplaty`) VALUES ('13','1','2024-05-28','2024-06-27','2024-05-28');
 
-INSERT INTO `kraje`(`id_kraju`, `nazwa_kraju`) VALUES ('[value-1]','[value-2]');
+INSERT INTO `kraje`(`id_kraju`, `nazwa_kraju`) VALUES ('4','Włochy');
+INSERT INTO `kraje`(`id_kraju`, `nazwa_kraju`) VALUES ('5','Słowacja');
+INSERT INTO `kraje`(`id_kraju`, `nazwa_kraju`) VALUES ('6','Słowenia');
+INSERT INTO `kraje`(`id_kraju`, `nazwa_kraju`) VALUES ('7','Portugalia');
+INSERT INTO `kraje`(`id_kraju`, `nazwa_kraju`) VALUES ('8','Hiszpania');
+INSERT INTO `kraje`(`id_kraju`, `nazwa_kraju`) VALUES ('9','Chorwacja');
+INSERT INTO `kraje`(`id_kraju`, `nazwa_kraju`) VALUES ('10','Austria');
+INSERT INTO `kraje`(`id_kraju`, `nazwa_kraju`) VALUES ('11','Belgia');
+INSERT INTO `kraje`(`id_kraju`, `nazwa_kraju`) VALUES ('12','Holandia');
+INSERT INTO `kraje`(`id_kraju`, `nazwa_kraju`) VALUES ('13','Francja');
 
 INSERT INTO `ksiazki`(`id_ksiazki`, `ibsn`, `aktywna`, `nazwa`, `ilosc_dni_wypozyczenia`) VALUES ('9','9788382156843','1','To',NULL);
 INSERT INTO `ksiazki`(`id_ksiazki`, `ibsn`, `aktywna`, `nazwa`, `ilosc_dni_wypozyczenia`) VALUES ('10','9781534406254','1','Miasto Kości',NULL);
@@ -88,7 +97,16 @@ INSERT INTO `ksiazki`(`id_ksiazki`, `ibsn`, `aktywna`, `nazwa`, `ilosc_dni_wypoz
 INSERT INTO `ksiazki`(`id_ksiazki`, `ibsn`, `aktywna`, `nazwa`, `ilosc_dni_wypozyczenia`) VALUES ('17','9780062024022','1','Niezgodna',NULL);
 INSERT INTO `ksiazki`(`id_ksiazki`, `ibsn`, `aktywna`, `nazwa`, `ilosc_dni_wypozyczenia`) VALUES ('18','9788842516231','1','Ania z Zielonego Wzgórza',NULL);
 
-INSERT INTO `lokalizacje`(`id_lokalizacja`, `id_kraju`, `id_biblioteka`, `adres`, `miejscowosc`, `kod_pocztowy`, `wojewodztwo`, `czy_magazyn`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]','[value-8]');
+INSERT INTO `lokalizacje`(`id_lokalizacja`, `id_kraju`, `id_biblioteka`, `adres`, `miejscowosc`, `kod_pocztowy`, `wojewodztwo`, `czy_magazyn`) VALUES ('4','1','4','plac Jana Pawła II 1','Działoszyn','98-355','Łudzkie','0');
+INSERT INTO `lokalizacje`(`id_lokalizacja`, `id_kraju`, `id_biblioteka`, `adres`, `miejscowosc`, `kod_pocztowy`, `wojewodztwo`, `czy_magazyn`) VALUES ('5','1','5','plac Jana Pawła II 1','Pajęczno','98-355','Łudzkie','0');
+INSERT INTO `lokalizacje`(`id_lokalizacja`, `id_kraju`, `id_biblioteka`, `adres`, `miejscowosc`, `kod_pocztowy`, `wojewodztwo`, `czy_magazyn`) VALUES ('6','1','6','plac Jana Pawła II 1','Gdańsk','98-355','Łudzkie','0');
+INSERT INTO `lokalizacje`(`id_lokalizacja`, `id_kraju`, `id_biblioteka`, `adres`, `miejscowosc`, `kod_pocztowy`, `wojewodztwo`, `czy_magazyn`) VALUES ('7','1','7','plac Jana Pawła II 1','Gdynia','98-355','Łudzkie','0');
+INSERT INTO `lokalizacje`(`id_lokalizacja`, `id_kraju`, `id_biblioteka`, `adres`, `miejscowosc`, `kod_pocztowy`, `wojewodztwo`, `czy_magazyn`) VALUES ('8','1','8','plac Jana Pawła II 1','Elbląg','98-355','Łudzkie','0');
+INSERT INTO `lokalizacje`(`id_lokalizacja`, `id_kraju`, `id_biblioteka`, `adres`, `miejscowosc`, `kod_pocztowy`, `wojewodztwo`, `czy_magazyn`) VALUES ('9','1','9','plac Jana Pawła II 1','Hel','98-355','Łudzkie','0');
+INSERT INTO `lokalizacje`(`id_lokalizacja`, `id_kraju`, `id_biblioteka`, `adres`, `miejscowosc`, `kod_pocztowy`, `wojewodztwo`, `czy_magazyn`) VALUES ('10','1','10','plac Jana Pawła II 1','Zakopane','98-355','Łudzkie','0');
+INSERT INTO `lokalizacje`(`id_lokalizacja`, `id_kraju`, `id_biblioteka`, `adres`, `miejscowosc`, `kod_pocztowy`, `wojewodztwo`, `czy_magazyn`) VALUES ('11','1','11','plac Jana Pawła II 1','Mikoszewo','98-355','Łudzkie','0');
+INSERT INTO `lokalizacje`(`id_lokalizacja`, `id_kraju`, `id_biblioteka`, `adres`, `miejscowosc`, `kod_pocztowy`, `wojewodztwo`, `czy_magazyn`) VALUES ('12','1','12','plac Jana Pawła II 1','Kraków','98-355','Łudzkie','0');
+INSERT INTO `lokalizacje`(`id_lokalizacja`, `id_kraju`, `id_biblioteka`, `adres`, `miejscowosc`, `kod_pocztowy`, `wojewodztwo`, `czy_magazyn`) VALUES ('13','1','13','plac Jana Pawła II 1','Łódź','98-355','Łudzkie','0');
 
 INSERT INTO `miejsce_ksiazki`(`id_miejsce`, `id_wydawnictwo_do_ksiazka`, `id_lokalizacja`, `ilosc`, `regal`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]');
 
