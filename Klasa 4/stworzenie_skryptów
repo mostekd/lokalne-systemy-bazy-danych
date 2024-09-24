@@ -1394,3 +1394,5 @@ INSERT INTO `sklepy`(`nazwa`,`id_pracownik_menager`, `id_lokalizacja`, `Godziny_
 INSERT INTO `sklepy`(`nazwa`,`id_pracownik_menager`, `id_lokalizacja`, `Godziny_otwarcia`) VALUES ('TechZone','8','18','09:00 - 18:00');
 INSERT INTO `sklepy`(`nazwa`,`id_pracownik_menager`, `id_lokalizacja`, `Godziny_otwarcia`) VALUES ('TechZone','9','19','09:00 - 18:00');
 INSERT INTO `sklepy`(`nazwa`,`id_pracownik_menager`, `id_lokalizacja`, `Godziny_otwarcia`) VALUES ('TechZone','10','20','09:00 - 18:00');
+
+INSERT INTO `dostawcy`(`id_dostawcy`, `Nazwa`, `Numer_telefonu`, `Adres_email`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]')
