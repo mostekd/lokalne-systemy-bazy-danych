@@ -1406,3 +1406,8 @@ INSERT INTO `dostawcy`(`Nazwa`, `Numer_telefonu`, `Adres_email`) VALUES ('PostNL
 INSERT INTO `dostawcy`(`Nazwa`, `Numer_telefonu`, `Adres_email`) VALUES ('Chronopost','+48608012345','postnl@example.com');
 INSERT INTO `dostawcy`(`Nazwa`, `Numer_telefonu`, `Adres_email`) VALUES ('Aramex','+48509123456','aramex@example.com');
 
+INSERT INTO `typy_platnosci`(`id_typ_platnosci`, `Nazwa`) VALUES ('[value-1]','[value-2]')
+
+INSERT INTO `zamowienia`(`id_zamowienia`, `id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `Typ_dostawy`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]','[value-8]','[value-9]')
+
+INSERT INTO `dostawcy_do_zamowienia`(`id_dostawca_do_zamowienia`, `id_zamowienia`, `id_dostawca`) VALUES ('[value-1]','[value-2]','[value-3]')
