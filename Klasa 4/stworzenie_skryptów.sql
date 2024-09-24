@@ -1,4 +1,4 @@
-CREATE DATABASE Sklep;
+CREATE DATABASE IF NOT EXISTS Sklep;
 USE Sklep;
 
 -- Tabela: Lokalizacja
@@ -104,3 +104,255 @@ CREATE TABLE Dostawcy_do_zamowienia (
     id_zamowienia INT,
     id_dostawca INT
 );
+
+
+ INSERT INTO `dostawcy`(`id_dostawcy`, `Nazwa`, `Numer_telefonu`, `Adres_email`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]')
+ 
+ INSERT INTO `dostawcy`(`id_dostawcy`, `Nazwa`, `Numer_telefonu`, `Adres_email`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]')
+ 
+ INSERT INTO `dostawcy`(`id_dostawcy`, `Nazwa`, `Numer_telefonu`, `Adres_email`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]')
+ 
+ INSERT INTO `dostawcy`(`id_dostawcy`, `Nazwa`, `Numer_telefonu`, `Adres_email`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]')
+ 
+ INSERT INTO `dostawcy`(`id_dostawcy`, `Nazwa`, `Numer_telefonu`, `Adres_email`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]')
+ 
+ INSERT INTO `dostawcy`(`id_dostawcy`, `Nazwa`, `Numer_telefonu`, `Adres_email`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]')
+ 
+ INSERT INTO `dostawcy`(`id_dostawcy`, `Nazwa`, `Numer_telefonu`, `Adres_email`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]')
+ 
+ INSERT INTO `dostawcy`(`id_dostawcy`, `Nazwa`, `Numer_telefonu`, `Adres_email`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]')
+ 
+ INSERT INTO `dostawcy`(`id_dostawcy`, `Nazwa`, `Numer_telefonu`, `Adres_email`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]')
+ 
+ INSERT INTO `dostawcy`(`id_dostawcy`, `Nazwa`, `Numer_telefonu`, `Adres_email`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]')
+
+
+INSERT INTO `dostawcy_do_zamowienia`(`id_dostawca_do_zamowienia`, `id_zamowienia`, `id_dostawca`) VALUES ('[value-1]','[value-2]','[value-3]')
+
+INSERT INTO `dostawcy_do_zamowienia`(`id_dostawca_do_zamowienia`, `id_zamowienia`, `id_dostawca`) VALUES ('[value-1]','[value-2]','[value-3]')
+
+INSERT INTO `dostawcy_do_zamowienia`(`id_dostawca_do_zamowienia`, `id_zamowienia`, `id_dostawca`) VALUES ('[value-1]','[value-2]','[value-3]')
+
+INSERT INTO `dostawcy_do_zamowienia`(`id_dostawca_do_zamowienia`, `id_zamowienia`, `id_dostawca`) VALUES ('[value-1]','[value-2]','[value-3]')
+
+INSERT INTO `dostawcy_do_zamowienia`(`id_dostawca_do_zamowienia`, `id_zamowienia`, `id_dostawca`) VALUES ('[value-1]','[value-2]','[value-3]')
+
+INSERT INTO `dostawcy_do_zamowienia`(`id_dostawca_do_zamowienia`, `id_zamowienia`, `id_dostawca`) VALUES ('[value-1]','[value-2]','[value-3]')
+
+INSERT INTO `dostawcy_do_zamowienia`(`id_dostawca_do_zamowienia`, `id_zamowienia`, `id_dostawca`) VALUES ('[value-1]','[value-2]','[value-3]')
+
+INSERT INTO `dostawcy_do_zamowienia`(`id_dostawca_do_zamowienia`, `id_zamowienia`, `id_dostawca`) VALUES ('[value-1]','[value-2]','[value-3]')
+
+INSERT INTO `dostawcy_do_zamowienia`(`id_dostawca_do_zamowienia`, `id_zamowienia`, `id_dostawca`) VALUES ('[value-1]','[value-2]','[value-3]')
+
+INSERT INTO `dostawcy_do_zamowienia`(`id_dostawca_do_zamowienia`, `id_zamowienia`, `id_dostawca`) VALUES ('[value-1]','[value-2]','[value-3]')
+
+
+INSERT INTO `klient`(`id_klient`, `Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]')
+
+INSERT INTO `klient`(`id_klient`, `Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]')
+
+INSERT INTO `klient`(`id_klient`, `Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]')
+
+INSERT INTO `klient`(`id_klient`, `Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]')
+
+INSERT INTO `klient`(`id_klient`, `Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]')
+
+INSERT INTO `klient`(`id_klient`, `Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]')
+
+INSERT INTO `klient`(`id_klient`, `Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]')
+
+INSERT INTO `klient`(`id_klient`, `Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]')
+
+INSERT INTO `klient`(`id_klient`, `Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]')
+
+INSERT INTO `klient`(`id_klient`, `Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]')
+
+
+INSERT INTO `lokalizacja`(`id_lokalizacja`, `Ulica`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]')
+
+INSERT INTO `lokalizacja`(`id_lokalizacja`, `Ulica`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]')
+
+INSERT INTO `lokalizacja`(`id_lokalizacja`, `Ulica`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]')
+
+INSERT INTO `lokalizacja`(`id_lokalizacja`, `Ulica`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]')
+
+INSERT INTO `lokalizacja`(`id_lokalizacja`, `Ulica`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]')
+
+INSERT INTO `lokalizacja`(`id_lokalizacja`, `Ulica`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]')
+
+INSERT INTO `lokalizacja`(`id_lokalizacja`, `Ulica`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]')
+
+INSERT INTO `lokalizacja`(`id_lokalizacja`, `Ulica`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]')
+
+INSERT INTO `lokalizacja`(`id_lokalizacja`, `Ulica`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]')
+
+INSERT INTO `lokalizacja`(`id_lokalizacja`, `Ulica`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]')
+
+
+INSERT INTO `magazyny`(`id_magazyn`, `Nazwa`, `id_lokalizacja`) VALUES ('[value-1]','[value-2]','[value-3]')
+
+INSERT INTO `magazyny`(`id_magazyn`, `Nazwa`, `id_lokalizacja`) VALUES ('[value-1]','[value-2]','[value-3]')
+
+INSERT INTO `magazyny`(`id_magazyn`, `Nazwa`, `id_lokalizacja`) VALUES ('[value-1]','[value-2]','[value-3]')
+
+INSERT INTO `magazyny`(`id_magazyn`, `Nazwa`, `id_lokalizacja`) VALUES ('[value-1]','[value-2]','[value-3]')
+
+INSERT INTO `magazyny`(`id_magazyn`, `Nazwa`, `id_lokalizacja`) VALUES ('[value-1]','[value-2]','[value-3]')
+
+INSERT INTO `magazyny`(`id_magazyn`, `Nazwa`, `id_lokalizacja`) VALUES ('[value-1]','[value-2]','[value-3]')
+
+INSERT INTO `magazyny`(`id_magazyn`, `Nazwa`, `id_lokalizacja`) VALUES ('[value-1]','[value-2]','[value-3]')
+
+INSERT INTO `magazyny`(`id_magazyn`, `Nazwa`, `id_lokalizacja`) VALUES ('[value-1]','[value-2]','[value-3]')
+
+INSERT INTO `magazyny`(`id_magazyn`, `Nazwa`, `id_lokalizacja`) VALUES ('[value-1]','[value-2]','[value-3]')
+
+INSERT INTO `magazyny`(`id_magazyn`, `Nazwa`, `id_lokalizacja`) VALUES ('[value-1]','[value-2]','[value-3]')
+
+
+INSERT INTO `pracownicy`(`id_pracownik`, `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]','[value-8]','[value-9]')
+
+INSERT INTO `pracownicy`(`id_pracownik`, `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]','[value-8]','[value-9]')
+
+INSERT INTO `pracownicy`(`id_pracownik`, `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]','[value-8]','[value-9]')
+
+INSERT INTO `pracownicy`(`id_pracownik`, `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]','[value-8]','[value-9]')
+
+INSERT INTO `pracownicy`(`id_pracownik`, `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]','[value-8]','[value-9]')
+
+INSERT INTO `pracownicy`(`id_pracownik`, `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]','[value-8]','[value-9]')
+
+INSERT INTO `pracownicy`(`id_pracownik`, `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]','[value-8]','[value-9]')
+
+INSERT INTO `pracownicy`(`id_pracownik`, `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]','[value-8]','[value-9]')
+
+INSERT INTO `pracownicy`(`id_pracownik`, `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]','[value-8]','[value-9]')
+
+INSERT INTO `pracownicy`(`id_pracownik`, `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]','[value-8]','[value-9]')
+
+
+INSERT INTO `produkt`(`id_produktu`, `Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]','[value-8]')
+
+INSERT INTO `produkt`(`id_produktu`, `Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]','[value-8]')
+
+INSERT INTO `produkt`(`id_produktu`, `Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]','[value-8]')
+
+INSERT INTO `produkt`(`id_produktu`, `Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]','[value-8]')
+
+INSERT INTO `produkt`(`id_produktu`, `Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]','[value-8]')
+
+INSERT INTO `produkt`(`id_produktu`, `Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]','[value-8]')
+
+INSERT INTO `produkt`(`id_produktu`, `Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]','[value-8]')
+
+INSERT INTO `produkt`(`id_produktu`, `Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]','[value-8]')
+
+INSERT INTO `produkt`(`id_produktu`, `Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]','[value-8]')
+
+INSERT INTO `produkt`(`id_produktu`, `Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]','[value-8]')
+
+
+INSERT INTO `sklepy`(`id_sklep`, `id_pracownik_menager`, `id_lokalizacja`, `Godziny_otwarcia`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]')
+
+INSERT INTO `sklepy`(`id_sklep`, `id_pracownik_menager`, `id_lokalizacja`, `Godziny_otwarcia`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]')
+
+INSERT INTO `sklepy`(`id_sklep`, `id_pracownik_menager`, `id_lokalizacja`, `Godziny_otwarcia`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]')
+
+INSERT INTO `sklepy`(`id_sklep`, `id_pracownik_menager`, `id_lokalizacja`, `Godziny_otwarcia`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]')
+
+INSERT INTO `sklepy`(`id_sklep`, `id_pracownik_menager`, `id_lokalizacja`, `Godziny_otwarcia`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]')
+
+INSERT INTO `sklepy`(`id_sklep`, `id_pracownik_menager`, `id_lokalizacja`, `Godziny_otwarcia`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]')
+
+INSERT INTO `sklepy`(`id_sklep`, `id_pracownik_menager`, `id_lokalizacja`, `Godziny_otwarcia`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]')
+
+INSERT INTO `sklepy`(`id_sklep`, `id_pracownik_menager`, `id_lokalizacja`, `Godziny_otwarcia`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]')
+
+INSERT INTO `sklepy`(`id_sklep`, `id_pracownik_menager`, `id_lokalizacja`, `Godziny_otwarcia`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]')
+
+INSERT INTO `sklepy`(`id_sklep`, `id_pracownik_menager`, `id_lokalizacja`, `Godziny_otwarcia`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]')
+
+
+INSERT INTO `stanowiska`(`id_stanowisko`, `Nazwa_stanowiska`) VALUES ('[value-1]','[value-2]')
+
+INSERT INTO `stanowiska`(`id_stanowisko`, `Nazwa_stanowiska`) VALUES ('[value-1]','[value-2]')
+
+INSERT INTO `stanowiska`(`id_stanowisko`, `Nazwa_stanowiska`) VALUES ('[value-1]','[value-2]')
+
+INSERT INTO `stanowiska`(`id_stanowisko`, `Nazwa_stanowiska`) VALUES ('[value-1]','[value-2]')
+
+INSERT INTO `stanowiska`(`id_stanowisko`, `Nazwa_stanowiska`) VALUES ('[value-1]','[value-2]')
+
+INSERT INTO `stanowiska`(`id_stanowisko`, `Nazwa_stanowiska`) VALUES ('[value-1]','[value-2]')
+
+INSERT INTO `stanowiska`(`id_stanowisko`, `Nazwa_stanowiska`) VALUES ('[value-1]','[value-2]')
+
+INSERT INTO `stanowiska`(`id_stanowisko`, `Nazwa_stanowiska`) VALUES ('[value-1]','[value-2]')
+
+INSERT INTO `stanowiska`(`id_stanowisko`, `Nazwa_stanowiska`) VALUES ('[value-1]','[value-2]')
+
+INSERT INTO `stanowiska`(`id_stanowisko`, `Nazwa_stanowiska`) VALUES ('[value-1]','[value-2]')
+
+
+INSERT INTO `typy_platnosci`(`id_typ_platnosci`, `Nazwa`) VALUES ('[value-1]','[value-2]')
+
+INSERT INTO `typy_platnosci`(`id_typ_platnosci`, `Nazwa`) VALUES ('[value-1]','[value-2]')
+
+INSERT INTO `typy_platnosci`(`id_typ_platnosci`, `Nazwa`) VALUES ('[value-1]','[value-2]')
+
+INSERT INTO `typy_platnosci`(`id_typ_platnosci`, `Nazwa`) VALUES ('[value-1]','[value-2]')
+
+INSERT INTO `typy_platnosci`(`id_typ_platnosci`, `Nazwa`) VALUES ('[value-1]','[value-2]')
+
+INSERT INTO `typy_platnosci`(`id_typ_platnosci`, `Nazwa`) VALUES ('[value-1]','[value-2]')
+
+INSERT INTO `typy_platnosci`(`id_typ_platnosci`, `Nazwa`) VALUES ('[value-1]','[value-2]')
+
+INSERT INTO `typy_platnosci`(`id_typ_platnosci`, `Nazwa`) VALUES ('[value-1]','[value-2]')
+
+INSERT INTO `typy_platnosci`(`id_typ_platnosci`, `Nazwa`) VALUES ('[value-1]','[value-2]')
+
+INSERT INTO `typy_platnosci`(`id_typ_platnosci`, `Nazwa`) VALUES ('[value-1]','[value-2]')
+
+
+INSERT INTO `typy_produktu`(`id_typ_produktu`, `Nazwa`) VALUES ('[value-1]','[value-2]')
+
+INSERT INTO `typy_produktu`(`id_typ_produktu`, `Nazwa`) VALUES ('[value-1]','[value-2]')
+
+INSERT INTO `typy_produktu`(`id_typ_produktu`, `Nazwa`) VALUES ('[value-1]','[value-2]')
+
+INSERT INTO `typy_produktu`(`id_typ_produktu`, `Nazwa`) VALUES ('[value-1]','[value-2]')
+
+INSERT INTO `typy_produktu`(`id_typ_produktu`, `Nazwa`) VALUES ('[value-1]','[value-2]')
+
+INSERT INTO `typy_produktu`(`id_typ_produktu`, `Nazwa`) VALUES ('[value-1]','[value-2]')
+
+INSERT INTO `typy_produktu`(`id_typ_produktu`, `Nazwa`) VALUES ('[value-1]','[value-2]')
+
+INSERT INTO `typy_produktu`(`id_typ_produktu`, `Nazwa`) VALUES ('[value-1]','[value-2]')
+
+INSERT INTO `typy_produktu`(`id_typ_produktu`, `Nazwa`) VALUES ('[value-1]','[value-2]')
+
+INSERT INTO `typy_produktu`(`id_typ_produktu`, `Nazwa`) VALUES ('[value-1]','[value-2]')
+
+
+INSERT INTO `zamowienia`(`id_zamowienia`, `id_klienta`, `id_lokalizacja`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `Typ_dostawy`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]','[value-8]')
+
+INSERT INTO `zamowienia`(`id_zamowienia`, `id_klienta`, `id_lokalizacja`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `Typ_dostawy`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]','[value-8]')
+
+INSERT INTO `zamowienia`(`id_zamowienia`, `id_klienta`, `id_lokalizacja`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `Typ_dostawy`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]','[value-8]')
+
+INSERT INTO `zamowienia`(`id_zamowienia`, `id_klienta`, `id_lokalizacja`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `Typ_dostawy`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]','[value-8]')
+
+INSERT INTO `zamowienia`(`id_zamowienia`, `id_klienta`, `id_lokalizacja`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `Typ_dostawy`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]','[value-8]')
+
+INSERT INTO `zamowienia`(`id_zamowienia`, `id_klienta`, `id_lokalizacja`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `Typ_dostawy`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]','[value-8]')
+
+INSERT INTO `zamowienia`(`id_zamowienia`, `id_klienta`, `id_lokalizacja`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `Typ_dostawy`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]','[value-8]')
+
+INSERT INTO `zamowienia`(`id_zamowienia`, `id_klienta`, `id_lokalizacja`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `Typ_dostawy`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]','[value-8]')
+
+INSERT INTO `zamowienia`(`id_zamowienia`, `id_klienta`, `id_lokalizacja`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `Typ_dostawy`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]','[value-8]')
+
+INSERT INTO `zamowienia`(`id_zamowienia`, `id_klienta`, `id_lokalizacja`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `Typ_dostawy`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]','[value-8]')
