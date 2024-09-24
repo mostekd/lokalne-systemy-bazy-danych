@@ -1442,13 +1442,13 @@ INSERT INTO `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacj
 INSERT INTO `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `id_typ_dostawy`) VALUES (`10`, `22`, `39`, `9`, `1`, `2`, `18900`, `2`);
 
 
-INSERT INTO `dostawcy_do_zamowienia`( `id_zamowienia`, `id_dostawca`) VALUES ('1','1')
-INSERT INTO `dostawcy_do_zamowienia`( `id_zamowienia`, `id_dostawca`) VALUES ('2','2')
-INSERT INTO `dostawcy_do_zamowienia`( `id_zamowienia`, `id_dostawca`) VALUES ('3','6')
-INSERT INTO `dostawcy_do_zamowienia`( `id_zamowienia`, `id_dostawca`) VALUES ('4','7')
-INSERT INTO `dostawcy_do_zamowienia`( `id_zamowienia`, `id_dostawca`) VALUES ('5','8')
-INSERT INTO `dostawcy_do_zamowienia`( `id_zamowienia`, `id_dostawca`) VALUES ('6','9')
-INSERT INTO `dostawcy_do_zamowienia`( `id_zamowienia`, `id_dostawca`) VALUES ('7','4')
-INSERT INTO `dostawcy_do_zamowienia`( `id_zamowienia`, `id_dostawca`) VALUES ('8','5')
-INSERT INTO `dostawcy_do_zamowienia`( `id_zamowienia`, `id_dostawca`) VALUES ('9','4')
+INSERT INTO `dostawcy_do_zamowienia`( `id_zamowienia`, `id_dostawca`) VALUES ('1','1');
+INSERT INTO `dostawcy_do_zamowienia`( `id_zamowienia`, `id_dostawca`) VALUES ('2','2');
+INSERT INTO `dostawcy_do_zamowienia`( `id_zamowienia`, `id_dostawca`) VALUES ('3','6');
+INSERT INTO `dostawcy_do_zamowienia`( `id_zamowienia`, `id_dostawca`) VALUES ('4','7');
+INSERT INTO `dostawcy_do_zamowienia`( `id_zamowienia`, `id_dostawca`) VALUES ('5','8');
+INSERT INTO `dostawcy_do_zamowienia`( `id_zamowienia`, `id_dostawca`) VALUES ('6','9');
+INSERT INTO `dostawcy_do_zamowienia`( `id_zamowienia`, `id_dostawca`) VALUES ('7','4');
+INSERT INTO `dostawcy_do_zamowienia`( `id_zamowienia`, `id_dostawca`) VALUES ('8','5');
+INSERT INTO `dostawcy_do_zamowienia`( `id_zamowienia`, `id_dostawca`) VALUES ('9','4');
 INSERT INTO `dostawcy_do_zamowienia`( `id_zamowienia`, `id_dostawca`) VALUES ('10','3')
