@@ -1372,4 +1372,13 @@ Adapter USB-A - USB-C
 Osłona przeciwwietrzna
 Instrukcja obsługi','21');
 
-INSERT INTO `magazyny`(`id_magazyn`, `Nazwa`, `id_lokalizacja`) VALUES ('[value-1]','[value-2]','[value-3]')
+INSERT INTO `magazyny`(`Nazwa`, `id_lokalizacja`) VALUES ('Magazyn_1','21');
+INSERT INTO `magazyny`(`Nazwa`, `id_lokalizacja`) VALUES ('Magazyn_2','22');
+INSERT INTO `magazyny`(`Nazwa`, `id_lokalizacja`) VALUES ('Magazyn_3','23');
+INSERT INTO `magazyny`(`Nazwa`, `id_lokalizacja`) VALUES ('Magazyn_4','24');
+INSERT INTO `magazyny`(`Nazwa`, `id_lokalizacja`) VALUES ('Magazyn_5','25');
+INSERT INTO `magazyny`(`Nazwa`, `id_lokalizacja`) VALUES ('Magazyn_6','26');
+INSERT INTO `magazyny`(`Nazwa`, `id_lokalizacja`) VALUES ('Magazyn_7','27');
+INSERT INTO `magazyny`(`Nazwa`, `id_lokalizacja`) VALUES ('Magazyn_8','28');
+INSERT INTO `magazyny`(`Nazwa`, `id_lokalizacja`) VALUES ('Magazyn_9','29');
+INSERT INTO `magazyny`(`Nazwa`, `id_lokalizacja`) VALUES ('Magazyn_10','30');
