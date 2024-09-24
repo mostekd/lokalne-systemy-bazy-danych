@@ -1382,3 +1382,5 @@ INSERT INTO `magazyny`(`Nazwa`, `id_lokalizacja`) VALUES ('Magazyn_7','27');
 INSERT INTO `magazyny`(`Nazwa`, `id_lokalizacja`) VALUES ('Magazyn_8','28');
 INSERT INTO `magazyny`(`Nazwa`, `id_lokalizacja`) VALUES ('Magazyn_9','29');
 INSERT INTO `magazyny`(`Nazwa`, `id_lokalizacja`) VALUES ('Magazyn_10','30');
+
+INSERT INTO `sklepy`(`id_sklep`, `id_pracownik_menager`, `id_lokalizacja`, `Godziny_otwarcia`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]')
