@@ -1,0 +1,156 @@
+na podstawie podanych niżej bazy danych sklepu komputerowego oraz wzorów poleceń INSERT w MySQL podaj po 10 przykładowych do każdej tabeli. W tabeli lokalizacja wstaw 100 insertów (wygeneruj proszę wszystkie 100, nie mniej), oraz przypisz do tebel które mają id_lokalizacja jako Foregin key różne lokalizacje tak aby się nie powtarzały. Wstaw losowe dane, oraz usuń id w każdym insercie:
+CREATE DATABASE IF NOT EXISTS Sklep;
+USE Sklep;
+
+-- Tabela: Lokalizacja
+CREATE TABLE Lokalizacja (
+    id_lokalizacja INT PRIMARY KEY AUTO_INCREMENT,
+    Ulica VARCHAR(100),
+    Miejscowosc VARCHAR(100),
+    Kod_pocztowy VARCHAR(10),
+    Kraj VARCHAR(50)
+);
+
+-- Tabela: Klient
+CREATE TABLE Klient (
+    id_klient INT PRIMARY KEY AUTO_INCREMENT,
+    Imie VARCHAR(50),
+    Nazwisko VARCHAR(50),
+    Id_lokalizacja INT,
+    Numer_telefonu VARCHAR(15),
+    Adres_email VARCHAR(100)
+);
+
+-- Tabela: Stanowiska
+CREATE TABLE Stanowiska (
+    id_stanowisko INT PRIMARY KEY AUTO_INCREMENT,
+    Nazwa_stanowiska VARCHAR(100)
+);
+
+-- Tabela: Pracownicy
+CREATE TABLE Pracownicy (
+    id_pracownik INT PRIMARY KEY AUTO_INCREMENT,
+    Imie VARCHAR(50),
+    Nazwisko VARCHAR(50),
+    Adres_zamieszkania VARCHAR(100),
+    Numer_telefonu VARCHAR(15),
+    Adres_email VARCHAR(100),
+    id_stanowisko INT,
+    id_lokalizacja INT,
+    Wynagrodzenie DECIMAL(10, 2)
+);
+
+-- Tabela: Typy produktu
+CREATE TABLE Typy_produktu (
+    id_typ_produktu INT PRIMARY KEY AUTO_INCREMENT,
+    Nazwa VARCHAR(100)
+);
+
+-- Tabela: Produkt
+CREATE TABLE Produkt (
+    id_produktu INT PRIMARY KEY AUTO_INCREMENT,
+    Nazwa VARCHAR(100),
+    id_typ_produktu INT,
+    Cena DECIMAL(10, 2),
+    Ilosc INT,
+    Kolor VARCHAR(50),
+    Opis TEXT,
+    id_lokalizacja INT
+);
+
+-- Tabela: Magazyny
+CREATE TABLE Magazyny (
+    id_magazyn INT PRIMARY KEY AUTO_INCREMENT,
+    Nazwa VARCHAR(100),
+    id_lokalizacja INT
+);
+
+-- Tabela: Sklepy
+CREATE TABLE Sklepy (
+    id_sklep INT PRIMARY KEY AUTO_INCREMENT,
+    id_pracownik_menager INT,
+    id_lokalizacja INT,
+    Godziny_otwarcia VARCHAR(50)
+);
+
+-- Tabela: Dostawcy
+CREATE TABLE Dostawcy (
+    id_dostawcy INT PRIMARY KEY AUTO_INCREMENT,
+    Nazwa VARCHAR(100),
+    Numer_telefonu VARCHAR(15),
+    Adres_email VARCHAR(100)
+);
+
+-- Tabela: Typy płatności
+CREATE TABLE Typy_platnosci (
+    id_typ_platnosci INT PRIMARY KEY AUTO_INCREMENT,
+    Nazwa VARCHAR(50)
+);
+
+-- Tabela: Zamówienia
+CREATE TABLE Zamowienia (
+    id_zamowienia INT PRIMARY KEY AUTO_INCREMENT,
+    id_klienta INT,
+    id_lokalizacja INT,
+    id_pracownika INT,
+    id_typ_platnosci INT,
+    id_produkt INT,
+    Kwota_zamowienia DECIMAL(10, 2),
+    Typ_dostawy VARCHAR(50)
+);
+
+-- Tabela: Dostawcy do zamówienia
+CREATE TABLE Dostawcy_do_zamowienia (
+    id_dostawca_do_zamowienia INT PRIMARY KEY AUTO_INCREMENT,
+    id_zamowienia INT,
+    id_dostawca INT
+);
+
+ALTER TABLE Klient (
+    FOREIGN KEY (Id_lokalizacja) REFERENCES Lokalizacja(Id_lokalizacja)
+);
+ALTER TABLE Pracownicy (
+    FOREIGN KEY (Id_stanowisko) REFERENCES Stanowiska(Id_stanowisko),
+    FOREIGN KEY (Id_lokalizacja) REFERENCES Lokalizacja(Id_lokalizacja)
+);
+ALTER TABLE Produkt (
+    FOREIGN KEY (Id_typ_produktu) REFERENCES Typy_produktu(Id_typ_produktu),
+    FOREIGN KEY (Id_lokalizacja) REFERENCES Lokalizacja(Id_lokalizacja)
+);
+ALTER TABLE Magazyny (
+    FOREIGN KEY (Id_lokalizacja) REFERENCES Lokalizacja(Id_lokalizacja)
+);
+ALTER TABLE Sklepy (
+    FOREIGN KEY (Id_pracownik_menager) REFERENCES Pracownicy(Id_pracownik),
+    FOREIGN KEY (Id_lokalizacja) REFERENCES Lokalizacja(Id_lokalizacja)
+);
+ALTER TABLE Zamowienia (
+    FOREIGN KEY (Id_klienta) REFERENCES Klient(Id_klient),
+    FOREIGN KEY (Id_lokalizacja) REFERENCES Lokalizacja(Id_lokalizacja),
+    FOREIGN KEY (Id_pracownika) REFERENCES Pracownicy(Id_pracownik),
+    FOREIGN KEY (Id_typ_platnosci) REFERENCES Typy_platnosci(Id_typ_platnosci),
+    FOREIGN KEY (Id_produkt) REFERENCES Produkt(Id_produktu)
+);
+ALTER TABLE Dostawcy_do_zamowienia (
+    FOREIGN KEY (Id_zamowienia) REFERENCES Zamowienia(Id_zamowienia),
+    FOREIGN KEY (Id_dostawca) REFERENCES Dostawcy(Id_dostawcy)
+);
+
+
+INSERT INTO pracownicy(id_pracownik, Imie, Nazwisko, Adres_zamieszkania, Numer_telefonu, Adres_email, id_stanowisko, id_lokalizacja, Wynagrodzenie) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]','[value-8]','[value-9]')
+
+INSERT INTO typy_produktu(id_typ_produktu, Nazwa) VALUES ('[value-1]','[value-2]')
+
+INSERT INTO produkt(id_produktu, Nazwa, id_typ_produktu, Cena, Ilosc, Kolor, Opis, id_lokalizacja) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]','[value-8]')
+
+INSERT INTO magazyny(id_magazyn, Nazwa, id_lokalizacja) VALUES ('[value-1]','[value-2]','[value-3]')
+
+INSERT INTO sklepy(id_sklep, id_pracownik_menager, id_lokalizacja, Godziny_otwarcia) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]')
+
+INSERT INTO dostawcy(id_dostawcy, Nazwa, Numer_telefonu, Adres_email) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]')
+
+INSERT INTO typy_platnosci(id_typ_platnosci, Nazwa) VALUES ('[value-1]','[value-2]')
+
+INSERT INTO zamowienia(id_zamowienia, id_klienta, id_lokalizacja, id_pracownika, id_typ_platnosci, id_produkt, Kwota_zamowienia, Typ_dostawy) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]','[value-8]')
+
+INSERT INTO dostawcy_do_zamowienia(id_dostawca_do_zamowienia, id_zamowienia, id_dostawca) VALUES ('[value-1]','[value-2]','[value-3]')

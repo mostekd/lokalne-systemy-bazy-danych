@@ -1,0 +1,231 @@
+CREATE DATABASE IF NOT EXISTS Sklep;
+USE Sklep;
+
+-- Tabela: Lokalizacja
+CREATE TABLE Lokalizacja (
+    id_lokalizacja INT PRIMARY KEY AUTO_INCREMENT,
+    Ulica VARCHAR(100),
+    Numer_budynku VARCHAR(10),
+    Miejscowosc VARCHAR(100),
+    Kod_pocztowy VARCHAR(10),
+    Kraj VARCHAR(50)
+);
+
+-- Tabela: Klient
+CREATE TABLE Klient (
+    id_klient INT PRIMARY KEY AUTO_INCREMENT,
+    Imie VARCHAR(50),
+    Nazwisko VARCHAR(50),
+    Id_lokalizacja INT,
+    Numer_telefonu VARCHAR(15),
+    Adres_email VARCHAR(100)
+);
+
+-- Tabela: Stanowiska
+CREATE TABLE Stanowiska (
+    id_stanowisko INT PRIMARY KEY AUTO_INCREMENT,
+    Nazwa_stanowiska VARCHAR(100)
+);
+
+-- Tabela: Pracownicy
+CREATE TABLE Pracownicy (
+    id_pracownik INT PRIMARY KEY AUTO_INCREMENT,
+    Imie VARCHAR(50),
+    Nazwisko VARCHAR(50),
+    Adres_zamieszkania VARCHAR(100),
+    Numer_telefonu VARCHAR(15),
+    Adres_email VARCHAR(100),
+    id_stanowisko INT,
+    id_lokalizacja INT,
+    Wynagrodzenie DECIMAL(10, 2)
+);
+
+-- Tabela: Typy produktu
+CREATE TABLE Typy_produktu (
+    id_typ_produktu INT PRIMARY KEY AUTO_INCREMENT,
+    Nazwa VARCHAR(100)
+);
+
+-- Tabela: Produkt
+CREATE TABLE Produkt (
+    id_produktu INT PRIMARY KEY AUTO_INCREMENT,
+    Nazwa VARCHAR(100),
+    id_typ_produktu INT,
+    Cena DECIMAL(10, 2),
+    Ilosc INT,
+    Kolor VARCHAR(50),
+    Opis TEXT,
+    id_lokalizacja INT
+);
+
+-- Tabela: Magazyny
+CREATE TABLE Magazyny (
+    id_magazyn INT PRIMARY KEY AUTO_INCREMENT,
+    Nazwa VARCHAR(100),
+    id_lokalizacja INT
+);
+
+-- Tabela: Sklepy
+CREATE TABLE Sklepy (
+    id_sklep INT PRIMARY KEY AUTO_INCREMENT,
+    id_pracownik_menager INT,
+    id_lokalizacja INT,
+    Godziny_otwarcia VARCHAR(50)
+);
+
+-- Tabela: Dostawcy
+CREATE TABLE Dostawcy (
+    id_dostawcy INT PRIMARY KEY AUTO_INCREMENT,
+    Nazwa VARCHAR(100),
+    Numer_telefonu VARCHAR(15),
+    Adres_email VARCHAR(100)
+);
+
+-- Tabela: Typy płatności
+CREATE TABLE Typy_platnosci (
+    id_typ_platnosci INT PRIMARY KEY AUTO_INCREMENT,
+    Nazwa VARCHAR(50)
+);
+
+-- Tabela: Zamówienia
+CREATE TABLE Zamowienia (
+    id_zamowienia INT PRIMARY KEY AUTO_INCREMENT,
+    id_klienta INT,
+    id_lokalizacja INT,
+    id_pracownika INT,
+    id_typ_platnosci INT,
+    id_produkt INT,
+    Kwota_zamowienia DECIMAL(10, 2),
+    Typ_dostawy VARCHAR(50)
+);
+
+-- Tabela: Dostawcy do zamówienia
+CREATE TABLE Dostawcy_do_zamowienia (
+    id_dostawca_do_zamowienia INT PRIMARY KEY AUTO_INCREMENT,
+    id_zamowienia INT,
+    id_dostawca INT
+);
+
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Aleja Jana Pawła II','795','Warszawa','00-001','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Floriańska','309','Kraków','30-001','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Świętego Mikołaja','835','Wrocław','50-001','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Piłsudskiego','802','Poznań','60-001','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Długa','580','Gdańsk','80-001','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Dąbrowskiego','500','Szczecin','70-001','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Złota','101','Łódź','90-001','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('3 Maja','340','Lublin','20-001','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Królewska','331','Katowice','40-001','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Słowiańska','867','Bydgoszcz','85-001','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Kościuszki','18','Białystok','15-001','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Lecha','635','Toruń','87-100','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Sienkiewicza','907','Rzeszów','35-001','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Wyszyńskiego','451','Olsztyn','10-001','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Główna','557','Gdynia','81-001','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Kwiatowa','351','Zielona Góra','65-001','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Łaskotka','142','Opole','45-000','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Jagiellońska','819','Koszalin','75-001','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Sportowa','162','Radom','26-600','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Białego Orła','271','Częstochowa','42-200','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Żeromskiego','334','Gliwice','44-100','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Cicha','722','Tychy','43-100','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Strzeszyńska','447','Sosnowiec','44-280','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Słoneczna','848','Elbląg','36-200','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Łaskotka','739','Zabrze','41-800','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Węgierska','913','Rybnik','41-800','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Wojska Polskiego','716','Tarnów','32-600','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Bławatna','494','Jastrzębie-Zdrój','28-400','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Górska','43','Mysłowice','41-500','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Graniczna','712','Nowy Sącz','33-300','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Północna','549','Słupsk','08-110','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Mściwoja','761','Płock','76-200','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Świerkowa','432','Jaworzno','95-100','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Jagodowa','341','Kalisz','62-800','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Zielona','523','Siedlce','08-110','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Krzywa','224','Zamość','67-200','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Orzechowa','210','Krosno','46-100','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Staromiejska','425','Gorzów Wielkopolski','66-400','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Stawna','24','Chorzów','41-500','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Warszawska','940','Stalowa Wola','41-700','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Strzeszyńska','934','Łomża','18-400','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Sadowa','318','Świnoujście','78-600','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Spokojna','939','Kędzierzyn-Koźle','47-400','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Głogowska','136','Radomsko','47-200','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Lipowa','869','Rybnik','44-240','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Parkowa','253','Sopot','81-710','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Lechicka','848','Świętochłowice','32-600','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Stara','6','Ostrów Wielkopolski','36-100','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Słowackiego','733','Nowa Sól','63-000','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Świeżego Powietrza','957','Kołobrzeg','78-100','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Księcia Poniatowskiego','309','Bielsko-Biała','43-300','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Porzeczkowa','471','Gniezno','62-200','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Główna','529','Wołomin','05-200','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Topolowa','638','Piła','89-200','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Złota','630','Starachowice','97-200','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Błękitna','372','Dąbrowa Górnicza','44-300','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Lechicka','811','Sandomierz','27-600','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Kwitnąca','224','Białogard','38-500','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Piękna','641','Legionowo','05-120','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Urocza','42','Żory','45-300','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Polan','276','Ciechanów','07-200','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Chłopska','726','Pabianice','05-800','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Słoneczna','552','Chojnice','32-400','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Akacjowa','446','Oświęcim','32-600','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Grunwaldzka','172','Świecie','41-800','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Sienkiewicza','877','Piotrków Trybunalski','39-300','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Towarowa','905','Lubin','48-300','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Białego Orła','478','Kłodzko','33-300','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Kalinowa','687','Sochaczew','05-500','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Nowa','130','Lędziny','95-100','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Promienna','945','Nowy Tomyśl','28-200','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Klonowa','155','Ustka','59-900','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Łaskotka','436','Chrzanów','43-500','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Księdza Popiełuszki','426','Stawiski','39-300','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Aleja Róż','3','Szczytno','87-100','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Bławatna','912','Głogów','38-200','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Wiatraczek','542','Kraśnik','65-400','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Tęczowa','5
+80','Suwałki','38-600','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Orla','136','Mikołów','35-300','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Marzeń','776','Sanok','24-300','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Jodłowa','46','Nowa Dęba','39-200','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Owocowa','489','Czerwionka-Leszczyny','38-200','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Malwowa','321','Działdowo','48-200','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Ciepła','149','Gorlice','41-300','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Kręta','908','Żyrardów','56-400','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Wierzbowa','230','Jawor','24-100','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Akacjowa','530','Sieradz','26-600','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Stawna','10','Płońsk','32-400','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Leśna','962','Wołów','65-400','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Urokliwa','641','Sokołów Podlaski','39-300','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Strzałowa','720','Września','62-300','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Kwiatowa','376','Chełm','22-100','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Rynkowska','584','Oborniki','85-100','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Szafirowa','584','Zgierz','95-100','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Paprociowa','371','Żnin','88-100','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Gdyńska','324','Dębica','39-200','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Chłopska','303','Nysa','48-300','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Zimowa','428','Miechów','38-500','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Rynkowska','287','Nowy Wiśnicz','32-100','Polska');
+INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Fiołkowa','94','Trzebinia','32-540','Polska');
+
+INSERT INTO `klient`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) VALUES ('Jakub','Kowalski','1','48698234567','jakub.kowalski@example.com');
+INSERT INTO `klient`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) VALUES ('Zofia','Nowak','2','48721456789','zofia.nowak@example.com');
+INSERT INTO `klient`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) VALUES ('Michał','Wiśniewski','3','48601987654','michal.wisniewski@example.com');
+INSERT INTO `klient`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) VALUES ('Natalia','Wójcik','4','48794321876','natalia.wojcik@example.com');
+INSERT INTO `klient`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) VALUES ('Kacper','Kamiński','5','48605123890','kacper.kaminski@example.com');
+INSERT INTO `klient`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) VALUES ('Oliwia','Lewandowska','6','48782654321','oliwia.lewandowska@example.com');
+INSERT INTO `klient`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) VALUES ('Tomasz','Zieliński','7','48609876543','tomasz.zielinski@example.com');
+INSERT INTO `klient`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) VALUES ('Agnieszka','Szymańska','8','48730987120','agnieszka.szymanska@example.com');
+INSERT INTO `klient`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) VALUES ('Bartosz','Dąbrowski','9','48785432109','bartosz.dabrowski@example.com');
+INSERT INTO `klient`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) VALUES ('Ewa','Kaczmarek','10','48602345678','ewa.kaczmarek@example.com');
+
+INSERT INTO `stanowiska`(`Nazwa_stanowiska`) VALUES ('Kierownik');
+INSERT INTO `stanowiska`(`Nazwa_stanowiska`) VALUES ('Serwisant');
+INSERT INTO `stanowiska`(`Nazwa_stanowiska`) VALUES ('Praktykant');
+INSERT INTO `stanowiska`(`Nazwa_stanowiska`) VALUES ('Starzysta');
+INSERT INTO `stanowiska`(`Nazwa_stanowiska`) VALUES ('Kasjer');
+INSERT INTO `stanowiska`(`Nazwa_stanowiska`) VALUES ('Magazynier');
+INSERT INTO `stanowiska`(`Nazwa_stanowiska`) VALUES ('Sprzedawca');
+INSERT INTO `stanowiska`(`Nazwa_stanowiska`) VALUES ('Księgowy');
+INSERT INTO `stanowiska`(`Nazwa_stanowiska`) VALUES ('Konsultant ds.. IT');
+INSERT INTO `stanowiska`(`Nazwa_stanowiska`) VALUES ('Specjalista ds.. Marketingu');
