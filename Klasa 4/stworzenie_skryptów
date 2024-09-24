@@ -241,5 +241,25 @@ INSERT INTO `pracownicy`( `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telef
 INSERT INTO `pracownicy`( `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) VALUES ('Jakub','Dąbrowski','ul. Żeromskiego 101/4 26-600 Radom','+48606123456','jakub.dabrowski@example.com','1','19','5500');
 INSERT INTO `pracownicy`( `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) VALUES ('Anna','Kaczmarek','Aleja NMP 43/7 42-200 Częstochowa','+48724654321','anna.kaczmarek@example.com','1','20','5500');
 
-
-INSERT INTO `typy_produktu`(`id_typ_produktu`, `Nazwa`) VALUES ('[value-1]','[value-2]')
+INSERT INTO `typy_produktu`(`Nazwa`) VALUES ('Laptop');
+INSERT INTO `typy_produktu`(`Nazwa`) VALUES ('Komputer Stacjonarny');
+INSERT INTO `typy_produktu`(`Nazwa`) VALUES ('Monitor');
+INSERT INTO `typy_produktu`(`Nazwa`) VALUES ('Klawiatura');
+INSERT INTO `typy_produktu`(`Nazwa`) VALUES ('Myszka');
+INSERT INTO `typy_produktu`(`Nazwa`) VALUES ('Karta Graficzna');
+INSERT INTO `typy_produktu`(`Nazwa`) VALUES ('Procesor');
+INSERT INTO `typy_produktu`(`Nazwa`) VALUES ('Dysk HDD');
+INSERT INTO `typy_produktu`(`Nazwa`) VALUES ('Dysk SSD');
+INSERT INTO `typy_produktu`(`Nazwa`) VALUES ('Płyta Główna');
+INSERT INTO `typy_produktu`(`Nazwa`) VALUES ('Obudowa Komputera');
+INSERT INTO `typy_produktu`(`Nazwa`) VALUES ('Pamięć RAM');
+INSERT INTO `typy_produktu`(`Nazwa`) VALUES ('Zasilacz');
+INSERT INTO `typy_produktu`(`Nazwa`) VALUES ('Chłodzenie Powietrzne');
+INSERT INTO `typy_produktu`(`Nazwa`) VALUES ('Chłodzenie Wodne');
+INSERT INTO `typy_produktu`(`Nazwa`) VALUES ('Karta Dźwiękowa');
+INSERT INTO `typy_produktu`(`Nazwa`) VALUES ('Karta Sieciowa');
+INSERT INTO `typy_produktu`(`Nazwa`) VALUES ('Napęd Optyczny');
+INSERT INTO `typy_produktu`(`Nazwa`) VALUES ('Mikrofon');
+INSERT INTO `typy_produktu`(`Nazwa`) VALUES ('Drukarka');
+INSERT INTO `typy_produktu`(`Nazwa`) VALUES ('Głośnik');
+INSERT INTO `typy_produktu`(`Nazwa`) VALUES ('Słuchawki');
