@@ -1395,4 +1395,14 @@ INSERT INTO `sklepy`(`nazwa`,`id_pracownik_menager`, `id_lokalizacja`, `Godziny_
 INSERT INTO `sklepy`(`nazwa`,`id_pracownik_menager`, `id_lokalizacja`, `Godziny_otwarcia`) VALUES ('TechZone','9','19','09:00 - 18:00');
 INSERT INTO `sklepy`(`nazwa`,`id_pracownik_menager`, `id_lokalizacja`, `Godziny_otwarcia`) VALUES ('TechZone','10','20','09:00 - 18:00');
 
-INSERT INTO `dostawcy`(`id_dostawcy`, `Nazwa`, `Numer_telefonu`, `Adres_email`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]')
+INSERT INTO `dostawcy`(`Nazwa`, `Numer_telefonu`, `Adres_email`) VALUES ('FedEx','+48501234567','fedex@example.com');
+INSERT INTO `dostawcy`(`Nazwa`, `Numer_telefonu`, `Adres_email`) VALUES ('UPS','+48602345676','ups@example.com');
+INSERT INTO `dostawcy`(`Nazwa`, `Numer_telefonu`, `Adres_email`) VALUES ('GLS','+48600456789','dhl@example.com');
+INSERT INTO `dostawcy`(`Nazwa`, `Numer_telefonu`, `Adres_email`) VALUES ('DPD','+48503567890','gls@example.com');
+INSERT INTO `dostawcy`(`Nazwa`, `Numer_telefonu`, `Adres_email`) VALUES ('TNT','+48604678901','dpd@example.com');
+INSERT INTO `dostawcy`(`Nazwa`, `Numer_telefonu`, `Adres_email`) VALUES ('Hermes','+48505789012','tnt@example.com');
+INSERT INTO `dostawcy`(`Nazwa`, `Numer_telefonu`, `Adres_email`) VALUES ('Yodel','+48606890123','hermes@example.com');
+INSERT INTO `dostawcy`(`Nazwa`, `Numer_telefonu`, `Adres_email`) VALUES ('PostNL','+48507901234','yodel@example.com');
+INSERT INTO `dostawcy`(`Nazwa`, `Numer_telefonu`, `Adres_email`) VALUES ('Chronopost','+48608012345','postnl@example.com');
+INSERT INTO `dostawcy`(`Nazwa`, `Numer_telefonu`, `Adres_email`) VALUES ('Aramex','+48509123456','aramex@example.com');
+
