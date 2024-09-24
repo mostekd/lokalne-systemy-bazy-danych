@@ -1372,3 +1372,4 @@ Adapter USB-A - USB-C
 Osłona przeciwwietrzna
 Instrukcja obsługi','21');
 
+INSERT INTO `magazyny`(`id_magazyn`, `Nazwa`, `id_lokalizacja`) VALUES ('[value-1]','[value-2]','[value-3]')
