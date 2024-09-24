@@ -263,3 +263,5 @@ INSERT INTO `typy_produktu`(`Nazwa`) VALUES ('Mikrofon');
 INSERT INTO `typy_produktu`(`Nazwa`) VALUES ('Drukarka');
 INSERT INTO `typy_produktu`(`Nazwa`) VALUES ('Głośnik');
 INSERT INTO `typy_produktu`(`Nazwa`) VALUES ('Słuchawki');
+
+INSERT INTO `produkt`(`id_produktu`, `Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]','[value-8]')
