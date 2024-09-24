@@ -54,7 +54,7 @@ CREATE TABLE Produkty (
     Cena DECIMAL(10, 2),
     Ilosc INT,
     Kolor VARCHAR(50),
-    Opis TEXT,
+    Opis VARCHAR(20000000),
     id_lokalizacja INT
 );
 
