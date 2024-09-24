@@ -90,7 +90,7 @@ CREATE TABLE Typy_platnosci (
 
 CREATE TABLE typy_dostawy (
     id_typ_dostawy INT PRIMARY KEY AUTO_INCREMENT,
-    nazwa VARCHAR(255),
+    nazwa VARCHAR(255)
 );
 -- Tabela: Zamówienia
 CREATE TABLE Zamowienia (
