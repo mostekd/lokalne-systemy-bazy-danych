@@ -88,6 +88,10 @@ CREATE TABLE Typy_platnosci (
     Nazwa VARCHAR(50)
 );
 
+CREATE TABLE typy_dostawy (
+    id_typ_dostawy INT PRIMARY KEY AUTO_INCREMENT,
+    nazwa VARCHAR(255),
+);
 -- Tabela: Zamówienia
 CREATE TABLE Zamowienia (
     id_zamowienia INT PRIMARY KEY AUTO_INCREMENT,
@@ -1406,8 +1410,45 @@ INSERT INTO `dostawcy`(`Nazwa`, `Numer_telefonu`, `Adres_email`) VALUES ('PostNL
 INSERT INTO `dostawcy`(`Nazwa`, `Numer_telefonu`, `Adres_email`) VALUES ('Chronopost','+48608012345','postnl@example.com');
 INSERT INTO `dostawcy`(`Nazwa`, `Numer_telefonu`, `Adres_email`) VALUES ('Aramex','+48509123456','aramex@example.com');
 
-INSERT INTO `typy_platnosci`(`id_typ_platnosci`, `Nazwa`) VALUES ('[value-1]','[value-2]')
+INSERT INTO `typy_platnosci`(`Nazwa`) VALUES ('BLIK');
+INSERT INTO `typy_platnosci`(`Nazwa`) VALUES ('Karta Debetowa');
+INSERT INTO `typy_platnosci`(`Nazwa`) VALUES ('Karta Kredytowa');
+INSERT INTO `typy_platnosci`(`Nazwa`) VALUES ('Przelew Bankowy');
+INSERT INTO `typy_platnosci`(`Nazwa`) VALUES ('Gotówka');
+INSERT INTO `typy_platnosci`(`Nazwa`) VALUES ('Google Pay');
+INSERT INTO `typy_platnosci`(`Nazwa`) VALUES ('Apple Pay');
+INSERT INTO `typy_platnosci`(`Nazwa`) VALUES ('Płatność za pobraniem');
+INSERT INTO `typy_platnosci`(`Nazwa`) VALUES ('Płatność przy użyciu karty podarunkowej');
+INSERT INTO `typy_platnosci`(`Nazwa`) VALUES ('Płatność na raty');
 
-INSERT INTO `zamowienia`(`id_zamowienia`, `id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `Typ_dostawy`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]','[value-7]','[value-8]','[value-9]')
+INSERT INTO `typy_dostawy`(`nazwa`) VALUES ('Dostawa do domu');
+INSERT INTO `typy_dostawy`(`nazwa`) VALUES ('Dostawa do punktu odbioru');
+INSERT INTO `typy_dostawy`(`nazwa`) VALUES ('Dostawa międzynarodowa');
+INSERT INTO `typy_dostawy`(`nazwa`) VALUES ('Dostawa ekspresowa do domu');
+INSERT INTO `typy_dostawy`(`nazwa`) VALUES ('Dostawa ekspresowa do punktu odbioru');
+INSERT INTO `typy_dostawy`(`nazwa`) VALUES ('Dostawa w sobotę do domu');
+INSERT INTO `typy_dostawy`(`nazwa`) VALUES ('Dostawa w sobotę do punktu odbioru');
+INSERT INTO `typy_dostawy`(`nazwa`) VALUES ('Dostawa za pobraniem ');
 
-INSERT INTO `dostawcy_do_zamowienia`(`id_dostawca_do_zamowienia`, `id_zamowienia`, `id_dostawca`) VALUES ('[value-1]','[value-2]','[value-3]')
+INSERT INTO `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `Typ_dostawy`) VALUES (`1`, `21`, `31`, `1`, `1`, `1`, `22299`, `2`);
+INSERT INTO `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `Typ_dostawy`) VALUES (`2`, `22`, `32`, `2`, `1`, `2`, `18900`, `2`);
+INSERT INTO `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `Typ_dostawy`) VALUES (`3`, `23`, `33`, `3`, `1`, `3`, `7959`, `2`);
+INSERT INTO `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `Typ_dostawy`) VALUES (`4`, `22`, `34`, `4`, `1`, `4`, `899`, `2`);
+INSERT INTO `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `Typ_dostawy`) VALUES (`5`, `22`, `35`, `5`, `1`, `2`, `18900`, `2`);
+INSERT INTO `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `Typ_dostawy`) VALUES (`6`, `24`, `36`, `6`, `1`, `5`, `1099`, `2`);
+INSERT INTO `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `Typ_dostawy`) VALUES (`7`, `22`, `37`, `7`, `1`, `2`, `18900`, `2`);
+INSERT INTO `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `Typ_dostawy`) VALUES (`8`, `24`, `38`, `8`, `1`, `5`, `1099`, `2`);
+INSERT INTO `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `Typ_dostawy`) VALUES (`9`, `22`, `37`, `7`, `1`, `2`, `18900`, `2`);
+INSERT INTO `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `Typ_dostawy`) VALUES (`10`, `22`, `39`, `9`, `1`, `2`, `18900`, `2`);
+
+
+INSERT INTO `dostawcy_do_zamowienia`( `id_zamowienia`, `id_dostawca`) VALUES ('1','1')
+INSERT INTO `dostawcy_do_zamowienia`( `id_zamowienia`, `id_dostawca`) VALUES ('2','2')
+INSERT INTO `dostawcy_do_zamowienia`( `id_zamowienia`, `id_dostawca`) VALUES ('3','6')
+INSERT INTO `dostawcy_do_zamowienia`( `id_zamowienia`, `id_dostawca`) VALUES ('4','7')
+INSERT INTO `dostawcy_do_zamowienia`( `id_zamowienia`, `id_dostawca`) VALUES ('5','8')
+INSERT INTO `dostawcy_do_zamowienia`( `id_zamowienia`, `id_dostawca`) VALUES ('6','9')
+INSERT INTO `dostawcy_do_zamowienia`( `id_zamowienia`, `id_dostawca`) VALUES ('7','4')
+INSERT INTO `dostawcy_do_zamowienia`( `id_zamowienia`, `id_dostawca`) VALUES ('8','5')
+INSERT INTO `dostawcy_do_zamowienia`( `id_zamowienia`, `id_dostawca`) VALUES ('9','4')
+INSERT INTO `dostawcy_do_zamowienia`( `id_zamowienia`, `id_dostawca`) VALUES ('10','3')
