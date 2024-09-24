@@ -240,3 +240,6 @@ INSERT INTO `pracownicy`( `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telef
 INSERT INTO `pracownicy`( `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) VALUES ('Natalia','Lewandowska','ul. Zwycięstwa 20/9 75-037 Koszalin','+48536789321','natalia.lewandowska@example.com','1','18','5500');
 INSERT INTO `pracownicy`( `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) VALUES ('Jakub','Dąbrowski','ul. Żeromskiego 101/4 26-600 Radom','+48606123456','jakub.dabrowski@example.com','1','19','5500');
 INSERT INTO `pracownicy`( `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) VALUES ('Anna','Kaczmarek','Aleja NMP 43/7 42-200 Częstochowa','+48724654321','anna.kaczmarek@example.com','1','20','5500');
+
+
+INSERT INTO `typy_produktu`(`id_typ_produktu`, `Nazwa`) VALUES ('[value-1]','[value-2]')
