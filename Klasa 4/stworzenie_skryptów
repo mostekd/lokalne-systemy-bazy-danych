@@ -1430,16 +1430,16 @@ INSERT INTO `typy_dostawy`(`nazwa`) VALUES ('Dostawa w sobotę do domu');
 INSERT INTO `typy_dostawy`(`nazwa`) VALUES ('Dostawa w sobotę do punktu odbioru');
 INSERT INTO `typy_dostawy`(`nazwa`) VALUES ('Dostawa za pobraniem ');
 
-INSERT INTO `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `Typ_dostawy`) VALUES (`1`, `21`, `31`, `1`, `1`, `1`, `22299`, `2`);
-INSERT INTO `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `Typ_dostawy`) VALUES (`2`, `22`, `32`, `2`, `1`, `2`, `18900`, `2`);
-INSERT INTO `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `Typ_dostawy`) VALUES (`3`, `23`, `33`, `3`, `1`, `3`, `7959`, `2`);
-INSERT INTO `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `Typ_dostawy`) VALUES (`4`, `22`, `34`, `4`, `1`, `4`, `899`, `2`);
-INSERT INTO `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `Typ_dostawy`) VALUES (`5`, `22`, `35`, `5`, `1`, `2`, `18900`, `2`);
-INSERT INTO `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `Typ_dostawy`) VALUES (`6`, `24`, `36`, `6`, `1`, `5`, `1099`, `2`);
-INSERT INTO `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `Typ_dostawy`) VALUES (`7`, `22`, `37`, `7`, `1`, `2`, `18900`, `2`);
-INSERT INTO `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `Typ_dostawy`) VALUES (`8`, `24`, `38`, `8`, `1`, `5`, `1099`, `2`);
-INSERT INTO `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `Typ_dostawy`) VALUES (`9`, `22`, `37`, `7`, `1`, `2`, `18900`, `2`);
-INSERT INTO `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `Typ_dostawy`) VALUES (`10`, `22`, `39`, `9`, `1`, `2`, `18900`, `2`);
+INSERT INTO `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `id_typ_dostawy`) VALUES (`1`, `21`, `31`, `1`, `1`, `1`, `22299`, `2`);
+INSERT INTO `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `id_typ_dostawy`) VALUES (`2`, `22`, `32`, `2`, `1`, `2`, `18900`, `2`);
+INSERT INTO `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `id_typ_dostawy`) VALUES (`3`, `23`, `33`, `3`, `1`, `3`, `7959`, `2`);
+INSERT INTO `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `id_typ_dostawy`) VALUES (`4`, `22`, `34`, `4`, `1`, `4`, `899`, `2`);
+INSERT INTO `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `id_typ_dostawy`) VALUES (`5`, `22`, `35`, `5`, `1`, `2`, `18900`, `2`);
+INSERT INTO `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `id_typ_dostawy`) VALUES (`6`, `24`, `36`, `6`, `1`, `5`, `1099`, `2`);
+INSERT INTO `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `id_typ_dostawy`) VALUES (`7`, `22`, `37`, `7`, `1`, `2`, `18900`, `2`);
+INSERT INTO `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `id_typ_dostawy`) VALUES (`8`, `24`, `38`, `8`, `1`, `5`, `1099`, `2`);
+INSERT INTO `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `id_typ_dostawy`) VALUES (`9`, `22`, `37`, `7`, `1`, `2`, `18900`, `2`);
+INSERT INTO `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `id_typ_dostawy`) VALUES (`10`, `22`, `39`, `9`, `1`, `2`, `18900`, `2`);
 
 
 INSERT INTO `dostawcy_do_zamowienia`( `id_zamowienia`, `id_dostawca`) VALUES ('1','1')
