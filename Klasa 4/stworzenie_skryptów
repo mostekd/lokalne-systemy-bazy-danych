@@ -208,16 +208,16 @@ INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy
 INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Rynkowska','287','Nowy Wiśnicz','32-100','Polska');
 INSERT INTO `lokalizacja`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Fiołkowa','94','Trzebinia','32-540','Polska');
 
-INSERT INTO `klient`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) VALUES ('Jakub','Kowalski','1','48698234567','jakub.kowalski@example.com');
-INSERT INTO `klient`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) VALUES ('Zofia','Nowak','2','48721456789','zofia.nowak@example.com');
-INSERT INTO `klient`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) VALUES ('Michał','Wiśniewski','3','48601987654','michal.wisniewski@example.com');
-INSERT INTO `klient`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) VALUES ('Natalia','Wójcik','4','48794321876','natalia.wojcik@example.com');
-INSERT INTO `klient`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) VALUES ('Kacper','Kamiński','5','48605123890','kacper.kaminski@example.com');
-INSERT INTO `klient`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) VALUES ('Oliwia','Lewandowska','6','48782654321','oliwia.lewandowska@example.com');
-INSERT INTO `klient`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) VALUES ('Tomasz','Zieliński','7','48609876543','tomasz.zielinski@example.com');
-INSERT INTO `klient`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) VALUES ('Agnieszka','Szymańska','8','48730987120','agnieszka.szymanska@example.com');
-INSERT INTO `klient`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) VALUES ('Bartosz','Dąbrowski','9','48785432109','bartosz.dabrowski@example.com');
-INSERT INTO `klient`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) VALUES ('Ewa','Kaczmarek','10','48602345678','ewa.kaczmarek@example.com');
+INSERT INTO `klient`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) VALUES ('Jakub','Kowalski','1','+48698234567','jakub.kowalski@example.com');
+INSERT INTO `klient`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) VALUES ('Zofia','Nowak','2','+48721456789','zofia.nowak@example.com');
+INSERT INTO `klient`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) VALUES ('Michał','Wiśniewski','3','+48601987654','michal.wisniewski@example.com');
+INSERT INTO `klient`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) VALUES ('Natalia','Wójcik','4','+48794321876','natalia.wojcik@example.com');
+INSERT INTO `klient`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) VALUES ('Kacper','Kamiński','5','+48605123890','kacper.kaminski@example.com');
+INSERT INTO `klient`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) VALUES ('Oliwia','Lewandowska','6','+48782654321','oliwia.lewandowska@example.com');
+INSERT INTO `klient`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) VALUES ('Tomasz','Zieliński','7','+48609876543','tomasz.zielinski@example.com');
+INSERT INTO `klient`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) VALUES ('Agnieszka','Szymańska','8','+48730987120','agnieszka.szymanska@example.com');
+INSERT INTO `klient`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) VALUES ('Bartosz','Dąbrowski','9','+48785432109','bartosz.dabrowski@example.com');
+INSERT INTO `klient`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) VALUES ('Ewa','Kaczmarek','10','+48602345678','ewa.kaczmarek@example.com');
 
 INSERT INTO `stanowiska`(`Nazwa_stanowiska`) VALUES ('Kierownik');
 INSERT INTO `stanowiska`(`Nazwa_stanowiska`) VALUES ('Serwisant');
@@ -229,3 +229,14 @@ INSERT INTO `stanowiska`(`Nazwa_stanowiska`) VALUES ('Sprzedawca');
 INSERT INTO `stanowiska`(`Nazwa_stanowiska`) VALUES ('Księgowy');
 INSERT INTO `stanowiska`(`Nazwa_stanowiska`) VALUES ('Konsultant ds.. IT');
 INSERT INTO `stanowiska`(`Nazwa_stanowiska`) VALUES ('Specjalista ds.. Marketingu');
+
+INSERT INTO `pracownicy`( `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) VALUES ('Mateusz','Nowak','ul. Piłsudskiego 15/3 15-444 Białystok','+48512345678','mateusz.nowak@example.com','1','11','5500');
+INSERT INTO `pracownicy`( `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) VALUES ('Aleksandra','Kowalska','ul. Kopernika 12/8 87-100 Toruń','+48698234569','aleksandra.kowalska@example.com','1','12','5500');
+INSERT INTO `pracownicy`( `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) VALUES ('Michał','Wiśniewski','ul. Hetmańska 45/10 35-003 Rzeszów','+48723987654','michal.wisniewski@example.com','1','13','5500');
+INSERT INTO `pracownicy`( `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) VALUES ('Zofia','Kamińska','ul. Pieniężnego 7/2 10-900 Olsztyn','+48604876543','zofia.kaminska@example.com','1','14','5500');
+INSERT INTO `pracownicy`( `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) VALUES ('Kacper','Zieliński','ul. Świętojańska 32/5 81-393 Gdynia ','+48785432107','kacper.zielinski@example.com','1','15','5500');
+INSERT INTO `pracownicy`( `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) VALUES ('Emilia','Wójcik','ul. Bohaterów Westerplatte 23/6 65-001 Zielona Góra','+48661543210','emilia.wojcik@example.com','1','16','5500');
+INSERT INTO `pracownicy`( `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) VALUES ('Piotr','Szymański','ul. Krakowska 52/1 45-018 Opole','+48792876432','piotr.szymanski@example.com','1','17','5500');
+INSERT INTO `pracownicy`( `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) VALUES ('Natalia','Lewandowska','ul. Zwycięstwa 20/9 75-037 Koszalin','+48536789321','natalia.lewandowska@example.com','1','18','5500');
+INSERT INTO `pracownicy`( `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) VALUES ('Jakub','Dąbrowski','ul. Żeromskiego 101/4 26-600 Radom','+48606123456','jakub.dabrowski@example.com','1','19','5500');
+INSERT INTO `pracownicy`( `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) VALUES ('Anna','Kaczmarek','Aleja NMP 43/7 42-200 Częstochowa','+48724654321','anna.kaczmarek@example.com','1','20','5500');
