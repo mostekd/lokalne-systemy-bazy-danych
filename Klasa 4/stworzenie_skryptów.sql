@@ -108,7 +108,8 @@ CREATE TABLE Zamowienia (
     id_typ_platnosci INT,
     id_produkt INT,
     Kwota_zamowienia DECIMAL(10, 2),
-    id_typ_dostawy INT
+    id_typ_dostawy INT,
+    czy_wyslane boolean
 );
 
 -- Tabela: Dostawcy do zamówienia
