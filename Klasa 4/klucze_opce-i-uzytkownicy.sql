@@ -38,7 +38,7 @@ ALTER TABLE Dostawcy_do_zamowienia
 ;
 
 CREATE USER 'administrator'@'localhost' IDENTIFIED BY 'admin';
-GRANT SELECT, INSERT, UPDATE, DELETE ON sklep.zamówienia TO 'administrator'@'localhost';
+GRANT SELECT, INSERT, UPDATE, DELETE ON sklep.zamowienia TO 'administrator'@'localhost';
 GRANT SELECT, INSERT, UPDATE, DELETE ON sklep.typy_produktu TO 'administrator'@'localhost';
 GRANT SELECT, INSERT, UPDATE, DELETE ON sklep.typy_platnosci TO 'administrator'@'localhost';
 GRANT SELECT, INSERT, UPDATE, DELETE ON sklep.sklepy TO 'administrator'@'localhost';
