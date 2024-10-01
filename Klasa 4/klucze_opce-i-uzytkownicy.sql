@@ -47,7 +47,7 @@ GRANT SELECT, INSERT, UPDATE, DELETE ON sklep.stanowiska TO 'administrator_sklep
 GRANT SELECT, INSERT, UPDATE, DELETE ON sklep.produkty TO 'administrator_sklep'@'localhost';
 GRANT SELECT, INSERT, UPDATE, DELETE ON sklep.lokalizacja_do_produkt TO 'administrator_sklep'@'localhost';
 GRANT SELECT, INSERT, UPDATE, DELETE ON sklep.pracownicy TO 'administrator_sklep'@'localhost';
-GRANT SELECT, INSERT, UPDATE, DELETE ON sklep.lokaliazcje TO 'administrator_sklep'@'localhost';
+GRANT SELECT, INSERT, UPDATE, DELETE ON sklep.lokalizacje TO 'administrator_sklep'@'localhost';
 GRANT SELECT, INSERT, UPDATE, DELETE ON sklep.dostawcy_do_zamowienia TO 'administrator_sklep'@'localhost';
 GRANT SELECT, INSERT, UPDATE, DELETE ON sklep.dostawcy TO 'administrator_sklep'@'localhost';
 FLUSH PRIVILEGES;
