@@ -36,3 +36,5 @@ ALTER TABLE Dostawcy_do_zamowienia
     ADD FOREIGN KEY (id_zamowienia) REFERENCES Zamowienia(id_zamowienia),
     ADD FOREIGN KEY (id_dostawca) REFERENCES Dostawcy(id_dostawcy)
 ;
+
+create user Administrator 
