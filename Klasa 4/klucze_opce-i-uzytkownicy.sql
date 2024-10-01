@@ -20,14 +20,14 @@ ALTER TABLE Magazyny
     ADD FOREIGN KEY (id_lokalizacja) REFERENCES Lokalizacje(id_lokalizacja)
 ;
 ALTER TABLE Sklepy
-    ADD FOREIGN KEY (id_pracownik-sklep_menager) REFERENCES Pracownicy(id_pracownik-sklep),
+    ADD FOREIGN KEY (id_pracownik_menager) REFERENCES Pracownicy(id_pracownik),
     ADD FOREIGN KEY (id_lokalizacja) REFERENCES Lokalizacje(id_lokalizacja)
 ;
 ALTER TABLE Zamowienia
-    ADD FOREIGN KEY (id_klient-sklepa) REFERENCES Klienci(id_klient-sklep),
+    ADD FOREIGN KEY (id_klienta) REFERENCES Klienci(id_klient),
     ADD FOREIGN KEY (id_lokalizacja_produktu) REFERENCES Lokalizacje(id_lokalizacja),
     ADD FOREIGN KEY (id_lokalizacja_odbioru) REFERENCES Lokalizacje(id_lokalizacja),
-    ADD FOREIGN KEY (id_pracownik-sklepa) REFERENCES Pracownicy(id_pracownik-sklep),
+    ADD FOREIGN KEY (id_pracownika) REFERENCES Pracownicy(id_pracownik),
     ADD FOREIGN KEY (id_typ_platnosci) REFERENCES Typy_platnosci(id_typ_platnosci),
     ADD FOREIGN KEY (id_produkt) REFERENCES Produkty(id_produktu),
     ADD FOREIGN KEY (id_typ_dostawy) REFERENCES typy_dostawy(id_typ_dostawy)
