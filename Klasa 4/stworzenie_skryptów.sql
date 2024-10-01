@@ -61,7 +61,7 @@ CREATE TABLE Produkty (
 CREATE TABLE Lokalizacja_do_Produkt (
     id_lokalizacja_do_produkt int primary key auto_increment,
     id_lokalizacja int,
-    id_produkt int,
+    id_produkt int
 );
 
 -- Tabela: Magazyny
