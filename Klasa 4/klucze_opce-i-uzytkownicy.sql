@@ -50,18 +50,15 @@ GRANT SELECT, INSERT, UPDATE, DELETE ON sklep.pracownicy TO 'administrator_sklep
 GRANT SELECT, INSERT, UPDATE, DELETE ON sklep.lokalizacje TO 'administrator_sklep'@'localhost';
 GRANT SELECT, INSERT, UPDATE, DELETE ON sklep.dostawcy_do_zamowienia TO 'administrator_sklep'@'localhost';
 GRANT SELECT, INSERT, UPDATE, DELETE ON sklep.dostawcy TO 'administrator_sklep'@'localhost';
-FLUSH PRIVILEGES;
 
 CREATE USER 'system_sklep'@'localhost' IDENTIFIED BY 'system';
 GRANT SELECT, DELETE ON sklep.klienci TO 'system_sklep'@'localhost';
-FLUSH PRIVILEGES;
 
 CREATE USER 'klient_sklep'@'localhost' IDENTIFIED BY 'klient';
 GRANT UPDATE ON sklep.klienci TO 'klient_sklep'@'localhost';
 GRANT SELECT, INSERT, UPDATE ON sklep.klienci TO 'klient_sklep'@'localhost';
 GRANT SELECT ON sklep.produkty TO 'klient_sklep'@'localhost';
 GRANT SELECT ON sklep.sklepy TO 'klient_sklep'@'localhost';
-FLUSH PRIVILEGES;
 
 CREATE USER 'pracownik_sklep'@'localhost' IDENTIFIED BY 'pracownik';
 GRANT SELECT, INSERT, UPDATE ON  sklep.dostawcy TO 'pracownik_sklep'@'localhost';
@@ -73,4 +70,3 @@ GRANT SELECT, INSERT, UPDATE ON  sklep.lokalizacja_do_produkt TO 'pracownik_skle
 GRANT SELECT, INSERT, UPDATE ON  sklep.produkty TO 'pracownik_sklep'@'localhost';
 GRANT SELECT  ON  sklep.sklepy TO 'pracownik_sklep'@'localhost';
 GRANT SELECT, UPDATE ON  sklep.zamowienia TO 'pracownik_sklep'@'localhost';
-FLUSH PRIVILEGES;
