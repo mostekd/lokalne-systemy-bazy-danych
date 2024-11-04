@@ -1,32 +1,39 @@
 DELIMITER //
-CREATE PROCEDURE sp_RaportZyskow(IN start_date DATE, IN end_date DATE)
+CREATE PROCEDURE sp_RaportZyskow(IN start_date DATE, IN end_date DATE, IN id_klienta INT)
 BEGIN
     SELECT 
         z.id_zamowienia AS 'ID Zamówienia',
         z.id_klienta AS 'ID Klienta',
         z.Kwota_zamowienia AS 'Kwota Zamówienia',
-        p.typ_platnosci AS 'Typ Płatności',
-        d.koszt_dostawy AS 'Koszt Dostawy',
+        p.Nazwa AS 'Typ Płatności',
+        d.Nazwa AS 'Dostawca',
         (z.Kwota_zamowienia - d.koszt_dostawy) AS 'Łączna Wartość Sprzedaży'
     FROM 
-        zamowienia z
+        Zamowienia z
     JOIN 
-        typy_platnosci p ON z.id_typ_platnosci = p.id_typ_platnosci
+        Typy_platnosci p ON z.id_typ_platnosci = p.id_typ_platnosci
     JOIN 
-        dostawcy_do_zamowienia d ON z.id_zamowienia = d.id_zamowienia
+        Dostawcy_do_zamowienia dz ON z.id_zamowienia = dz.id_zamowienia
+    JOIN
+        Dostawcy d ON dz.id_dostawca = d.id_dostawcy
     WHERE 
-        z.data_zamowienia BETWEEN start_date AND end_date;
-    
+        z.data_zamowienia BETWEEN start_date AND end_date
+        AND (id_klienta IS NULL OR z.id_klienta = id_klienta);
+
     SELECT 
         SUM(z.Kwota_zamowienia - d.koszt_dostawy) AS 'Suma Zysków'
     FROM 
-        zamowienia z
+        Zamowienia z
     JOIN 
-        dostawcy_do_zamowienia d ON z.id_zamowienia = d.id_zamowienia
+        Dostawcy_do_zamowienia dz ON z.id_zamowienia = dz.id_zamowienia
+    JOIN
+        Dostawcy d ON dz.id_dostawca = d.id_dostawcy
     WHERE 
-        z.data_zamowienia BETWEEN start_date AND end_date;
+        z.data_zamowienia BETWEEN start_date AND end_date
+        AND (id_klienta IS NULL OR z.id_klienta = id_klienta);
 END //
 DELIMITER ;
+
 
 
 DELIMITER //
