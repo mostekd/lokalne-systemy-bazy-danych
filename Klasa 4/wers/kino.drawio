@@ -16,6 +16,42 @@
         <mxCell id="nGumastrKbj4EtpB0uBR-4" value="PRACOWNIK" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="350" y="400" width="120" height="60" as="geometry" />
         </mxCell>
+        <mxCell id="nGumastrKbj4EtpB0uBR-5" value="KLIENCI" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="100" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nGumastrKbj4EtpB0uBR-6" value="PRACOWNICY" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="200" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nGumastrKbj4EtpB0uBR-7" value="STANOWISKA" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="910" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nGumastrKbj4EtpB0uBR-8" value="AKTORZY" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="810" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nGumastrKbj4EtpB0uBR-9" value="FILMY" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="20" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nGumastrKbj4EtpB0uBR-10" value="REŻYSERZY" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="70" y="710" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nGumastrKbj4EtpB0uBR-11" value="LOKALIZACJA" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="620" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nGumastrKbj4EtpB0uBR-12" value="OFERTA" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="320" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nGumastrKbj4EtpB0uBR-13" value="SEANSE" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="420" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nGumastrKbj4EtpB0uBR-14" value="RODZAJE_FILMU" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="520" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nGumastrKbj4EtpB0uBR-15" value="ZAMÓWIENIA" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="1000" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="nGumastrKbj4EtpB0uBR-16" value="KINA" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="230" y="1000" width="120" height="60" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
