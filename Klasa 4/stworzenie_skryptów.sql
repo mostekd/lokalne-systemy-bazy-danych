@@ -1,286 +1,286 @@
-CREATE DATABASE IF NOT EXISTS Sklep;
-USE Sklep;
+create database if not exists Sklep;
+use Sklep;
 
 -- Tabela: Lokalizacja
-CREATE TABLE Lokalizacje (
-    id_lokalizacja INT PRIMARY KEY AUTO_INCREMENT,
-    Ulica VARCHAR(100),
-    Numer_budynku VARCHAR(10),
-    Miejscowosc VARCHAR(100),
-    Kod_pocztowy VARCHAR(10),
-    Kraj VARCHAR(50)
+create table Lokalizacje (
+    id_lokalizacja int primary key auto_increment,
+    Ulica varchar(100),
+    Numer_budynku varchar(10),
+    Miejscowosc varchar(100),
+    Kod_pocztowy varchar(10),
+    Kraj varchar(50)
 );
 
 -- Tabela: Klient
-CREATE TABLE Klienci (
-    id_klient INT PRIMARY KEY AUTO_INCREMENT,
-    Imie VARCHAR(50),
-    Nazwisko VARCHAR(50),
-    id_lokalizacja INT,
-    Numer_telefonu VARCHAR(15),
-    Adres_email VARCHAR(100)
+create table Klienci (
+    id_klient int primary key auto_increment,
+    Imie varchar(50),
+    Nazwisko varchar(50),
+    id_lokalizacja int,
+    Numer_telefonu varchar(15),
+    Adres_email varchar(100)
 );
 
 -- Tabela: Stanowiska
-CREATE TABLE Stanowiska (
-    id_stanowisko INT PRIMARY KEY AUTO_INCREMENT,
-    Nazwa_stanowiska VARCHAR(100)
+create table Stanowiska (
+    id_stanowisko int primary key auto_increment,
+    Nazwa_stanowiska varchar(100)
 );
 
 -- Tabela: Pracownicy
-CREATE TABLE Pracownicy (
-    id_pracownik INT PRIMARY KEY AUTO_INCREMENT,
-    Imie VARCHAR(50),
-    Nazwisko VARCHAR(50),
-    Adres_zamieszkania VARCHAR(100),
-    Numer_telefonu VARCHAR(15),
-    Adres_email VARCHAR(100),
-    id_stanowisko INT,
-    id_lokalizacja INT,
-    Wynagrodzenie DECIMAL(10, 2)
+create table Pracownicy (
+    id_pracownik int primary key auto_increment,
+    Imie varchar(50),
+    Nazwisko varchar(50),
+    Adres_zamieszkania varchar(100),
+    Numer_telefonu varchar(15),
+    Adres_email varchar(100),
+    id_stanowisko int,
+    id_lokalizacja int,
+    Wynagrodzenie decimal(10, 2)
 );
 
 -- Tabela: Typy produktu
-CREATE TABLE Typy_produktu (
-    id_typ_produktu INT PRIMARY KEY AUTO_INCREMENT,
-    Nazwa VARCHAR(100)
+create table Typy_produktu (
+    id_typ_produktu int primary key auto_increment,
+    Nazwa varchar(100)
 );
 
 -- Tabela: Produkt
-CREATE TABLE Produkty (
-    id_produktu INT PRIMARY KEY AUTO_INCREMENT,
-    Nazwa VARCHAR(100),
-    id_typ_produktu INT,
-    Cena DECIMAL(10, 2),
-    Ilosc INT,
-    Kolor VARCHAR(50),
-    Opis VARCHAR(20000000),
-    id_lokalizacja INT
+create table Produkty (
+    id_produktu int primary key auto_increment,
+    Nazwa varchar(100),
+    id_typ_produktu int,
+    Cena decimal(10, 2),
+    Ilosc int,
+    Kolor varchar(50),
+    Opis varchar(20000000),
+    id_lokalizacja int
 );
 
-CREATE TABLE Lokalizacja_do_Produkt (
+create table Lokalizacja_do_Produkt (
     id_lokalizacja_do_produkt int primary key auto_increment,
     id_lokalizacja int,
     id_produkt int
 );
 
 -- Tabela: Magazyny
-CREATE TABLE Magazyny (
-    id_magazyn INT PRIMARY KEY AUTO_INCREMENT,
-    Nazwa VARCHAR(100),
-    id_lokalizacja INT
+create table Magazyny (
+    id_magazyn int primary key auto_increment,
+    Nazwa varchar(100),
+    id_lokalizacja int
 );
 
 -- Tabela: Sklepy
-CREATE TABLE Sklepy (
-    id_sklep INT PRIMARY KEY AUTO_INCREMENT,
-    nazwa VARCHAR(255),
-    id_pracownik_menager INT,
-    id_lokalizacja INT,
-    Godziny_otwarcia VARCHAR(50)
+create table Sklepy (
+    id_sklep int primary key auto_increment,
+    nazwa varchar(255),
+    id_pracownik_menager int,
+    id_lokalizacja int,
+    Godziny_otwarcia varchar(50)
 );
 
 -- Tabela: Dostawcy
-CREATE TABLE Dostawcy (
-    id_dostawcy INT PRIMARY KEY AUTO_INCREMENT,
-    Nazwa VARCHAR(100),
-    Numer_telefonu VARCHAR(15),
-    Adres_email VARCHAR(100)
+create table Dostawcy (
+    id_dostawcy int primary key auto_increment,
+    Nazwa varchar(100),
+    Numer_telefonu varchar(15),
+    Adres_email varchar(100)
 );
 
 -- Tabela: Typy płatności
-CREATE TABLE Typy_platnosci (
-    id_typ_platnosci INT PRIMARY KEY AUTO_INCREMENT,
-    Nazwa VARCHAR(50)
+create table Typy_platnosci (
+    id_typ_platnosci int primary key auto_increment,
+    Nazwa varchar(50)
 );
 
-CREATE TABLE typy_dostawy (
-    id_typ_dostawy INT PRIMARY KEY AUTO_INCREMENT,
-    nazwa VARCHAR(255)
+create table typy_dostawy (
+    id_typ_dostawy int primary key auto_increment,
+    nazwa varchar(255)
 );
 -- Tabela: Zamówienia
-CREATE TABLE Zamowienia (
-    id_zamowienia INT PRIMARY KEY AUTO_INCREMENT,
-    id_klienta INT,
-    id_lokalizacja_produktu INT,
-    id_lokalizacja_odbioru INT,
-    id_pracownika INT,
-    id_typ_platnosci INT,
-    id_produkt INT,
-    Kwota_zamowienia DECIMAL(10, 2),
-    id_typ_dostawy INT,
+create table Zamowienia (
+    id_zamowienia int primary key auto_increment,
+    id_klienta int,
+    id_lokalizacja_produktu int,
+    id_lokalizacja_odbioru int,
+    id_pracownika int,
+    id_typ_platnosci int,
+    id_produkt int,
+    Kwota_zamowienia decimal(10, 2),
+    id_typ_dostawy int,
     czy_wyslane boolean
 );
 
 -- Tabela: Dostawcy do zamówienia
-CREATE TABLE Dostawcy_do_zamowienia (
-    id_dostawca_do_zamowienia INT PRIMARY KEY AUTO_INCREMENT,
-    id_zamowienia INT,
-    id_dostawca INT
+create table Dostawcy_do_zamowienia (
+    id_dostawca_do_zamowienia int primary key auto_increment,
+    id_zamowienia int,
+    id_dostawca int
 );
 
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Aleja Jana Pawła II','795','Warszawa','00-001','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Floriańska','309','Kraków','30-001','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Świętego Mikołaja','835','Wrocław','50-001','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Piłsudskiego','802','Poznań','60-001','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Długa','580','Gdańsk','80-001','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Dąbrowskiego','500','Szczecin','70-001','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Złota','101','Łódź','90-001','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('3 Maja','340','Lublin','20-001','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Królewska','331','Katowice','40-001','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Słowiańska','867','Bydgoszcz','85-001','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Kościuszki','18','Białystok','15-001','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Lecha','635','Toruń','87-100','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Sienkiewicza','907','Rzeszów','35-001','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Wyszyńskiego','451','Olsztyn','10-001','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Główna','557','Gdynia','81-001','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Kwiatowa','351','Zielona Góra','65-001','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Łaskotka','142','Opole','45-000','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Jagiellońska','819','Koszalin','75-001','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Sportowa','162','Radom','26-600','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Białego Orła','271','Częstochowa','42-200','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Żeromskiego','334','Gliwice','44-100','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Cicha','722','Tychy','43-100','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Strzeszyńska','447','Sosnowiec','44-280','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Słoneczna','848','Elbląg','36-200','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Łaskotka','739','Zabrze','41-800','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Węgierska','913','Rybnik','41-800','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Wojska Polskiego','716','Tarnów','32-600','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Bławatna','494','Jastrzębie-Zdrój','28-400','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Górska','43','Mysłowice','41-500','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Graniczna','712','Nowy Sącz','33-300','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Północna','549','Słupsk','08-110','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Mściwoja','761','Płock','76-200','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Świerkowa','432','Jaworzno','95-100','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Jagodowa','341','Kalisz','62-800','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Zielona','523','Siedlce','08-110','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Krzywa','224','Zamość','67-200','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Orzechowa','210','Krosno','46-100','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Staromiejska','425','Gorzów Wielkopolski','66-400','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Stawna','24','Chorzów','41-500','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Warszawska','940','Stalowa Wola','41-700','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Strzeszyńska','934','Łomża','18-400','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Sadowa','318','Świnoujście','78-600','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Spokojna','939','Kędzierzyn-Koźle','47-400','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Głogowska','136','Radomsko','47-200','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Lipowa','869','Rybnik','44-240','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Parkowa','253','Sopot','81-710','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Lechicka','848','Świętochłowice','32-600','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Stara','6','Ostrów Wielkopolski','36-100','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Słowackiego','733','Nowa Sól','63-000','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Świeżego Powietrza','957','Kołobrzeg','78-100','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Księcia Poniatowskiego','309','Bielsko-Biała','43-300','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Porzeczkowa','471','Gniezno','62-200','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Główna','529','Wołomin','05-200','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Topolowa','638','Piła','89-200','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Złota','630','Starachowice','97-200','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Błękitna','372','Dąbrowa Górnicza','44-300','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Lechicka','811','Sandomierz','27-600','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Kwitnąca','224','Białogard','38-500','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Piękna','641','Legionowo','05-120','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Urocza','42','Żory','45-300','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Polan','276','Ciechanów','07-200','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Chłopska','726','Pabianice','05-800','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Słoneczna','552','Chojnice','32-400','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Akacjowa','446','Oświęcim','32-600','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Grunwaldzka','172','Świecie','41-800','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Sienkiewicza','877','Piotrków Trybunalski','39-300','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Towarowa','905','Lubin','48-300','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Białego Orła','478','Kłodzko','33-300','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Kalinowa','687','Sochaczew','05-500','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Nowa','130','Lędziny','95-100','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Promienna','945','Nowy Tomyśl','28-200','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Klonowa','155','Ustka','59-900','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Łaskotka','436','Chrzanów','43-500','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Księdza Popiełuszki','426','Stawiski','39-300','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Aleja Róż','3','Szczytno','87-100','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Bławatna','912','Głogów','38-200','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Wiatraczek','542','Kraśnik','65-400','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Tęczowa','5
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Aleja Jana Pawła II','795','Warszawa','00-001','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Floriańska','309','Kraków','30-001','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Świętego Mikołaja','835','Wrocław','50-001','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Piłsudskiego','802','Poznań','60-001','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Długa','580','Gdańsk','80-001','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Dąbrowskiego','500','Szczecin','70-001','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Złota','101','Łódź','90-001','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('3 Maja','340','Lublin','20-001','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Królewska','331','Katowice','40-001','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Słowiańska','867','Bydgoszcz','85-001','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Kościuszki','18','Białystok','15-001','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Lecha','635','Toruń','87-100','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Sienkiewicza','907','Rzeszów','35-001','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Wyszyńskiego','451','Olsztyn','10-001','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Główna','557','Gdynia','81-001','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Kwiatowa','351','Zielona Góra','65-001','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Łaskotka','142','Opole','45-000','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Jagiellońska','819','Koszalin','75-001','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Sportowa','162','Radom','26-600','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Białego Orła','271','Częstochowa','42-200','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Żeromskiego','334','Gliwice','44-100','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Cicha','722','Tychy','43-100','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Strzeszyńska','447','Sosnowiec','44-280','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Słoneczna','848','Elbląg','36-200','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Łaskotka','739','Zabrze','41-800','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Węgierska','913','Rybnik','41-800','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Wojska Polskiego','716','Tarnów','32-600','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Bławatna','494','Jastrzębie-Zdrój','28-400','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Górska','43','Mysłowice','41-500','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Graniczna','712','Nowy Sącz','33-300','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Północna','549','Słupsk','08-110','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Mściwoja','761','Płock','76-200','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Świerkowa','432','Jaworzno','95-100','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Jagodowa','341','Kalisz','62-800','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Zielona','523','Siedlce','08-110','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Krzywa','224','Zamość','67-200','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Orzechowa','210','Krosno','46-100','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Staromiejska','425','Gorzów Wielkopolski','66-400','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Stawna','24','Chorzów','41-500','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Warszawska','940','Stalowa Wola','41-700','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Strzeszyńska','934','Łomża','18-400','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Sadowa','318','Świnoujście','78-600','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Spokojna','939','Kędzierzyn-Koźle','47-400','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Głogowska','136','Radomsko','47-200','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Lipowa','869','Rybnik','44-240','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Parkowa','253','Sopot','81-710','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Lechicka','848','Świętochłowice','32-600','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Stara','6','Ostrów Wielkopolski','36-100','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Słowackiego','733','Nowa Sól','63-000','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Świeżego Powietrza','957','Kołobrzeg','78-100','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Księcia Poniatowskiego','309','Bielsko-Biała','43-300','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Porzeczkowa','471','Gniezno','62-200','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Główna','529','Wołomin','05-200','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Topolowa','638','Piła','89-200','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Złota','630','Starachowice','97-200','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Błękitna','372','Dąbrowa Górnicza','44-300','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Lechicka','811','Sandomierz','27-600','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Kwitnąca','224','Białogard','38-500','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Piękna','641','Legionowo','05-120','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Urocza','42','Żory','45-300','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Polan','276','Ciechanów','07-200','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Chłopska','726','Pabianice','05-800','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Słoneczna','552','Chojnice','32-400','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Akacjowa','446','Oświęcim','32-600','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Grunwaldzka','172','Świecie','41-800','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Sienkiewicza','877','Piotrków Trybunalski','39-300','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Towarowa','905','Lubin','48-300','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Białego Orła','478','Kłodzko','33-300','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Kalinowa','687','Sochaczew','05-500','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Nowa','130','Lędziny','95-100','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Promienna','945','Nowy Tomyśl','28-200','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Klonowa','155','Ustka','59-900','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Łaskotka','436','Chrzanów','43-500','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Księdza Popiełuszki','426','Stawiski','39-300','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Aleja Róż','3','Szczytno','87-100','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Bławatna','912','Głogów','38-200','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Wiatraczek','542','Kraśnik','65-400','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Tęczowa','5
 80','Suwałki','38-600','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Orla','136','Mikołów','35-300','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Marzeń','776','Sanok','24-300','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Jodłowa','46','Nowa Dęba','39-200','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Owocowa','489','Czerwionka-Leszczyny','38-200','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Malwowa','321','Działdowo','48-200','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Ciepła','149','Gorlice','41-300','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Kręta','908','Żyrardów','56-400','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Wierzbowa','230','Jawor','24-100','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Akacjowa','530','Sieradz','26-600','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Stawna','10','Płońsk','32-400','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Leśna','962','Wołów','65-400','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Urokliwa','641','Sokołów Podlaski','39-300','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Strzałowa','720','Września','62-300','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Kwiatowa','376','Chełm','22-100','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Rynkowska','584','Oborniki','85-100','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Szafirowa','584','Zgierz','95-100','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Paprociowa','371','Żnin','88-100','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Gdyńska','324','Dębica','39-200','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Chłopska','303','Nysa','48-300','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Zimowa','428','Miechów','38-500','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Rynkowska','287','Nowy Wiśnicz','32-100','Polska');
-INSERT INTO `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) VALUES ('Fiołkowa','94','Trzebinia','32-540','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Orla','136','Mikołów','35-300','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Marzeń','776','Sanok','24-300','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Jodłowa','46','Nowa Dęba','39-200','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Owocowa','489','Czerwionka-Leszczyny','38-200','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Malwowa','321','Działdowo','48-200','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Ciepła','149','Gorlice','41-300','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Kręta','908','Żyrardów','56-400','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Wierzbowa','230','Jawor','24-100','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Akacjowa','530','Sieradz','26-600','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Stawna','10','Płońsk','32-400','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Leśna','962','Wołów','65-400','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Urokliwa','641','Sokołów Podlaski','39-300','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Strzałowa','720','Września','62-300','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Kwiatowa','376','Chełm','22-100','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Rynkowska','584','Oborniki','85-100','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Szafirowa','584','Zgierz','95-100','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Paprociowa','371','Żnin','88-100','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Gdyńska','324','Dębica','39-200','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Chłopska','303','Nysa','48-300','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Zimowa','428','Miechów','38-500','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Rynkowska','287','Nowy Wiśnicz','32-100','Polska');
+insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Fiołkowa','94','Trzebinia','32-540','Polska');
 
-INSERT INTO `klienci`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) VALUES ('Jakub','Kowalski','1','+48698234567','jakub.kowalski@example.com');
-INSERT INTO `klienci`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) VALUES ('Zofia','Nowak','2','+48721456789','zofia.nowak@example.com');
-INSERT INTO `klienci`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) VALUES ('Michał','Wiśniewski','3','+48601987654','michal.wisniewski@example.com');
-INSERT INTO `klienci`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) VALUES ('Natalia','Wójcik','4','+48794321876','natalia.wojcik@example.com');
-INSERT INTO `klienci`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) VALUES ('Kacper','Kamiński','5','+48605123890','kacper.kaminski@example.com');
-INSERT INTO `klienci`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) VALUES ('Oliwia','Lewandowska','6','+48782654321','oliwia.lewandowska@example.com');
-INSERT INTO `klienci`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) VALUES ('Tomasz','Zieliński','7','+48609876543','tomasz.zielinski@example.com');
-INSERT INTO `klienci`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) VALUES ('Agnieszka','Szymańska','8','+48730987120','agnieszka.szymanska@example.com');
-INSERT INTO `klienci`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) VALUES ('Bartosz','Dąbrowski','9','+48785432109','bartosz.dabrowski@example.com');
-INSERT INTO `klienci`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) VALUES ('Ewa','Kaczmarek','10','+48602345678','ewa.kaczmarek@example.com');
+insert into `klienci`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) values ('Jakub','Kowalski','1','+48698234567','jakub.kowalski@example.com');
+insert into `klienci`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) values ('Zofia','Nowak','2','+48721456789','zofia.nowak@example.com');
+insert into `klienci`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) values ('Michał','Wiśniewski','3','+48601987654','michal.wisniewski@example.com');
+insert into `klienci`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) values ('Natalia','Wójcik','4','+48794321876','natalia.wojcik@example.com');
+insert into `klienci`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) values ('Kacper','Kamiński','5','+48605123890','kacper.kaminski@example.com');
+insert into `klienci`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) values ('Oliwia','Lewandowska','6','+48782654321','oliwia.lewandowska@example.com');
+insert into `klienci`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) values ('Tomasz','Zieliński','7','+48609876543','tomasz.zielinski@example.com');
+insert into `klienci`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) values ('Agnieszka','Szymańska','8','+48730987120','agnieszka.szymanska@example.com');
+insert into `klienci`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) values ('Bartosz','Dąbrowski','9','+48785432109','bartosz.dabrowski@example.com');
+insert into `klienci`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) values ('Ewa','Kaczmarek','10','+48602345678','ewa.kaczmarek@example.com');
 
-INSERT INTO `stanowiska`(`Nazwa_stanowiska`) VALUES ('Kierownik');
-INSERT INTO `stanowiska`(`Nazwa_stanowiska`) VALUES ('Serwisant');
-INSERT INTO `stanowiska`(`Nazwa_stanowiska`) VALUES ('Praktykant');
-INSERT INTO `stanowiska`(`Nazwa_stanowiska`) VALUES ('Starzysta');
-INSERT INTO `stanowiska`(`Nazwa_stanowiska`) VALUES ('Kasjer');
-INSERT INTO `stanowiska`(`Nazwa_stanowiska`) VALUES ('Magazynier');
-INSERT INTO `stanowiska`(`Nazwa_stanowiska`) VALUES ('Sprzedawca');
-INSERT INTO `stanowiska`(`Nazwa_stanowiska`) VALUES ('Księgowy');
-INSERT INTO `stanowiska`(`Nazwa_stanowiska`) VALUES ('Konsultant ds.. IT');
-INSERT INTO `stanowiska`(`Nazwa_stanowiska`) VALUES ('Specjalista ds.. Marketingu');
+insert into `stanowiska`(`Nazwa_stanowiska`) values ('Kierownik');
+insert into `stanowiska`(`Nazwa_stanowiska`) values ('Serwisant');
+insert into `stanowiska`(`Nazwa_stanowiska`) values ('Praktykant');
+insert into `stanowiska`(`Nazwa_stanowiska`) values ('Starzysta');
+insert into `stanowiska`(`Nazwa_stanowiska`) values ('Kasjer');
+insert into `stanowiska`(`Nazwa_stanowiska`) values ('Magazynier');
+insert into `stanowiska`(`Nazwa_stanowiska`) values ('Sprzedawca');
+insert into `stanowiska`(`Nazwa_stanowiska`) values ('Księgowy');
+insert into `stanowiska`(`Nazwa_stanowiska`) values ('Konsultant ds.. IT');
+insert into `stanowiska`(`Nazwa_stanowiska`) values ('Specjalista ds.. Marketingu');
 
-INSERT INTO `pracownicy`( `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) VALUES ('Mateusz','Nowak','ul. Piłsudskiego 15/3 15-444 Białystok','+48512345678','mateusz.nowak@example.com','1','11','5500');
-INSERT INTO `pracownicy`( `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) VALUES ('Aleksandra','Kowalska','ul. Kopernika 12/8 87-100 Toruń','+48698234569','aleksandra.kowalska@example.com','1','12','5500');
-INSERT INTO `pracownicy`( `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) VALUES ('Michał','Wiśniewski','ul. Hetmańska 45/10 35-003 Rzeszów','+48723987654','michal.wisniewski@example.com','1','13','5500');
-INSERT INTO `pracownicy`( `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) VALUES ('Zofia','Kamińska','ul. Pieniężnego 7/2 10-900 Olsztyn','+48604876543','zofia.kaminska@example.com','1','14','5500');
-INSERT INTO `pracownicy`( `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) VALUES ('Kacper','Zieliński','ul. Świętojańska 32/5 81-393 Gdynia ','+48785432107','kacper.zielinski@example.com','1','15','5500');
-INSERT INTO `pracownicy`( `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) VALUES ('Emilia','Wójcik','ul. Bohaterów Westerplatte 23/6 65-001 Zielona Góra','+48661543210','emilia.wojcik@example.com','1','16','5500');
-INSERT INTO `pracownicy`( `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) VALUES ('Piotr','Szymański','ul. Krakowska 52/1 45-018 Opole','+48792876432','piotr.szymanski@example.com','1','17','5500');
-INSERT INTO `pracownicy`( `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) VALUES ('Natalia','Lewandowska','ul. Zwycięstwa 20/9 75-037 Koszalin','+48536789321','natalia.lewandowska@example.com','1','18','5500');
-INSERT INTO `pracownicy`( `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) VALUES ('Jakub','Dąbrowski','ul. Żeromskiego 101/4 26-600 Radom','+48606123456','jakub.dabrowski@example.com','1','19','5500');
-INSERT INTO `pracownicy`( `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) VALUES ('Anna','Kaczmarek','Aleja NMP 43/7 42-200 Częstochowa','+48724654321','anna.kaczmarek@example.com','1','20','5500');
+insert into `pracownicy`( `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) values ('Mateusz','Nowak','ul. Piłsudskiego 15/3 15-444 Białystok','+48512345678','mateusz.nowak@example.com','1','11','5500');
+insert into `pracownicy`( `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) values ('Aleksandra','Kowalska','ul. Kopernika 12/8 87-100 Toruń','+48698234569','aleksandra.kowalska@example.com','1','12','5500');
+insert into `pracownicy`( `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) values ('Michał','Wiśniewski','ul. Hetmańska 45/10 35-003 Rzeszów','+48723987654','michal.wisniewski@example.com','1','13','5500');
+insert into `pracownicy`( `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) values ('Zofia','Kamińska','ul. Pieniężnego 7/2 10-900 Olsztyn','+48604876543','zofia.kaminska@example.com','1','14','5500');
+insert into `pracownicy`( `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) values ('Kacper','Zieliński','ul. Świętojańska 32/5 81-393 Gdynia ','+48785432107','kacper.zielinski@example.com','1','15','5500');
+insert into `pracownicy`( `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) values ('Emilia','Wójcik','ul. Bohaterów Westerplatte 23/6 65-001 Zielona Góra','+48661543210','emilia.wojcik@example.com','1','16','5500');
+insert into `pracownicy`( `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) values ('Piotr','Szymański','ul. Krakowska 52/1 45-018 Opole','+48792876432','piotr.szymanski@example.com','1','17','5500');
+insert into `pracownicy`( `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) values ('Natalia','Lewandowska','ul. Zwycięstwa 20/9 75-037 Koszalin','+48536789321','natalia.lewandowska@example.com','1','18','5500');
+insert into `pracownicy`( `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) values ('Jakub','Dąbrowski','ul. Żeromskiego 101/4 26-600 Radom','+48606123456','jakub.dabrowski@example.com','1','19','5500');
+insert into `pracownicy`( `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) values ('Anna','Kaczmarek','Aleja NMP 43/7 42-200 Częstochowa','+48724654321','anna.kaczmarek@example.com','1','20','5500');
 
-INSERT INTO `typy_produktu`(`Nazwa`) VALUES ('Laptop');
-INSERT INTO `typy_produktu`(`Nazwa`) VALUES ('Komputer Stacjonarny');
-INSERT INTO `typy_produktu`(`Nazwa`) VALUES ('Monitor');
-INSERT INTO `typy_produktu`(`Nazwa`) VALUES ('Klawiatura');
-INSERT INTO `typy_produktu`(`Nazwa`) VALUES ('Myszka');
-INSERT INTO `typy_produktu`(`Nazwa`) VALUES ('Karta Graficzna');
-INSERT INTO `typy_produktu`(`Nazwa`) VALUES ('Procesor');
-INSERT INTO `typy_produktu`(`Nazwa`) VALUES ('Dysk HDD');
-INSERT INTO `typy_produktu`(`Nazwa`) VALUES ('Dysk SSD');
-INSERT INTO `typy_produktu`(`Nazwa`) VALUES ('Płyta Główna');
-INSERT INTO `typy_produktu`(`Nazwa`) VALUES ('Obudowa Komputera');
-INSERT INTO `typy_produktu`(`Nazwa`) VALUES ('Pamięć RAM');
-INSERT INTO `typy_produktu`(`Nazwa`) VALUES ('Zasilacz');
-INSERT INTO `typy_produktu`(`Nazwa`) VALUES ('Chłodzenie Powietrzne');
-INSERT INTO `typy_produktu`(`Nazwa`) VALUES ('Chłodzenie Wodne');
-INSERT INTO `typy_produktu`(`Nazwa`) VALUES ('Karta Dźwiękowa');
-INSERT INTO `typy_produktu`(`Nazwa`) VALUES ('Karta Sieciowa');
-INSERT INTO `typy_produktu`(`Nazwa`) VALUES ('Napęd Optyczny');
-INSERT INTO `typy_produktu`(`Nazwa`) VALUES ('Mikrofon');
-INSERT INTO `typy_produktu`(`Nazwa`) VALUES ('Drukarka');
-INSERT INTO `typy_produktu`(`Nazwa`) VALUES ('Głośnik');
-INSERT INTO `typy_produktu`(`Nazwa`) VALUES ('Słuchawki');
+insert into `typy_produktu`(`Nazwa`) values ('Laptop');
+insert into `typy_produktu`(`Nazwa`) values ('Komputer Stacjonarny');
+insert into `typy_produktu`(`Nazwa`) values ('Monitor');
+insert into `typy_produktu`(`Nazwa`) values ('Klawiatura');
+insert into `typy_produktu`(`Nazwa`) values ('Myszka');
+insert into `typy_produktu`(`Nazwa`) values ('Karta Graficzna');
+insert into `typy_produktu`(`Nazwa`) values ('Procesor');
+insert into `typy_produktu`(`Nazwa`) values ('Dysk HDD');
+insert into `typy_produktu`(`Nazwa`) values ('Dysk SSD');
+insert into `typy_produktu`(`Nazwa`) values ('Płyta Główna');
+insert into `typy_produktu`(`Nazwa`) values ('Obudowa Komputera');
+insert into `typy_produktu`(`Nazwa`) values ('Pamięć RAM');
+insert into `typy_produktu`(`Nazwa`) values ('Zasilacz');
+insert into `typy_produktu`(`Nazwa`) values ('Chłodzenie Powietrzne');
+insert into `typy_produktu`(`Nazwa`) values ('Chłodzenie Wodne');
+insert into `typy_produktu`(`Nazwa`) values ('Karta Dźwiękowa');
+insert into `typy_produktu`(`Nazwa`) values ('Karta Sieciowa');
+insert into `typy_produktu`(`Nazwa`) values ('Napęd Optyczny');
+insert into `typy_produktu`(`Nazwa`) values ('Mikrofon');
+insert into `typy_produktu`(`Nazwa`) values ('Drukarka');
+insert into `typy_produktu`(`Nazwa`) values ('Głośnik');
+insert into `typy_produktu`(`Nazwa`) values ('Słuchawki');
 
-INSERT INTO `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) VALUES ('ASUS ROG Strix SCAR 18','1','22299','15','Czarny','Procesor
-Intel® Core™ i9-14900HX (24 rdzenie, 32 wątki, 2.20-5.80 GHz, 36 MB cache)
+insert into `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) values ('ASUS ROG Strix SCAR 18','1','22299','15','Czarny','Procesor
+intel® Core™ i9-14900HX (24 rdzenie, 32 wątki, 2.20-5.80 GHz, 36 MB cache)
 Chipset
-Intel HM770
+intel HM770
 Pamięć RAM
 64 GB (DDR5, 5600 MHz)
 Maksymalna obsługiwana ilość pamięci RAM
@@ -360,10 +360,10 @@ Waga
 3,10 kg
 Dołączone akcesoria
 Zasilacz','21');
-INSERT INTO `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) VALUES ('G4M3R ELITE','2','18900','10','Czarny','Procesor
-Intel Core i9-14900KF (24 rdzenie, 32 wątki, 3.20-6.00 GHz, 36 MB cache)
+insert into `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) values ('G4M3R ELITE','2','18900','10','Czarny','Procesor
+intel Core i9-14900KF (24 rdzenie, 32 wątki, 3.20-6.00 GHz, 36 MB cache)
 Chipset
-Intel Z790
+intel Z790
 Pamięć RAM
 96 GB (DIMM DDR5, 6000MHz)
 Architektura pamięci
@@ -440,7 +440,7 @@ Szerokość
 230 mm
 Głębokość
 522 mm','22');
-INSERT INTO `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) VALUES ('Samsung LS49AG950NPXEN','3','7959','7','Biały','Przeznaczenie produktu
+insert into `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) values ('Samsung LS49AG950NPXEN','3','7959','7','Biały','Przeznaczenie produktu
 Dla graczy
 Przekątna ekranu
 49""
@@ -524,7 +524,7 @@ Głębokość (z podstawą)
 418 mm
 Waga
 14,5 kg','23');
-INSERT INTO `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) VALUES ('Razer DeathStalker V2 Pro Clicky','4','899','17','Czarny','Rodzaj przełączników
+insert into `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) values ('Razer DeathStalker V2 Pro Clicky','4','899','17','Czarny','Rodzaj przełączników
 Razer™ Clicky Optical Switch
 Typ
 Dla graczy
@@ -532,7 +532,7 @@ Klasyczna
 Łączność
 Przewodowa
 Bezprzewodowa
-Interfejs
+interfejs
 2,4 GHz
 Bluetooth
 Klawisze numeryczne
@@ -561,7 +561,7 @@ Obudowa
 Aluminiowa
 Dodatkowe informacje
 Anti-Ghosting z pełnym N-Key Rollover','22');
-INSERT INTO `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) VALUES ('Swiftpoint Z2','5','1099','2','Czarny','Typ myszy
+insert into `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) values ('Swiftpoint Z2','5','1099','2','Czarny','Typ myszy
 Dla graczy
 Łączność
 Przewodowa
@@ -594,7 +594,7 @@ Wysokość
 40 mm
 Waga
 117 g','24');
-INSERT INTO `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) VALUES ('ASUS GeForce RTX 4070 Ti SUPER ROG STRIX GAMING','6','5099','17','Czarny','Seria karty graficznej
+insert into `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) values ('ASUS GeForce RTX 4070 Ti SUPER ROG STRIX GAMING','6','5099','17','Czarny','Seria karty graficznej
 GeForce RTX z serii 40
 Obsługa Ray tracingu
 Tak
@@ -648,7 +648,7 @@ Liczba zajmowanych slotów
 Dołączone akcesoria
 Wspornik
 Adapter PCIe 16pin do 3x 8pin','25');
-INSERT INTO `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) VALUES ('AMD Ryzen 9 9950X','7','2999','10','','Rodzina procesorów
+insert into `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) values ('AMD Ryzen 9 9950X','7','2999','10','','Rodzina procesorów
 AMD Ryzen™
 Seria procesora
 Ryzen™ 9 9950X
@@ -693,11 +693,11 @@ Obsługa pamięci ECC
 Wersja BOX
 Chłodzenie w zestawie
 Nie','24');
-INSERT INTO `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) VALUES ('Seagate IRONWOLF PRO','8','2469','0','','Pojemność
+insert into `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) values ('Seagate IRONWOLF PRO','8','2469','0','','Pojemność
 22000 GB
 Format
 3.5""
-Interfejs
+interfejs
 SATA III (6.0 Gb/s) - 1 szt.
 Pamięć podręczna cache
 512 MB
@@ -719,7 +719,7 @@ Głębokość
 147 mm
 Waga
 690 g','26');
-INSERT INTO `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) VALUES ('Samsung 4TB M.2 PCIe Gen4 NVMe 990 Pro Heatsink','9','1999','5','Czarny','Przeznaczenie produktu
+insert into `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) values ('Samsung 4TB M.2 PCIe Gen4 NVMe 990 Pro Heatsink','9','1999','5','Czarny','Przeznaczenie produktu
 PC
 Gaming
 PlayStation 5
@@ -727,7 +727,7 @@ Pojemność
 4000 GB
 Format
 M.2
-Interfejs
+interfejs
 PCIe NVMe 4.0 x4
 Prędkość odczytu (maksymalna)
 7450 MB/s
@@ -759,21 +759,21 @@ Głębokość
 80 mm
 Waga
 28 g','26');
-INSERT INTO `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) VALUES ('ASUS ROG STRIX Z790-E GAMING WIFI II','10','2509','19','Czarny','Budowa sekcji zasilania
+insert into `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) values ('ASUS ROG STRIX Z790-E GAMING WIFI II','10','2509','19','Czarny','Budowa sekcji zasilania
 18+1+2
 Rodzaj chłodzenia chipsetu płyty głównej
 Pasywny
 Obsługiwane rodziny procesorów
-Intel Core i9
-Intel Core i7
-Intel Core i5
-Intel Core i3
-Intel Celeron
-Intel Pentium
+intel Core i9
+intel Core i7
+intel Core i5
+intel Core i3
+intel Celeron
+intel Pentium
 Gniazdo procesora
 Socket 1700
 Chipset
-Intel Z790
+intel Z790
 Architektura procesora
 Raptor Lake Refresh (14 generacja)
 Raptor Lake (13 generacja)
@@ -857,7 +857,7 @@ Elementy montażowe
 Antena Wi-Fi 2.4/5/6 GHz - 1 szt.
 Kolor
 Czarny','28');
-INSERT INTO `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) VALUES ('ASUS ROG HYPERION GR701','11','1599','5','Czarny','Typ obudowy
+insert into `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) values ('ASUS ROG HYPERION GR701','11','1599','5','Czarny','Typ obudowy
 Big Tower
 Panel boczny
 Szkło hartowane
@@ -936,7 +936,7 @@ Głębokość
 659 mm
 Waga
 21 kg','27');
-INSERT INTO `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) VALUES ('Kingston FURY 128GB','12','1779','2','Czarny','Seria
+insert into `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) values ('Kingston FURY 128GB','12','1779','2','Czarny','Seria
 Beast
 Rodzaj pamięci
 DDR5
@@ -955,7 +955,7 @@ CL40-40-40
 Napięcie
 1,1 V
 Obsługiwane profile OC
-Intel XMP
+intel XMP
 Chłodzenie
 Radiator
 Wysokość z chłodzeniem
@@ -966,7 +966,7 @@ Podświetlenie pamięci
 Nie
 Kolor
 Czarny','29');
-INSERT INTO `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) VALUES ('be quiet! DARK POWER PRO 13','13','1999','15','Czarny','Moc maksymalna
+insert into `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) values ('be quiet! DARK POWER PRO 13','13','1999','15','Czarny','Moc maksymalna
 1600 W
 Standard
 ATX 3.0
@@ -1006,7 +1006,7 @@ Szerokość
 150 mm
 Głębokość
 200 mm','30');
-INSERT INTO `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) VALUES ('Deepcool AK620 Digital ARGB','14','309','1','Czarny','Rodzaj chłodzenia
+insert into `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) values ('Deepcool AK620 Digital ARGB','14','309','1','Czarny','Rodzaj chłodzenia
 Aktywne
 Kompatybilność
 2066
@@ -1053,9 +1053,9 @@ Głębokość
 138 mm
 Dołączone akcesoria
 Pasta termoprzewodząca
-Zestaw montażowy backplate Intel & AMD
+Zestaw montażowy backplate intel & AMD
 Zestaw montażowy','29');
-INSERT INTO `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) VALUES ('Corsair iCUE H150i ELITE LCD XT Black','15','1369','8','Czarny','Rodzaj chłodzenia
+insert into `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) values ('Corsair iCUE H150i ELITE LCD XT Black','15','1369','8','Czarny','Rodzaj chłodzenia
 Wodne
 Kompatybilność
 2066
@@ -1089,15 +1089,15 @@ Kolorowy ekran LCD
 Waga
 1100 g
 Dołączone akcesoria
-Zestaw montażowy backplate Intel & AMD
+Zestaw montażowy backplate intel & AMD
 Instrukcja instalacji
 Śrubki montażowe
 Kontroler RGB','27');
-INSERT INTO `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) VALUES ('Creative Sound Blaster X AE-5 Plus','16','579','20','Czarny','Typ karty dźwiękowej
+insert into `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) values ('Creative Sound Blaster X AE-5 Plus','16','579','20','Czarny','Typ karty dźwiękowej
 Wewnętrzna
 System dźwięku
 5.1
-Interfejs
+interfejs
 PCI-E
 Procesor dźwięku
 Sound Core3D
@@ -1118,9 +1118,9 @@ Dodatkowe informacje
 Kontroler audio DAC klasy premium
 Dołączone akcesoria
 Skrócona instrukcja obsługi','30');
-INSERT INTO `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) VALUES ('ASUS XG-C100F','17','449','16','Czerwony','Rodzaj
+insert into `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) values ('ASUS XG-C100F','17','449','16','Czerwony','Rodzaj
 Przewodowa
-Interfejs
+interfejs
 PCI-E
 Rodzaje wejść / wyjść
 SFP+ - 1 szt.
@@ -1129,14 +1129,14 @@ do 10000 Mb/s
 Dodatkowe informacje
 Aluminiowy radiator
 QoS','24');
-INSERT INTO `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) VALUES ('ASUS SDRW-08U5S Slim','18','229','3','Srebrny','Rodzaj napędu
+insert into `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) values ('ASUS SDRW-08U5S Slim','18','229','3','Srebrny','Rodzaj napędu
 Zewnętrzny
 Funkcje napędu
 Nagrywanie płyt DVD
 Nagrywanie płyt CD
 Odtwarzanie płyt DVD
 Odtwarzanie płyt CD
-Interfejs
+interfejs
 USB 2.0
 Prędkość zapisu
 DVD±R - 8x
@@ -1167,7 +1167,7 @@ Głebokość
 140 mm
 Waga
 255 g','26');
-INSERT INTO `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) VALUES ('HyperX ProCast ','19','1119','2','Czarny','Przeznaczenie
+insert into `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) values ('HyperX ProCast ','19','1119','2','Czarny','Przeznaczenie
 Komputerowe
 System mocowania
 Statyw biurkowy
@@ -1195,7 +1195,7 @@ Instrukcja obsługi
 Adapter do statywu
 Waga
 372 g','27');
-INSERT INTO `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) VALUES ('HP DesignJet T230','20','4239','4','Czarny','Przeznaczenie produktu
+insert into `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) values ('HP DesignJet T230','20','4239','4','Czarny','Przeznaczenie produktu
 Do biura i korporacji
 Zastosowanie
 Rysunki liniowe
@@ -1227,7 +1227,7 @@ Druk dwustronny (dupleks)
 Brak
 Wersja z WiFi
 Tak
-Interfejsy
+interfejsy
 USB
 Wi-Fi
 LAN (Ethernet)
@@ -1252,7 +1252,7 @@ Głębokość
 440 mm
 Waga
 21,5 kg','29');
-INSERT INTO `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) VALUES ('Sony BRAVIA Theatre Bar 9 + SA-RS3S','21','6399','14','Czarny','Liczba kanałów
+insert into `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) values ('Sony BRAVIA Theatre Bar 9 + SA-RS3S','21','6399','14','Czarny','Liczba kanałów
 7.0.2
 Subwoofer
 Brak
@@ -1305,7 +1305,7 @@ Baterie do pilota
 Uchwyty do montażu na ścianie
 Głośniki
 Podstawa stołowa','28');
-INSERT INTO `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) VALUES ('JBL QUANTUM 910 PSP','22','999','20','Biały','Łączność
+insert into `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) values ('JBL QUANTUM 910 PSP','22','999','20','Biały','Łączność
 Bezprzewodowa i przewodowa
 Rodzaj łączności
 Bluetooth 5.2
@@ -1384,78 +1384,78 @@ Adapter USB-A - USB-C
 Osłona przeciwwietrzna
 Instrukcja obsługi','21');
 
-INSERT INTO `magazyny`(`Nazwa`, `id_lokalizacja`) VALUES ('Magazyn_1','21');
-INSERT INTO `magazyny`(`Nazwa`, `id_lokalizacja`) VALUES ('Magazyn_2','22');
-INSERT INTO `magazyny`(`Nazwa`, `id_lokalizacja`) VALUES ('Magazyn_3','23');
-INSERT INTO `magazyny`(`Nazwa`, `id_lokalizacja`) VALUES ('Magazyn_4','24');
-INSERT INTO `magazyny`(`Nazwa`, `id_lokalizacja`) VALUES ('Magazyn_5','25');
-INSERT INTO `magazyny`(`Nazwa`, `id_lokalizacja`) VALUES ('Magazyn_6','26');
-INSERT INTO `magazyny`(`Nazwa`, `id_lokalizacja`) VALUES ('Magazyn_7','27');
-INSERT INTO `magazyny`(`Nazwa`, `id_lokalizacja`) VALUES ('Magazyn_8','28');
-INSERT INTO `magazyny`(`Nazwa`, `id_lokalizacja`) VALUES ('Magazyn_9','29');
-INSERT INTO `magazyny`(`Nazwa`, `id_lokalizacja`) VALUES ('Magazyn_10','30');
+insert into `magazyny`(`Nazwa`, `id_lokalizacja`) values ('Magazyn_1','21');
+insert into `magazyny`(`Nazwa`, `id_lokalizacja`) values ('Magazyn_2','22');
+insert into `magazyny`(`Nazwa`, `id_lokalizacja`) values ('Magazyn_3','23');
+insert into `magazyny`(`Nazwa`, `id_lokalizacja`) values ('Magazyn_4','24');
+insert into `magazyny`(`Nazwa`, `id_lokalizacja`) values ('Magazyn_5','25');
+insert into `magazyny`(`Nazwa`, `id_lokalizacja`) values ('Magazyn_6','26');
+insert into `magazyny`(`Nazwa`, `id_lokalizacja`) values ('Magazyn_7','27');
+insert into `magazyny`(`Nazwa`, `id_lokalizacja`) values ('Magazyn_8','28');
+insert into `magazyny`(`Nazwa`, `id_lokalizacja`) values ('Magazyn_9','29');
+insert into `magazyny`(`Nazwa`, `id_lokalizacja`) values ('Magazyn_10','30');
 
-INSERT INTO `sklepy`(`nazwa`,`id_pracownik_menager`, `id_lokalizacja`, `Godziny_otwarcia`) VALUES ('TechZone','1','11','09:00 - 18:00');
-INSERT INTO `sklepy`(`nazwa`,`id_pracownik_menager`, `id_lokalizacja`, `Godziny_otwarcia`) VALUES ('TechZone','2','12','09:00 - 18:00');
-INSERT INTO `sklepy`(`nazwa`,`id_pracownik_menager`, `id_lokalizacja`, `Godziny_otwarcia`) VALUES ('TechZone','3','13','09:00 - 18:00');
-INSERT INTO `sklepy`(`nazwa`,`id_pracownik_menager`, `id_lokalizacja`, `Godziny_otwarcia`) VALUES ('TechZone','4','14','09:00 - 18:00');
-INSERT INTO `sklepy`(`nazwa`,`id_pracownik_menager`, `id_lokalizacja`, `Godziny_otwarcia`) VALUES ('TechZone','5','15','09:00 - 18:00');
-INSERT INTO `sklepy`(`nazwa`,`id_pracownik_menager`, `id_lokalizacja`, `Godziny_otwarcia`) VALUES ('TechZone','6','16','09:00 - 18:00');
-INSERT INTO `sklepy`(`nazwa`,`id_pracownik_menager`, `id_lokalizacja`, `Godziny_otwarcia`) VALUES ('TechZone','7','17','09:00 - 18:00');
-INSERT INTO `sklepy`(`nazwa`,`id_pracownik_menager`, `id_lokalizacja`, `Godziny_otwarcia`) VALUES ('TechZone','8','18','09:00 - 18:00');
-INSERT INTO `sklepy`(`nazwa`,`id_pracownik_menager`, `id_lokalizacja`, `Godziny_otwarcia`) VALUES ('TechZone','9','19','09:00 - 18:00');
-INSERT INTO `sklepy`(`nazwa`,`id_pracownik_menager`, `id_lokalizacja`, `Godziny_otwarcia`) VALUES ('TechZone','10','20','09:00 - 18:00');
+insert into `sklepy`(`nazwa`,`id_pracownik_menager`, `id_lokalizacja`, `Godziny_otwarcia`) values ('TechZone','1','11','09:00 - 18:00');
+insert into `sklepy`(`nazwa`,`id_pracownik_menager`, `id_lokalizacja`, `Godziny_otwarcia`) values ('TechZone','2','12','09:00 - 18:00');
+insert into `sklepy`(`nazwa`,`id_pracownik_menager`, `id_lokalizacja`, `Godziny_otwarcia`) values ('TechZone','3','13','09:00 - 18:00');
+insert into `sklepy`(`nazwa`,`id_pracownik_menager`, `id_lokalizacja`, `Godziny_otwarcia`) values ('TechZone','4','14','09:00 - 18:00');
+insert into `sklepy`(`nazwa`,`id_pracownik_menager`, `id_lokalizacja`, `Godziny_otwarcia`) values ('TechZone','5','15','09:00 - 18:00');
+insert into `sklepy`(`nazwa`,`id_pracownik_menager`, `id_lokalizacja`, `Godziny_otwarcia`) values ('TechZone','6','16','09:00 - 18:00');
+insert into `sklepy`(`nazwa`,`id_pracownik_menager`, `id_lokalizacja`, `Godziny_otwarcia`) values ('TechZone','7','17','09:00 - 18:00');
+insert into `sklepy`(`nazwa`,`id_pracownik_menager`, `id_lokalizacja`, `Godziny_otwarcia`) values ('TechZone','8','18','09:00 - 18:00');
+insert into `sklepy`(`nazwa`,`id_pracownik_menager`, `id_lokalizacja`, `Godziny_otwarcia`) values ('TechZone','9','19','09:00 - 18:00');
+insert into `sklepy`(`nazwa`,`id_pracownik_menager`, `id_lokalizacja`, `Godziny_otwarcia`) values ('TechZone','10','20','09:00 - 18:00');
 
-INSERT INTO `dostawcy`(`Nazwa`, `Numer_telefonu`, `Adres_email`) VALUES ('FedEx','+48501234567','fedex@example.com');
-INSERT INTO `dostawcy`(`Nazwa`, `Numer_telefonu`, `Adres_email`) VALUES ('UPS','+48602345676','ups@example.com');
-INSERT INTO `dostawcy`(`Nazwa`, `Numer_telefonu`, `Adres_email`) VALUES ('GLS','+48600456789','dhl@example.com');
-INSERT INTO `dostawcy`(`Nazwa`, `Numer_telefonu`, `Adres_email`) VALUES ('DPD','+48503567890','gls@example.com');
-INSERT INTO `dostawcy`(`Nazwa`, `Numer_telefonu`, `Adres_email`) VALUES ('TNT','+48604678901','dpd@example.com');
-INSERT INTO `dostawcy`(`Nazwa`, `Numer_telefonu`, `Adres_email`) VALUES ('Hermes','+48505789012','tnt@example.com');
-INSERT INTO `dostawcy`(`Nazwa`, `Numer_telefonu`, `Adres_email`) VALUES ('Yodel','+48606890123','hermes@example.com');
-INSERT INTO `dostawcy`(`Nazwa`, `Numer_telefonu`, `Adres_email`) VALUES ('PostNL','+48507901234','yodel@example.com');
-INSERT INTO `dostawcy`(`Nazwa`, `Numer_telefonu`, `Adres_email`) VALUES ('Chronopost','+48608012345','postnl@example.com');
-INSERT INTO `dostawcy`(`Nazwa`, `Numer_telefonu`, `Adres_email`) VALUES ('Aramex','+48509123456','aramex@example.com');
+insert into `dostawcy`(`Nazwa`, `Numer_telefonu`, `Adres_email`) values ('FedEx','+48501234567','fedex@example.com');
+insert into `dostawcy`(`Nazwa`, `Numer_telefonu`, `Adres_email`) values ('UPS','+48602345676','ups@example.com');
+insert into `dostawcy`(`Nazwa`, `Numer_telefonu`, `Adres_email`) values ('GLS','+48600456789','dhl@example.com');
+insert into `dostawcy`(`Nazwa`, `Numer_telefonu`, `Adres_email`) values ('DPD','+48503567890','gls@example.com');
+insert into `dostawcy`(`Nazwa`, `Numer_telefonu`, `Adres_email`) values ('TNT','+48604678901','dpd@example.com');
+insert into `dostawcy`(`Nazwa`, `Numer_telefonu`, `Adres_email`) values ('Hermes','+48505789012','tnt@example.com');
+insert into `dostawcy`(`Nazwa`, `Numer_telefonu`, `Adres_email`) values ('Yodel','+48606890123','hermes@example.com');
+insert into `dostawcy`(`Nazwa`, `Numer_telefonu`, `Adres_email`) values ('PostNL','+48507901234','yodel@example.com');
+insert into `dostawcy`(`Nazwa`, `Numer_telefonu`, `Adres_email`) values ('Chronopost','+48608012345','postnl@example.com');
+insert into `dostawcy`(`Nazwa`, `Numer_telefonu`, `Adres_email`) values ('Aramex','+48509123456','aramex@example.com');
 
-INSERT INTO `typy_platnosci`(`Nazwa`) VALUES ('BLIK');
-INSERT INTO `typy_platnosci`(`Nazwa`) VALUES ('Karta Debetowa');
-INSERT INTO `typy_platnosci`(`Nazwa`) VALUES ('Karta Kredytowa');
-INSERT INTO `typy_platnosci`(`Nazwa`) VALUES ('Przelew Bankowy');
-INSERT INTO `typy_platnosci`(`Nazwa`) VALUES ('Gotówka');
-INSERT INTO `typy_platnosci`(`Nazwa`) VALUES ('Google Pay');
-INSERT INTO `typy_platnosci`(`Nazwa`) VALUES ('Apple Pay');
-INSERT INTO `typy_platnosci`(`Nazwa`) VALUES ('Płatność za pobraniem');
-INSERT INTO `typy_platnosci`(`Nazwa`) VALUES ('Płatność przy użyciu karty podarunkowej');
-INSERT INTO `typy_platnosci`(`Nazwa`) VALUES ('Płatność na raty');
+insert into `typy_platnosci`(`Nazwa`) values ('BLIK');
+insert into `typy_platnosci`(`Nazwa`) values ('Karta Debetowa');
+insert into `typy_platnosci`(`Nazwa`) values ('Karta Kredytowa');
+insert into `typy_platnosci`(`Nazwa`) values ('Przelew Bankowy');
+insert into `typy_platnosci`(`Nazwa`) values ('Gotówka');
+insert into `typy_platnosci`(`Nazwa`) values ('Google Pay');
+insert into `typy_platnosci`(`Nazwa`) values ('Apple Pay');
+insert into `typy_platnosci`(`Nazwa`) values ('Płatność za pobraniem');
+insert into `typy_platnosci`(`Nazwa`) values ('Płatność przy użyciu karty podarunkowej');
+insert into `typy_platnosci`(`Nazwa`) values ('Płatność na raty');
 
-INSERT INTO `typy_dostawy`(`nazwa`) VALUES ('Dostawa do domu');
-INSERT INTO `typy_dostawy`(`nazwa`) VALUES ('Dostawa do punktu odbioru');
-INSERT INTO `typy_dostawy`(`nazwa`) VALUES ('Dostawa międzynarodowa');
-INSERT INTO `typy_dostawy`(`nazwa`) VALUES ('Dostawa ekspresowa do domu');
-INSERT INTO `typy_dostawy`(`nazwa`) VALUES ('Dostawa ekspresowa do punktu odbioru');
-INSERT INTO `typy_dostawy`(`nazwa`) VALUES ('Dostawa w sobotę do domu');
-INSERT INTO `typy_dostawy`(`nazwa`) VALUES ('Dostawa w sobotę do punktu odbioru');
-INSERT INTO `typy_dostawy`(`nazwa`) VALUES ('Dostawa za pobraniem ');
+insert into `typy_dostawy`(`nazwa`) values ('Dostawa do domu');
+insert into `typy_dostawy`(`nazwa`) values ('Dostawa do punktu odbioru');
+insert into `typy_dostawy`(`nazwa`) values ('Dostawa międzynarodowa');
+insert into `typy_dostawy`(`nazwa`) values ('Dostawa ekspresowa do domu');
+insert into `typy_dostawy`(`nazwa`) values ('Dostawa ekspresowa do punktu odbioru');
+insert into `typy_dostawy`(`nazwa`) values ('Dostawa w sobotę do domu');
+insert into `typy_dostawy`(`nazwa`) values ('Dostawa w sobotę do punktu odbioru');
+insert into `typy_dostawy`(`nazwa`) values ('Dostawa za pobraniem ');
 
-INSERT INTO `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `id_typ_dostawy`) VALUES ('1', '21', '31', '1', '1', '1', '22299', '2');
-INSERT INTO `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `id_typ_dostawy`) VALUES ('2', '22', '32', '2', '1', '2', '18900', '2');
-INSERT INTO `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `id_typ_dostawy`) VALUES ('3', '23', '33', '3', '1', '3', '7959', '2');
-INSERT INTO `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `id_typ_dostawy`) VALUES ('4', '22', '34', '4', '1', '4', '899', '2');
-INSERT INTO `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `id_typ_dostawy`) VALUES ('5', '22', '35', '5', '1', '2', '18900', '2');
-INSERT INTO `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `id_typ_dostawy`) VALUES ('6', '2', '36', '6', '1', '5', '1099', '2');
-INSERT INTO `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `id_typ_dostawy`) VALUES ('7', '22', '37', '7', '1', '2', '18900', '2');
-INSERT INTO `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `id_typ_dostawy`) VALUES ('8', '24', '38', '8', '1', '5', '1099', '2');
-INSERT INTO `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `id_typ_dostawy`) VALUES ('9', '22', '37', '7', '1', '2', '18900', '2');
-INSERT INTO `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `id_typ_dostawy`) VALUES ('10', '22', '39', '9', '1', '2', '18900', '2');
+insert into `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `id_typ_dostawy`) values ('1', '21', '31', '1', '1', '1', '22299', '2');
+insert into `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `id_typ_dostawy`) values ('2', '22', '32', '2', '1', '2', '18900', '2');
+insert into `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `id_typ_dostawy`) values ('3', '23', '33', '3', '1', '3', '7959', '2');
+insert into `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `id_typ_dostawy`) values ('4', '22', '34', '4', '1', '4', '899', '2');
+insert into `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `id_typ_dostawy`) values ('5', '22', '35', '5', '1', '2', '18900', '2');
+insert into `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `id_typ_dostawy`) values ('6', '2', '36', '6', '1', '5', '1099', '2');
+insert into `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `id_typ_dostawy`) values ('7', '22', '37', '7', '1', '2', '18900', '2');
+insert into `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `id_typ_dostawy`) values ('8', '24', '38', '8', '1', '5', '1099', '2');
+insert into `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `id_typ_dostawy`) values ('9', '22', '37', '7', '1', '2', '18900', '2');
+insert into `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `id_typ_dostawy`) values ('10', '22', '39', '9', '1', '2', '18900', '2');
 
 
-INSERT INTO `dostawcy_do_zamowienia`( `id_zamowienia`, `id_dostawca`) VALUES ('1','1');
-INSERT INTO `dostawcy_do_zamowienia`( `id_zamowienia`, `id_dostawca`) VALUES ('2','2');
-INSERT INTO `dostawcy_do_zamowienia`( `id_zamowienia`, `id_dostawca`) VALUES ('3','6');
-INSERT INTO `dostawcy_do_zamowienia`( `id_zamowienia`, `id_dostawca`) VALUES ('4','7');
-INSERT INTO `dostawcy_do_zamowienia`( `id_zamowienia`, `id_dostawca`) VALUES ('5','8');
-INSERT INTO `dostawcy_do_zamowienia`( `id_zamowienia`, `id_dostawca`) VALUES ('6','9');
-INSERT INTO `dostawcy_do_zamowienia`( `id_zamowienia`, `id_dostawca`) VALUES ('7','4');
-INSERT INTO `dostawcy_do_zamowienia`( `id_zamowienia`, `id_dostawca`) VALUES ('8','5');
-INSERT INTO `dostawcy_do_zamowienia`( `id_zamowienia`, `id_dostawca`) VALUES ('9','4');
-INSERT INTO `dostawcy_do_zamowienia`( `id_zamowienia`, `id_dostawca`) VALUES ('10','3')
+insert into `dostawcy_do_zamowienia`( `id_zamowienia`, `id_dostawca`) values ('1','1');
+insert into `dostawcy_do_zamowienia`( `id_zamowienia`, `id_dostawca`) values ('2','2');
+insert into `dostawcy_do_zamowienia`( `id_zamowienia`, `id_dostawca`) values ('3','6');
+insert into `dostawcy_do_zamowienia`( `id_zamowienia`, `id_dostawca`) values ('4','7');
+insert into `dostawcy_do_zamowienia`( `id_zamowienia`, `id_dostawca`) values ('5','8');
+insert into `dostawcy_do_zamowienia`( `id_zamowienia`, `id_dostawca`) values ('6','9');
+insert into `dostawcy_do_zamowienia`( `id_zamowienia`, `id_dostawca`) values ('7','4');
+insert into `dostawcy_do_zamowienia`( `id_zamowienia`, `id_dostawca`) values ('8','5');
+insert into `dostawcy_do_zamowienia`( `id_zamowienia`, `id_dostawca`) values ('9','4');
+insert into `dostawcy_do_zamowienia`( `id_zamowienia`, `id_dostawca`) values ('10','3')
