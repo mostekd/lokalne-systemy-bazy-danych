@@ -1,117 +1,117 @@
-CREATE DATABASE Kino;
+create database Kino;
 USE Kino;
 
 -- Tabela Klienci
-CREATE TABLE Klienci (
-    Id_klient INT AUTO_INCREMENT PRIMARY KEY,
-    Imie VARCHAR(50),
-    Nazwisko VARCHAR(50),
-    Adres_email VARCHAR(100),
-    Numer_telefon VARCHAR(15)
+create table Klienci (
+    Id_klient int auto_increment primary key,
+    Imie varchar(50),
+    Nazwisko varchar(50),
+    Adres_email varchar(100),
+    Numer_telefon varchar(15)
 );
 
 -- Tabela Filmy
-CREATE TABLE Filmy (
-    Id_film INT AUTO_INCREMENT PRIMARY KEY,
-    Nazwa VARCHAR(100),
-    Id_rodzaj_filmu INT,
-    Id_rezyser INT,
-    Id_aktorzy INT,
-    Czas_trwania INT,
-    FOREIGN KEY (Id_rodzaj_filmu) REFERENCES Rodzaje_filmu(Id_rodzaj_filmu),
-    FOREIGN KEY (Id_rezyser) REFERENCES Rezyserzy(Id_rezyser),
-    FOREIGN KEY (Id_aktorzy) REFERENCES Aktorzy(Id_aktor)
+create table Filmy (
+    Id_film int auto_increment primary key,
+    Nazwa varchar(100),
+    Id_rodzaj_filmu int,
+    Id_rezyser int,
+    Id_aktorzy int,
+    Czas_trwania int,
+    foreign key (Id_rodzaj_filmu) references Rodzaje_filmu(Id_rodzaj_filmu),
+    foreign key (Id_rezyser) references Rezyserzy(Id_rezyser),
+    foreign key (Id_aktorzy) references Aktorzy(Id_aktor)
 );
 
 -- Tabela Pracownicy
-CREATE TABLE Pracownicy (
-    Id_pracownik INT AUTO_INCREMENT PRIMARY KEY,
-    Imie VARCHAR(50),
-    Nazwisko VARCHAR(50),
-    Adres_email VARCHAR(100),
-    Numer_telefon VARCHAR(15),
-    Wynagrodzenie DECIMAL(10,2),
-    Data_zatrudnienia DATE,
-    Id_stanowisko INT,
-    Data_urodzenia DATE,
-    Id_lokalizacja_pracy INT,
-    FOREIGN KEY (Id_stanowisko) REFERENCES Stanowiska(Id_stanowisko),
-    FOREIGN KEY (Id_lokalizacja_pracy) REFERENCES Lokalizacja(Id_lokalizacja)
+create table Pracownicy (
+    Id_pracownik int auto_increment primary key,
+    Imie varchar(50),
+    Nazwisko varchar(50),
+    Adres_email varchar(100),
+    Numer_telefon varchar(15),
+    Wynagrodzenie decimal(10,2),
+    Data_zatrudnienia date,
+    Id_stanowisko int,
+    Data_urodzenia date,
+    Id_lokalizacja_pracy int,
+    foreign key (Id_stanowisko) references Stanowiska(Id_stanowisko),
+    foreign key (Id_lokalizacja_pracy) references Lokalizacja(Id_lokalizacja)
 );
 
 -- Tabela Oferta
-CREATE TABLE Oferta (
-    Id_oferta INT AUTO_INCREMENT PRIMARY KEY,
-    Nazwa VARCHAR(100),
-    Cena DECIMAL(10,2),
-    Rodzaj VARCHAR(50)
+create table Oferta (
+    Id_oferta int auto_increment primary key,
+    Nazwa varchar(100),
+    Cena decimal(10,2),
+    Rodzaj varchar(50)
 );
 
 -- Tabela Seanse
-CREATE TABLE Seanse (
-    Id_seans INT AUTO_INCREMENT PRIMARY KEY,
-    Id_film INT,
-    Cena DECIMAL(10,2),
-    Godzina_rozpoczecia TIME,
-    Data_seansu DATE,
-    FOREIGN KEY (Id_film) REFERENCES Filmy(Id_film)
+create table Seanse (
+    Id_seans int auto_increment primary key,
+    Id_film int,
+    Cena decimal(10,2),
+    Godzina_rozpoczecia time,
+    Data_seansu date,
+    foreign key (Id_film) references Filmy(Id_film)
 );
 
 -- Tabela Rodzaje_filmu
-CREATE TABLE Rodzaje_filmu (
-    Id_rodzaj_filmu INT AUTO_INCREMENT PRIMARY KEY,
-    Nazwa VARCHAR(50)
+create table Rodzaje_filmu (
+    Id_rodzaj_filmu int auto_increment primary key,
+    Nazwa varchar(50)
 );
 
 -- Tabela Lokalizacja
-CREATE TABLE Lokalizacja (
-    Id_lokalizacja INT AUTO_INCREMENT PRIMARY KEY,
-    Numer_budynku VARCHAR(10),
-    Ulica VARCHAR(100),
-    Miejscowosc VARCHAR(50),
-    Kod_pocztowy VARCHAR(10),
-    Kraj VARCHAR(50)
+create table Lokalizacja (
+    Id_lokalizacja int auto_increment primary key,
+    Numer_budynku varchar(10),
+    Ulica varchar(100),
+    Miejscowosc varchar(50),
+    Kod_pocztowy varchar(10),
+    Kraj varchar(50)
 );
 
 -- Tabela Rezyserzy
-CREATE TABLE Rezyserzy (
-    Id_rezyser INT AUTO_INCREMENT PRIMARY KEY,
-    Imie VARCHAR(50),
-    Nazwisko VARCHAR(50),
-    Data_urodzenia DATE
+create table Rezyserzy (
+    Id_rezyser int auto_increment primary key,
+    Imie varchar(50),
+    Nazwisko varchar(50),
+    Data_urodzenia date
 );
 
 -- Tabela Aktorzy
-CREATE TABLE Aktorzy (
-    Id_aktor INT AUTO_INCREMENT PRIMARY KEY,
-    Imie VARCHAR(50),
-    Nazwisko VARCHAR(50),
-    Data_urodzenia DATE
+create table Aktorzy (
+    Id_aktor int auto_increment primary key,
+    Imie varchar(50),
+    Nazwisko varchar(50),
+    Data_urodzenia date
 );
 
 -- Tabela Stanowiska
-CREATE TABLE Stanowiska (
-    Id_stanowisko INT AUTO_INCREMENT PRIMARY KEY,
-    Nazwa VARCHAR(50)
+create table Stanowiska (
+    Id_stanowisko int auto_increment primary key,
+    Nazwa varchar(50)
 );
 
 -- Tabela Zamowienia
-CREATE TABLE Zamowienia (
-    Id_zamowienie INT AUTO_INCREMENT PRIMARY KEY,
-    Id_klient INT,
-    Id_film INT,
-    Id_kina INT,
-    FOREIGN KEY (Id_klient) REFERENCES Klienci(Id_klient),
-    FOREIGN KEY (Id_film) REFERENCES Filmy(Id_film),
-    FOREIGN KEY (Id_kina) REFERENCES Kina(Id_kina)
+create table Zamowienia (
+    Id_zamowienie int auto_increment primary key,
+    Id_klient int,
+    Id_film int,
+    Id_kina int,
+    foreign key (Id_klient) references Klienci(Id_klient),
+    foreign key (Id_film) references Filmy(Id_film),
+    foreign key (Id_kina) references Kina(Id_kina)
 );
 
 -- Tabela Kina
-CREATE TABLE Kina (
-    Id_kina INT AUTO_INCREMENT PRIMARY KEY,
-    Id_lokalizacja INT,
-    Id_pracownik_menager INT,
-    Godziny_otwarcia VARCHAR(100),
-    FOREIGN KEY (Id_lokalizacja) REFERENCES Lokalizacja(Id_lokalizacja),
-    FOREIGN KEY (Id_pracownik_menager) REFERENCES Pracownicy(Id_pracownik)
+create table Kina (
+    Id_kina int auto_increment primary key,
+    Id_lokalizacja int,
+    Id_pracownik_menager int,
+    Godziny_otwarcia varchar(100),
+    foreign key (Id_lokalizacja) references Lokalizacja(Id_lokalizacja),
+    foreign key (Id_pracownik_menager) references Pracownicy(Id_pracownik)
 );
