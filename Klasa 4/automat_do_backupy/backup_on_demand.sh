@@ -3,7 +3,7 @@
 DB_NAME="Sklep"
 DB_USER="administrator_sklep"
 DB_PASSWORD="admin"
-BACKUP_DIR="/path/to/backup/directory"
+BACKUP_DIR="/opt/lampp/htdocs/szkola/lokalne-systemy-bazy-danych/Klasa 4/backup/"
 DATE=$(date +"%Y%m%d_%H%M%S")
 BACKUP_FILE="${BACKUP_DIR}/backup_${DB_NAME}_${DATE}.sql"
 
