@@ -31,18 +31,18 @@ create user 'administrator_kino'@'localhost' identified by 'admin_password';
 create user 'system_kino'@'localhost' identified by 'system_password';
 create user 'pracownik_kino'@'localhost' identified by 'pracownik_password';
 
-grant select on Kino.Klienci to 'klient'@'localhost';
-grant select on Kino.Filmy to 'klient'@'localhost';
-grant select, insert on Kino.Zamowienia to 'klient'@'localhost';
+grant select on Kino.Klienci to 'klient_kino'@'localhost';
+grant select on Kino.Filmy to 'klient_kino'@'localhost';
+grant select, insert on Kino.Zamowienia to 'klient_kino'@'localhost';
 
-grant all privileges on Kino.* to 'administrator'@'localhost';
+grant all privileges on Kino.* to 'administrator_kino'@'localhost';
 
-grant select, insert, update on Kino.Seanse to 'system'@'localhost';
-grant select, insert, update on Kino.Oferta to 'system'@'localhost';
+grant select, insert, update on Kino.Seanse to 'system_kino'@'localhost';
+grant select, insert, update on Kino.Oferta to 'system_kino'@'localhost';
 
-grant select on Kino.Pracownicy to 'pracownik'@'localhost';
-grant select on Kino.Lokalizacja to 'pracownik'@'localhost';
-grant select, update on Kino.Stanowiska to 'pracownik'@'localhost';
-grant select, insert, update on Kino.Seanse to 'pracownik'@'localhost';
+grant select on Kino.Pracownicy to 'pracownik_kino'@'localhost';
+grant select on Kino.Lokalizacja to 'pracownik_kino'@'localhost';
+grant select, update on Kino.Stanowiska to 'pracownik_kino'@'localhost';
+grant select, insert, update on Kino.Seanse to 'pracownik_kino'@'localhost';
 
 flush privileges;
