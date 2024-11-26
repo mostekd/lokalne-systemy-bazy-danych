@@ -24,4 +24,4 @@ alter table Zamowienia
 -- Dodanie kluczy obcych do tabeli Kina
 alter table Kina 
     add foreign key (id_lokalizacja) references Lokalizacja(id_lokalizacja),
-    add foreign key (id_pracownik_menager) references Pracownicy(id_pracownik);
+    add foreign key (id_pracownik_manager) references Pracownicy(id_pracownik);
