@@ -1,5 +1,5 @@
 create database Kino;
-USE Kino;
+use Kino;
 
 -- Tabela Klienci
 create table Klienci (
