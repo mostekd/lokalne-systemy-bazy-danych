@@ -3,7 +3,7 @@ use Kino;
 
 -- Tabela Klienci
 create table Klienci (
-    Id_klient int auto_increment primary key,
+    id_klient int auto_increment primary key,
     Imie varchar(50),
     Nazwisko varchar(50),
     Adres_email varchar(100),
@@ -12,36 +12,31 @@ create table Klienci (
 
 -- Tabela Filmy
 create table Filmy (
-    Id_film int auto_increment primary key,
+    id_film int auto_increment primary key,
     Nazwa varchar(100),
-    Id_rodzaj_filmu int,
-    Id_rezyser int,
-    Id_aktorzy int,
-    Czas_trwania int,
-    foreign key (Id_rodzaj_filmu) references Rodzaje_filmu(Id_rodzaj_filmu),
-    foreign key (Id_rezyser) references Rezyserzy(Id_rezyser),
-    foreign key (Id_aktorzy) references Aktorzy(Id_aktor)
+    id_rodzaj_filmu int,
+    id_rezyser int,
+    id_aktorzy int,
+    Czas_trwania int
 );
 
 -- Tabela Pracownicy
 create table Pracownicy (
-    Id_pracownik int auto_increment primary key,
+    id_pracownik int auto_increment primary key,
     Imie varchar(50),
     Nazwisko varchar(50),
     Adres_email varchar(100),
     Numer_telefon varchar(15),
     Wynagrodzenie decimal(10,2),
     Data_zatrudnienia date,
-    Id_stanowisko int,
+    id_stanowisko int,
     Data_urodzenia date,
-    Id_lokalizacja_pracy int,
-    foreign key (Id_stanowisko) references Stanowiska(Id_stanowisko),
-    foreign key (Id_lokalizacja_pracy) references Lokalizacja(Id_lokalizacja)
+    id_lokalizacja_pracy int
 );
 
 -- Tabela Oferta
 create table Oferta (
-    Id_oferta int auto_increment primary key,
+    id_oferta int auto_increment primary key,
     Nazwa varchar(100),
     Cena decimal(10,2),
     Rodzaj varchar(50)
@@ -49,23 +44,22 @@ create table Oferta (
 
 -- Tabela Seanse
 create table Seanse (
-    Id_seans int auto_increment primary key,
-    Id_film int,
+    id_seans int auto_increment primary key,
+    id_film int,
     Cena decimal(10,2),
     Godzina_rozpoczecia time,
-    Data_seansu date,
-    foreign key (Id_film) references Filmy(Id_film)
+    Data_seansu date
 );
 
 -- Tabela Rodzaje_filmu
 create table Rodzaje_filmu (
-    Id_rodzaj_filmu int auto_increment primary key,
+    id_rodzaj_filmu int auto_increment primary key,
     Nazwa varchar(50)
 );
 
 -- Tabela Lokalizacja
 create table Lokalizacja (
-    Id_lokalizacja int auto_increment primary key,
+    id_lokalizacja int auto_increment primary key,
     Numer_budynku varchar(10),
     Ulica varchar(100),
     Miejscowosc varchar(50),
@@ -75,7 +69,7 @@ create table Lokalizacja (
 
 -- Tabela Rezyserzy
 create table Rezyserzy (
-    Id_rezyser int auto_increment primary key,
+    id_rezyser int auto_increment primary key,
     Imie varchar(50),
     Nazwisko varchar(50),
     Data_urodzenia date
@@ -83,7 +77,7 @@ create table Rezyserzy (
 
 -- Tabela Aktorzy
 create table Aktorzy (
-    Id_aktor int auto_increment primary key,
+    id_aktor int auto_increment primary key,
     Imie varchar(50),
     Nazwisko varchar(50),
     Data_urodzenia date
@@ -91,27 +85,22 @@ create table Aktorzy (
 
 -- Tabela Stanowiska
 create table Stanowiska (
-    Id_stanowisko int auto_increment primary key,
+    id_stanowisko int auto_increment primary key,
     Nazwa varchar(50)
 );
 
 -- Tabela Zamowienia
 create table Zamowienia (
-    Id_zamowienie int auto_increment primary key,
-    Id_klient int,
-    Id_film int,
-    Id_kina int,
-    foreign key (Id_klient) references Klienci(Id_klient),
-    foreign key (Id_film) references Filmy(Id_film),
-    foreign key (Id_kina) references Kina(Id_kina)
+    id_zamowienie int auto_increment primary key,
+    id_klient int,
+    id_film int,
+    id_kina int
 );
 
 -- Tabela Kina
 create table Kina (
-    Id_kina int auto_increment primary key,
-    Id_lokalizacja int,
-    Id_pracownik_menager int,
-    Godziny_otwarcia varchar(100),
-    foreign key (Id_lokalizacja) references Lokalizacja(Id_lokalizacja),
-    foreign key (Id_pracownik_menager) references Pracownicy(Id_pracownik)
+    id_kina int auto_increment primary key,
+    id_lokalizacja int,
+    id_pracownik_menager int,
+    Godziny_otwarcia varchar(100)
 );
