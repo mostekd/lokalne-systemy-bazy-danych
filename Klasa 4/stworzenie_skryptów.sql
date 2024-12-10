@@ -277,7 +277,7 @@ insert into `typy_produktu`(`nazwa`) values ('drukarka');
 insert into `typy_produktu`(`nazwa`) values ('głośnik');
 insert into `typy_produktu`(`nazwa`) values ('słuchawki');
 
-insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`, `id_lokalizacja`) values ('asus rog strix scar 18','1','22299','15','czarny','procesor
+insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`) values ('asus rog strix scar 18','1','22299','15','czarny','procesor
 intel® core™ i9-14900hx (24 rdzenie, 32 wątki, 2.20-5.80 ghz, 36 mb cache)
 chipset
 intel hm770
@@ -359,8 +359,8 @@ głębokość
 waga
 3,10 kg
 dołączone akcesoria
-zasilacz','21');
-insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`, `id_lokalizacja`) values ('g4m3r elite','2','18900','10','czarny','procesor
+zasilacz');
+insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`) values ('g4m3r elite','2','18900','10','czarny','procesor
 intel core i9-14900kf (24 rdzenie, 32 wątki, 3.20-6.00 ghz, 36 mb cache)
 chipset
 intel z790
@@ -439,8 +439,8 @@ wysokość
 szerokość
 230 mm
 głębokość
-522 mm','22');
-insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`, `id_lokalizacja`) values ('samsung ls49ag950npxen','3','7959','7','biały','przeznaczenie produktu
+522 mm');
+insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`) values ('samsung ls49ag950npxen','3','7959','7','biały','przeznaczenie produktu
 dla graczy
 przekątna ekranu
 49""
@@ -523,8 +523,8 @@ wysokość (z podstawą)
 głębokość (z podstawą)
 418 mm
 waga
-14,5 kg','23');
-insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`, `id_lokalizacja`) values ('razer deathstalker v2 pro clicky','4','899','17','czarny','rodzaj przełączników
+14,5 kg');
+insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`) values ('razer deathstalker v2 pro clicky','4','899','17','czarny','rodzaj przełączników
 razer™ clicky optical switch
 typ
 dla graczy
@@ -560,8 +560,8 @@ akumulator
 obudowa
 aluminiowa
 dodatkowe informacje
-anti-ghosting z pełnym n-key rollover','22');
-insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`, `id_lokalizacja`) values ('swiftpoint z2','5','1099','2','czarny','typ myszy
+anti-ghosting z pełnym n-key rollover');
+insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`) values ('swiftpoint z2','5','1099','2','czarny','typ myszy
 dla graczy
 łączność
 przewodowa
@@ -593,8 +593,8 @@ szerokość
 wysokość
 40 mm
 waga
-117 g','24');
-insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`, `id_lokalizacja`) values ('asus geforce rtx 4070 ti super rog strix gaming','6','5099','17','czarny','seria karty graficznej
+117 g');
+insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`) values ('asus geforce rtx 4070 ti super rog strix gaming','6','5099','17','czarny','seria karty graficznej
 geforce rtx z serii 40
 obsługa ray tracingu
 tak
@@ -647,8 +647,8 @@ liczba zajmowanych slotów
 3.15 slot
 dołączone akcesoria
 wspornik
-adapter pcie 16pin do 3x 8pin','25');
-insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`, `id_lokalizacja`) values ('amd ryzen 9 9950x','7','2999','10','','rodzina procesorów
+adapter pcie 16pin do 3x 8pin');
+insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`) values ('amd ryzen 9 9950x','7','2999','10','','rodzina procesorów
 amd ryzen™
 seria procesora
 ryzen™ 9 9950x
@@ -692,8 +692,8 @@ dodatkowe informacje
 obsługa pamięci ecc
 wersja box
 chłodzenie w zestawie
-nie','24');
-insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`, `id_lokalizacja`) values ('seagate ironwolf pro','8','2469','0','','pojemność
+nie');
+insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`) values ('seagate ironwolf pro','8','2469','0','','pojemność
 22000 gb
 format
 3.5""
@@ -718,8 +718,8 @@ szerokość
 głębokość
 147 mm
 waga
-690 g','26');
-insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`, `id_lokalizacja`) values ('samsung 4tb m.2 pcie gen4 nvme 990 pro heatsink','9','1999','5','czarny','przeznaczenie produktu
+690 g');
+insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`) values ('samsung 4tb m.2 pcie gen4 nvme 990 pro heatsink','9','1999','5','czarny','przeznaczenie produktu
 pc
 gaming
 playstation 5
@@ -758,8 +758,8 @@ szerokość
 głębokość
 80 mm
 waga
-28 g','26');
-insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`, `id_lokalizacja`) values ('asus rog strix z790-e gaming wifi ii','10','2509','19','czarny','budowa sekcji zasilania
+28 g');
+insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`) values ('asus rog strix z790-e gaming wifi ii','10','2509','19','czarny','budowa sekcji zasilania
 18+1+2
 rodzaj chłodzenia chipsetu płyty głównej
 pasywny
@@ -856,8 +856,8 @@ kabel sata - 2 szt.
 elementy montażowe
 antena wi-fi 2.4/5/6 ghz - 1 szt.
 kolor
-czarny','28');
-insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`, `id_lokalizacja`) values ('asus rog hyperion gr701','11','1599','5','czarny','typ obudowy
+czarny');
+insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`) values ('asus rog hyperion gr701','11','1599','5','czarny','typ obudowy
 big tower
 panel boczny
 szkło hartowane
@@ -935,8 +935,8 @@ szerokość
 głębokość
 659 mm
 waga
-21 kg','27');
-insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`, `id_lokalizacja`) values ('kingston fury 128gb','12','1779','2','czarny','seria
+21 kg');
+insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`) values ('kingston fury 128gb','12','1779','2','czarny','seria
 beast
 rodzaj pamięci
 ddr5
@@ -965,8 +965,8 @@ tak
 podświetlenie pamięci
 nie
 kolor
-czarny','29');
-insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`, `id_lokalizacja`) values ('be quiet! dark power pro 13','13','1999','15','czarny','moc maksymalna
+czarny');
+insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`) values ('be quiet! dark power pro 13','13','1999','15','czarny','moc maksymalna
 1600 w
 standard
 atx 3.0
@@ -1005,8 +1005,8 @@ wysokość
 szerokość
 150 mm
 głębokość
-200 mm','30');
-insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`, `id_lokalizacja`) values ('deepcool ak620 digital argb','14','309','1','czarny','rodzaj chłodzenia
+200 mm');
+insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`) values ('deepcool ak620 digital argb','14','309','1','czarny','rodzaj chłodzenia
 aktywne
 kompatybilność
 2066
@@ -1054,8 +1054,8 @@ głębokość
 dołączone akcesoria
 pasta termoprzewodząca
 zestaw montażowy backplate intel & amd
-zestaw montażowy','29');
-insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`, `id_lokalizacja`) values ('corsair icue h150i elite lcd xt black','15','1369','8','czarny','rodzaj chłodzenia
+zestaw montażowy');
+insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`) values ('corsair icue h150i elite lcd xt black','15','1369','8','czarny','rodzaj chłodzenia
 wodne
 kompatybilność
 2066
@@ -1092,8 +1092,8 @@ dołączone akcesoria
 zestaw montażowy backplate intel & amd
 instrukcja instalacji
 śrubki montażowe
-kontroler rgb','27');
-insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`, `id_lokalizacja`) values ('creative sound blaster x ae-5 plus','16','579','20','czarny','typ karty dźwiękowej
+kontroler rgb');
+insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`) values ('creative sound blaster x ae-5 plus','16','579','20','czarny','typ karty dźwiękowej
 wewnętrzna
 system dźwięku
 5.1
@@ -1117,8 +1117,8 @@ wyjście optyczne s/pdif toslink - 1 szt.
 dodatkowe informacje
 kontroler audio dac klasy premium
 dołączone akcesoria
-skrócona instrukcja obsługi','30');
-insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`, `id_lokalizacja`) values ('asus xg-c100f','17','449','16','czerwony','rodzaj
+skrócona instrukcja obsługi');
+insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`) values ('asus xg-c100f','17','449','16','czerwony','rodzaj
 przewodowa
 interfejs
 pci-e
@@ -1128,8 +1128,8 @@ maksymalna prędkość transmisji bezprzewodowej
 do 10000 mb/s
 dodatkowe informacje
 aluminiowy radiator
-qos','24');
-insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`, `id_lokalizacja`) values ('asus sdrw-08u5s slim','18','229','3','srebrny','rodzaj napędu
+qos');
+insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`) values ('asus sdrw-08u5s slim','18','229','3','srebrny','rodzaj napędu
 zewnętrzny
 funkcje napędu
 nagrywanie płyt dvd
@@ -1166,8 +1166,8 @@ szerokość
 głebokość
 140 mm
 waga
-255 g','26');
-insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`, `id_lokalizacja`) values ('hyperx procast ','19','1119','2','czarny','przeznaczenie
+255 g');
+insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`) values ('hyperx procast ','19','1119','2','czarny','przeznaczenie
 komputerowe
 system mocowania
 statyw biurkowy
@@ -1194,8 +1194,8 @@ filtr pop
 instrukcja obsługi
 adapter do statywu
 waga
-372 g','27');
-insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`, `id_lokalizacja`) values ('hp designjet t230','20','4239','4','czarny','przeznaczenie produktu
+372 g');
+insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`) values ('hp designjet t230','20','4239','4','czarny','przeznaczenie produktu
 do biura i korporacji
 zastosowanie
 rysunki liniowe
@@ -1251,8 +1251,8 @@ wysokość
 głębokość
 440 mm
 waga
-21,5 kg','29');
-insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`, `id_lokalizacja`) values ('sony bravia theatre bar 9 + sa-rs3s','21','6399','14','czarny','liczba kanałów
+21,5 kg');
+insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`) values ('sony bravia theatre bar 9 + sa-rs3s','21','6399','14','czarny','liczba kanałów
 7.0.2
 subwoofer
 brak
@@ -1304,8 +1304,8 @@ kabel zasilający
 baterie do pilota
 uchwyty do montażu na ścianie
 głośniki
-podstawa stołowa','28');
-insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`, `id_lokalizacja`) values ('jbl quantum 910 psp','22','999','20','biały','łączność
+podstawa stołowa');
+insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`) values ('jbl quantum 910 psp','22','999','20','biały','łączność
 bezprzewodowa i przewodowa
 rodzaj łączności
 bluetooth 5.2
@@ -1382,7 +1382,31 @@ kabel usb
 kabel jack 3,5 mm
 adapter usb-a - usb-c
 osłona przeciwwietrzna
-instrukcja obsługi','21');
+instrukcja obsługi');
+
+insert into `lokalizacja_do_produkt`(`id_lokalizacja`, `id_produkt`) values
+('1', '21'),
+('2', '22'),
+('3', '23'),
+('4', '22'),
+('5', '24'),
+('6', '25'),
+('7', '24'),
+('8'. '26'),
+('9', '26'),
+('10', '28'),
+('11', '27'),
+('12', '29'),
+('13', '30'),
+('14', '29'),
+('15', '27'),
+('16', '30'),
+('17', '24'),
+('18', '26'),
+('19', '27'),
+('20', '29'),
+('21', '28'),
+('22', '21');
 
 insert into `magazyny`(`nazwa`, `id_lokalizacja`) values ('magazyn_1','21');
 insert into `magazyny`(`nazwa`, `id_lokalizacja`) values ('magazyn_2','22');
