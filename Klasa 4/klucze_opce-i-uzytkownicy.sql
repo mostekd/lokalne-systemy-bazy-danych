@@ -1,27 +1,26 @@
 use sklep;
 
 alter table klienci 
-    add foreign key (id_lokalizacja) references lokalizacje(id_lokalizacja)
-;
+    add foreign key (id_lokalizacja) references lokalizacje(id_lokalizacja);
+
 alter table pracownicy
     add foreign key (id_stanowisko) references stanowiska(id_stanowisko),
-    add foreign key (id_lokalizacja) references lokalizacje(id_lokalizacja)
-;
+    add foreign key (id_lokalizacja) references lokalizacje(id_lokalizacja);
+
 alter table produkty
-    add foreign key (id_typ_produktu) references typy_produktu(id_typ_produktu),
-;
+    add foreign key (id_typ_produktu) references typy_produktu(id_typ_produktu);
+
 alter table lokalizacja_do_produkt
     add foreign key (id_lokalizacja) references lokalizacje(id_lokalizacja),
-    add foreign key (id_produkt) references produkty(id_produktu)
-;
-
+    add foreign key (id_produkt) references produkty(id_produktu);
+    
 alter table magazyny
-    add foreign key (id_lokalizacja) references lokalizacje(id_lokalizacja)
-;
+    add foreign key (id_lokalizacja) references lokalizacje(id_lokalizacja);
+
 alter table sklepy
     add foreign key (id_pracownik_menager) references pracownicy(id_pracownik),
-    add foreign key (id_lokalizacja) references lokalizacje(id_lokalizacja)
-;
+    add foreign key (id_lokalizacja) references lokalizacje(id_lokalizacja);
+
 alter table zamowienia
     add foreign key (id_klienta) references klienci(id_klient),
     add foreign key (id_lokalizacja_produktu) references lokalizacje(id_lokalizacja),
@@ -29,13 +28,12 @@ alter table zamowienia
     add foreign key (id_pracownika) references pracownicy(id_pracownik),
     add foreign key (id_typ_platnosci) references typy_platnosci(id_typ_platnosci),
     add foreign key (id_produkt) references produkty(id_produktu),
-    add foreign key (id_typ_dostawy) references typy_dostawy(id_typ_dostawy)
-;
+    add foreign key (id_typ_dostawy) references typy_dostawy(id_typ_dostawy);
+
 alter table dostawcy_do_zamowienia
     add foreign key (id_zamowienia) references zamowienia(id_zamowienia),
-    add foreign key (id_dostawca) references dostawcy(id_dostawcy)
-;
-
+    add foreign key (id_dostawca) references dostawcy(id_dostawcy);
+    
 drop user if exists 'administrator_sklep'@'localhost';
 drop user if exists 'system_sklep'@'localhost';
 drop user if exists 'klient_sklep'@'localhost';
