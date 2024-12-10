@@ -1,4 +1,5 @@
-create database if not exists Sklep;
+drop database if exists Sklep;
+create database Sklep;
 use Sklep;
 
 -- Tabela: Lokalizacja
@@ -54,7 +55,7 @@ create table Produkty (
     Cena decimal(10, 2),
     Ilosc int,
     Kolor varchar(50),
-    Opis varchar(20000000),
+    Opis longtext,
     id_lokalizacja int
 );
 
