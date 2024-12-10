@@ -36,6 +36,11 @@ alter table dostawcy_do_zamowienia
     add foreign key (id_dostawca) references dostawcy(id_dostawcy)
 ;
 
+drop user if exists 'administrator_sklep'@'localhost';
+drop user if exists 'system_sklep'@'localhost';
+drop user if exists 'klient_sklep'@'localhost';
+drop user if exists 'pracownik_sklep'@'localhost';
+
 create user 'administrator_sklep'@'localhost' identified by 'admin';
 grant select, insert, update, delete on sklep.zamowienia to 'administrator_sklep'@'localhost';
 grant select, insert, update, delete on sklep.typy_produktu to 'administrator_sklep'@'localhost';
