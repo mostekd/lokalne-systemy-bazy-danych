@@ -9,7 +9,6 @@ alter table pracownicy
 ;
 alter table produkty
     add foreign key (id_typ_produktu) references typy_produktu(id_typ_produktu),
-    add foreign key (id_lokalizacja) references lokalizacje(id_lokalizacja)
 ;
 alter table lokalizacja_do_produkt
     add foreign key (id_lokalizacja) references lokalizacje(id_lokalizacja),

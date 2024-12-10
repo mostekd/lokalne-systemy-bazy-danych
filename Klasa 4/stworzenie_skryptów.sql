@@ -55,8 +55,7 @@ create table produkty (
     cena decimal(10, 2),
     ilosc int,
     kolor varchar(50),
-    opis longtext,
-    id_lokalizacja int
+    opis longtext
 );
 
 create table lokalizacja_do_produkt (
