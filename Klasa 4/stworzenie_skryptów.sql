@@ -1384,29 +1384,28 @@ adapter usb-a - usb-c
 osłona przeciwwietrzna
 instrukcja obsługi');
 
-insert into `lokalizacja_do_produkt`(`id_lokalizacja`, `id_produkt`) values
-('1', '21'),
-('2', '22'),
-('3', '23'),
-('4', '22'),
-('5', '24'),
-('6', '25'),
-('7', '24'),
-('8'. '26'),
-('9', '26'),
-('10', '28'),
-('11', '27'),
-('12', '29'),
-('13', '30'),
-('14', '29'),
-('15', '27'),
-('16', '30'),
-('17', '24'),
-('18', '26'),
-('19', '27'),
-('20', '29'),
-('21', '28'),
-('22', '21');
+insert into `lokalizacja_do_produkt`(`id_lokalizacja`, `id_produkt`) values ('1', '21');
+insert into `lokalizacja_do_produkt`(`id_lokalizacja`, `id_produkt`) values ('2', '22');
+insert into `lokalizacja_do_produkt`(`id_lokalizacja`, `id_produkt`) values ('3', '23');
+insert into `lokalizacja_do_produkt`(`id_lokalizacja`, `id_produkt`) values ('4', '22');
+insert into `lokalizacja_do_produkt`(`id_lokalizacja`, `id_produkt`) values ('5', '24');
+insert into `lokalizacja_do_produkt`(`id_lokalizacja`, `id_produkt`) values ('6', '25');
+insert into `lokalizacja_do_produkt`(`id_lokalizacja`, `id_produkt`) values ('7', '24');
+insert into `lokalizacja_do_produkt`(`id_lokalizacja`, `id_produkt`) values ('8', '26');
+insert into `lokalizacja_do_produkt`(`id_lokalizacja`, `id_produkt`) values ('9', '26');
+insert into `lokalizacja_do_produkt`(`id_lokalizacja`, `id_produkt`) values ('10', '28');
+insert into `lokalizacja_do_produkt`(`id_lokalizacja`, `id_produkt`) values ('11', '27');
+insert into `lokalizacja_do_produkt`(`id_lokalizacja`, `id_produkt`) values ('12', '29');
+insert into `lokalizacja_do_produkt`(`id_lokalizacja`, `id_produkt`) values ('13', '30');
+insert into `lokalizacja_do_produkt`(`id_lokalizacja`, `id_produkt`) values ('14', '29');
+insert into `lokalizacja_do_produkt`(`id_lokalizacja`, `id_produkt`) values ('15', '27');
+insert into `lokalizacja_do_produkt`(`id_lokalizacja`, `id_produkt`) values ('16', '30');
+insert into `lokalizacja_do_produkt`(`id_lokalizacja`, `id_produkt`) values ('17', '24');
+insert into `lokalizacja_do_produkt`(`id_lokalizacja`, `id_produkt`) values ('18', '26');
+insert into `lokalizacja_do_produkt`(`id_lokalizacja`, `id_produkt`) values ('19', '27');
+insert into `lokalizacja_do_produkt`(`id_lokalizacja`, `id_produkt`) values ('20', '29');
+insert into `lokalizacja_do_produkt`(`id_lokalizacja`, `id_produkt`) values ('21', '28');
+insert into `lokalizacja_do_produkt`(`id_lokalizacja`, `id_produkt`) values ('22', '21');
 
 insert into `magazyny`(`nazwa`, `id_lokalizacja`) values ('magazyn_1','21');
 insert into `magazyny`(`nazwa`, `id_lokalizacja`) values ('magazyn_2','22');
