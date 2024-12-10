@@ -1,72 +1,72 @@
-Use Sklep;
+use sklep;
 
-ALTER TABLE Klienci 
-    ADD FOREIGN KEY (id_lokalizacja) REFERENCES Lokalizacje(id_lokalizacja)
+alter table klienci 
+    add foreign key (id_lokalizacja) references lokalizacje(id_lokalizacja)
 ;
-ALTER TABLE Pracownicy
-    ADD FOREIGN KEY (id_stanowisko) REFERENCES Stanowiska(id_stanowisko),
-    ADD FOREIGN KEY (id_lokalizacja) REFERENCES Lokalizacje(id_lokalizacja)
+alter table pracownicy
+    add foreign key (id_stanowisko) references stanowiska(id_stanowisko),
+    add foreign key (id_lokalizacja) references lokalizacje(id_lokalizacja)
 ;
-ALTER TABLE Produkty
-    ADD FOREIGN KEY (id_typ_produktu) REFERENCES Typy_produktu(id_typ_produktu),
-    ADD FOREIGN KEY (id_lokalizacja) REFERENCES Lokalizacje(id_lokalizacja)
+alter table produkty
+    add foreign key (id_typ_produktu) references typy_produktu(id_typ_produktu),
+    add foreign key (id_lokalizacja) references lokalizacje(id_lokalizacja)
 ;
-ALTER TABLE Lokalizacja_do_Produkt
-    ADD FOREIGN KEY (id_lokalizacja) REFERENCES Lokalizacje(id_lokalizacja),
-    ADD FOREIGN KEY (id_produkt) REFERENCES Produkty(id_produktu)
-;
-
-ALTER TABLE Magazyny
-    ADD FOREIGN KEY (id_lokalizacja) REFERENCES Lokalizacje(id_lokalizacja)
-;
-ALTER TABLE Sklepy
-    ADD FOREIGN KEY (id_pracownik_menager) REFERENCES Pracownicy(id_pracownik),
-    ADD FOREIGN KEY (id_lokalizacja) REFERENCES Lokalizacje(id_lokalizacja)
-;
-ALTER TABLE Zamowienia
-    ADD FOREIGN KEY (id_klienta) REFERENCES Klienci(id_klient),
-    ADD FOREIGN KEY (id_lokalizacja_produktu) REFERENCES Lokalizacje(id_lokalizacja),
-    ADD FOREIGN KEY (id_lokalizacja_odbioru) REFERENCES Lokalizacje(id_lokalizacja),
-    ADD FOREIGN KEY (id_pracownika) REFERENCES Pracownicy(id_pracownik),
-    ADD FOREIGN KEY (id_typ_platnosci) REFERENCES Typy_platnosci(id_typ_platnosci),
-    ADD FOREIGN KEY (id_produkt) REFERENCES Produkty(id_produktu),
-    ADD FOREIGN KEY (id_typ_dostawy) REFERENCES typy_dostawy(id_typ_dostawy)
-;
-ALTER TABLE Dostawcy_do_zamowienia
-    ADD FOREIGN KEY (id_zamowienia) REFERENCES Zamowienia(id_zamowienia),
-    ADD FOREIGN KEY (id_dostawca) REFERENCES Dostawcy(id_dostawcy)
+alter table lokalizacja_do_produkt
+    add foreign key (id_lokalizacja) references lokalizacje(id_lokalizacja),
+    add foreign key (id_produkt) references produkty(id_produktu)
 ;
 
-CREATE USER 'administrator_sklep'@'localhost' IDENTIFIED BY 'admin';
-GRANT SELECT, INSERT, UPDATE, DELETE ON sklep.zamowienia TO 'administrator_sklep'@'localhost';
-GRANT SELECT, INSERT, UPDATE, DELETE ON sklep.typy_produktu TO 'administrator_sklep'@'localhost';
-GRANT SELECT, INSERT, UPDATE, DELETE ON sklep.typy_platnosci TO 'administrator_sklep'@'localhost';
-GRANT SELECT, INSERT, UPDATE, DELETE ON sklep.sklepy TO 'administrator_sklep'@'localhost';
-GRANT SELECT, INSERT, UPDATE, DELETE ON sklep.typy_dostawy TO 'administrator_sklep'@'localhost';
-GRANT SELECT, INSERT, UPDATE, DELETE ON sklep.stanowiska TO 'administrator_sklep'@'localhost';
-GRANT SELECT, INSERT, UPDATE, DELETE ON sklep.produkty TO 'administrator_sklep'@'localhost';
-GRANT SELECT, INSERT, UPDATE, DELETE ON sklep.lokalizacja_do_produkt TO 'administrator_sklep'@'localhost';
-GRANT SELECT, INSERT, UPDATE, DELETE ON sklep.pracownicy TO 'administrator_sklep'@'localhost';
-GRANT SELECT, INSERT, UPDATE, DELETE ON sklep.lokalizacje TO 'administrator_sklep'@'localhost';
-GRANT SELECT, INSERT, UPDATE, DELETE ON sklep.dostawcy_do_zamowienia TO 'administrator_sklep'@'localhost';
-GRANT SELECT, INSERT, UPDATE, DELETE ON sklep.dostawcy TO 'administrator_sklep'@'localhost';
+alter table magazyny
+    add foreign key (id_lokalizacja) references lokalizacje(id_lokalizacja)
+;
+alter table sklepy
+    add foreign key (id_pracownik_menager) references pracownicy(id_pracownik),
+    add foreign key (id_lokalizacja) references lokalizacje(id_lokalizacja)
+;
+alter table zamowienia
+    add foreign key (id_klienta) references klienci(id_klient),
+    add foreign key (id_lokalizacja_produktu) references lokalizacje(id_lokalizacja),
+    add foreign key (id_lokalizacja_odbioru) references lokalizacje(id_lokalizacja),
+    add foreign key (id_pracownika) references pracownicy(id_pracownik),
+    add foreign key (id_typ_platnosci) references typy_platnosci(id_typ_platnosci),
+    add foreign key (id_produkt) references produkty(id_produktu),
+    add foreign key (id_typ_dostawy) references typy_dostawy(id_typ_dostawy)
+;
+alter table dostawcy_do_zamowienia
+    add foreign key (id_zamowienia) references zamowienia(id_zamowienia),
+    add foreign key (id_dostawca) references dostawcy(id_dostawcy)
+;
 
-CREATE USER 'system_sklep'@'localhost' IDENTIFIED BY 'system';
-GRANT SELECT, DELETE ON sklep.klienci TO 'system_sklep'@'localhost';
+create user 'administrator_sklep'@'localhost' identified by 'admin';
+grant select, insert, update, delete on sklep.zamowienia to 'administrator_sklep'@'localhost';
+grant select, insert, update, delete on sklep.typy_produktu to 'administrator_sklep'@'localhost';
+grant select, insert, update, delete on sklep.typy_platnosci to 'administrator_sklep'@'localhost';
+grant select, insert, update, delete on sklep.sklepy to 'administrator_sklep'@'localhost';
+grant select, insert, update, delete on sklep.typy_dostawy to 'administrator_sklep'@'localhost';
+grant select, insert, update, delete on sklep.stanowiska to 'administrator_sklep'@'localhost';
+grant select, insert, update, delete on sklep.produkty to 'administrator_sklep'@'localhost';
+grant select, insert, update, delete on sklep.lokalizacja_do_produkt to 'administrator_sklep'@'localhost';
+grant select, insert, update, delete on sklep.pracownicy to 'administrator_sklep'@'localhost';
+grant select, insert, update, delete on sklep.lokalizacje to 'administrator_sklep'@'localhost';
+grant select, insert, update, delete on sklep.dostawcy_do_zamowienia to 'administrator_sklep'@'localhost';
+grant select, insert, update, delete on sklep.dostawcy to 'administrator_sklep'@'localhost';
 
-CREATE USER 'klient_sklep'@'localhost' IDENTIFIED BY 'klient';
-GRANT UPDATE ON sklep.klienci TO 'klient_sklep'@'localhost';
-GRANT SELECT, INSERT, UPDATE ON sklep.klienci TO 'klient_sklep'@'localhost';
-GRANT SELECT ON sklep.produkty TO 'klient_sklep'@'localhost';
-GRANT SELECT ON sklep.sklepy TO 'klient_sklep'@'localhost';
+create user 'system_sklep'@'localhost' identified by 'system';
+grant select, delete on sklep.klienci to 'system_sklep'@'localhost';
 
-CREATE USER 'pracownik_sklep'@'localhost' IDENTIFIED BY 'pracownik';
-GRANT SELECT, INSERT, UPDATE ON  sklep.dostawcy TO 'pracownik_sklep'@'localhost';
-GRANT SELECT, INSERT, UPDATE ON  sklep.dostawcy_do_zamowienia TO 'pracownik_sklep'@'localhost';
-GRANT SELECT ON  sklep.klienci TO 'pracownik_sklep'@'localhost';
-GRANT SELECT ON  sklep.magazyny TO 'pracownik_sklep'@'localhost';
-GRANT SELECT ON  sklep.pracownicy TO 'pracownik_sklep'@'localhost';
-GRANT SELECT, INSERT, UPDATE ON  sklep.lokalizacja_do_produkt TO 'pracownik_sklep'@'localhost';
-GRANT SELECT, INSERT, UPDATE ON  sklep.produkty TO 'pracownik_sklep'@'localhost';
-GRANT SELECT  ON  sklep.sklepy TO 'pracownik_sklep'@'localhost';
-GRANT SELECT, UPDATE ON  sklep.zamowienia TO 'pracownik_sklep'@'localhost';
+create user 'klient_sklep'@'localhost' identified by 'klient';
+grant update on sklep.klienci to 'klient_sklep'@'localhost';
+grant select, insert, update on sklep.klienci to 'klient_sklep'@'localhost';
+grant select on sklep.produkty to 'klient_sklep'@'localhost';
+grant select on sklep.sklepy to 'klient_sklep'@'localhost';
+
+create user 'pracownik_sklep'@'localhost' identified by 'pracownik';
+grant select, insert, update on  sklep.dostawcy to 'pracownik_sklep'@'localhost';
+grant select, insert, update on  sklep.dostawcy_do_zamowienia to 'pracownik_sklep'@'localhost';
+grant select on  sklep.klienci to 'pracownik_sklep'@'localhost';
+grant select on  sklep.magazyny to 'pracownik_sklep'@'localhost';
+grant select on  sklep.pracownicy to 'pracownik_sklep'@'localhost';
+grant select, insert, update on  sklep.lokalizacja_do_produkt to 'pracownik_sklep'@'localhost';
+grant select, insert, update on  sklep.produkty to 'pracownik_sklep'@'localhost';
+grant select  on  sklep.sklepy to 'pracownik_sklep'@'localhost';
+grant select, update on  sklep.zamowienia to 'pracownik_sklep'@'localhost';

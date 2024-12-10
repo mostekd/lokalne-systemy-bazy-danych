@@ -1,106 +1,106 @@
-drop database if exists Sklep;
-create database Sklep;
-use Sklep;
+drop database if exists sklep;
+create database sklep;
+use sklep;
 
--- Tabela: Lokalizacja
-create table Lokalizacje (
+-- tabela: lokalizacja
+create table lokalizacje (
     id_lokalizacja int primary key auto_increment,
-    Ulica varchar(100),
-    Numer_budynku varchar(10),
-    Miejscowosc varchar(100),
-    Kod_pocztowy varchar(10),
-    Kraj varchar(50)
+    ulica varchar(100),
+    numer_budynku varchar(10),
+    miejscowosc varchar(100),
+    kod_pocztowy varchar(10),
+    kraj varchar(50)
 );
 
--- Tabela: Klient
-create table Klienci (
+-- tabela: klient
+create table klienci (
     id_klient int primary key auto_increment,
-    Imie varchar(50),
-    Nazwisko varchar(50),
+    imie varchar(50),
+    nazwisko varchar(50),
     id_lokalizacja int,
-    Numer_telefonu varchar(15),
-    Adres_email varchar(100)
+    numer_telefonu varchar(15),
+    adres_email varchar(100)
 );
 
--- Tabela: Stanowiska
-create table Stanowiska (
+-- tabela: stanowiska
+create table stanowiska (
     id_stanowisko int primary key auto_increment,
-    Nazwa_stanowiska varchar(100)
+    nazwa_stanowiska varchar(100)
 );
 
--- Tabela: Pracownicy
-create table Pracownicy (
+-- tabela: pracownicy
+create table pracownicy (
     id_pracownik int primary key auto_increment,
-    Imie varchar(50),
-    Nazwisko varchar(50),
-    Adres_zamieszkania varchar(100),
-    Numer_telefonu varchar(15),
-    Adres_email varchar(100),
+    imie varchar(50),
+    nazwisko varchar(50),
+    adres_zamieszkania varchar(100),
+    numer_telefonu varchar(15),
+    adres_email varchar(100),
     id_stanowisko int,
     id_lokalizacja int,
-    Wynagrodzenie decimal(10, 2)
+    wynagrodzenie decimal(10, 2)
 );
 
--- Tabela: Typy produktu
-create table Typy_produktu (
+-- tabela: typy produktu
+create table typy_produktu (
     id_typ_produktu int primary key auto_increment,
-    Nazwa varchar(100)
+    nazwa varchar(100)
 );
 
--- Tabela: Produkt
-create table Produkty (
+-- tabela: produkt
+create table produkty (
     id_produktu int primary key auto_increment,
-    Nazwa varchar(100),
+    nazwa varchar(100),
     id_typ_produktu int,
-    Cena decimal(10, 2),
-    Ilosc int,
-    Kolor varchar(50),
-    Opis longtext,
+    cena decimal(10, 2),
+    ilosc int,
+    kolor varchar(50),
+    opis longtext,
     id_lokalizacja int
 );
 
-create table Lokalizacja_do_Produkt (
+create table lokalizacja_do_produkt (
     id_lokalizacja_do_produkt int primary key auto_increment,
     id_lokalizacja int,
     id_produkt int
 );
 
--- Tabela: Magazyny
-create table Magazyny (
+-- tabela: magazyny
+create table magazyny (
     id_magazyn int primary key auto_increment,
-    Nazwa varchar(100),
+    nazwa varchar(100),
     id_lokalizacja int
 );
 
--- Tabela: Sklepy
-create table Sklepy (
+-- tabela: sklepy
+create table sklepy (
     id_sklep int primary key auto_increment,
     nazwa varchar(255),
     id_pracownik_menager int,
     id_lokalizacja int,
-    Godziny_otwarcia varchar(50)
+    godziny_otwarcia varchar(50)
 );
 
--- Tabela: Dostawcy
-create table Dostawcy (
+-- tabela: dostawcy
+create table dostawcy (
     id_dostawcy int primary key auto_increment,
-    Nazwa varchar(100),
-    Numer_telefonu varchar(15),
-    Adres_email varchar(100)
+    nazwa varchar(100),
+    numer_telefonu varchar(15),
+    adres_email varchar(100)
 );
 
--- Tabela: Typy płatności
-create table Typy_platnosci (
+-- tabela: typy płatności
+create table typy_platnosci (
     id_typ_platnosci int primary key auto_increment,
-    Nazwa varchar(50)
+    nazwa varchar(50)
 );
 
 create table typy_dostawy (
     id_typ_dostawy int primary key auto_increment,
     nazwa varchar(255)
 );
--- Tabela: Zamówienia
-create table Zamowienia (
+-- tabela: zamówienia
+create table zamowienia (
     id_zamowienia int primary key auto_increment,
     id_klienta int,
     id_lokalizacja_produktu int,
@@ -108,783 +108,783 @@ create table Zamowienia (
     id_pracownika int,
     id_typ_platnosci int,
     id_produkt int,
-    Kwota_zamowienia decimal(10, 2),
+    kwota_zamowienia decimal(10, 2),
     id_typ_dostawy int,
     czy_wyslane boolean
 );
 
--- Tabela: Dostawcy do zamówienia
-create table Dostawcy_do_zamowienia (
+-- tabela: dostawcy do zamówienia
+create table dostawcy_do_zamowienia (
     id_dostawca_do_zamowienia int primary key auto_increment,
     id_zamowienia int,
     id_dostawca int
 );
 
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Aleja Jana Pawła II','795','Warszawa','00-001','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Floriańska','309','Kraków','30-001','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Świętego Mikołaja','835','Wrocław','50-001','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Piłsudskiego','802','Poznań','60-001','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Długa','580','Gdańsk','80-001','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Dąbrowskiego','500','Szczecin','70-001','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Złota','101','Łódź','90-001','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('3 Maja','340','Lublin','20-001','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Królewska','331','Katowice','40-001','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Słowiańska','867','Bydgoszcz','85-001','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Kościuszki','18','Białystok','15-001','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Lecha','635','Toruń','87-100','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Sienkiewicza','907','Rzeszów','35-001','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Wyszyńskiego','451','Olsztyn','10-001','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Główna','557','Gdynia','81-001','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Kwiatowa','351','Zielona Góra','65-001','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Łaskotka','142','Opole','45-000','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Jagiellońska','819','Koszalin','75-001','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Sportowa','162','Radom','26-600','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Białego Orła','271','Częstochowa','42-200','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Żeromskiego','334','Gliwice','44-100','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Cicha','722','Tychy','43-100','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Strzeszyńska','447','Sosnowiec','44-280','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Słoneczna','848','Elbląg','36-200','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Łaskotka','739','Zabrze','41-800','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Węgierska','913','Rybnik','41-800','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Wojska Polskiego','716','Tarnów','32-600','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Bławatna','494','Jastrzębie-Zdrój','28-400','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Górska','43','Mysłowice','41-500','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Graniczna','712','Nowy Sącz','33-300','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Północna','549','Słupsk','08-110','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Mściwoja','761','Płock','76-200','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Świerkowa','432','Jaworzno','95-100','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Jagodowa','341','Kalisz','62-800','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Zielona','523','Siedlce','08-110','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Krzywa','224','Zamość','67-200','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Orzechowa','210','Krosno','46-100','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Staromiejska','425','Gorzów Wielkopolski','66-400','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Stawna','24','Chorzów','41-500','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Warszawska','940','Stalowa Wola','41-700','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Strzeszyńska','934','Łomża','18-400','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Sadowa','318','Świnoujście','78-600','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Spokojna','939','Kędzierzyn-Koźle','47-400','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Głogowska','136','Radomsko','47-200','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Lipowa','869','Rybnik','44-240','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Parkowa','253','Sopot','81-710','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Lechicka','848','Świętochłowice','32-600','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Stara','6','Ostrów Wielkopolski','36-100','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Słowackiego','733','Nowa Sól','63-000','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Świeżego Powietrza','957','Kołobrzeg','78-100','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Księcia Poniatowskiego','309','Bielsko-Biała','43-300','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Porzeczkowa','471','Gniezno','62-200','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Główna','529','Wołomin','05-200','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Topolowa','638','Piła','89-200','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Złota','630','Starachowice','97-200','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Błękitna','372','Dąbrowa Górnicza','44-300','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Lechicka','811','Sandomierz','27-600','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Kwitnąca','224','Białogard','38-500','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Piękna','641','Legionowo','05-120','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Urocza','42','Żory','45-300','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Polan','276','Ciechanów','07-200','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Chłopska','726','Pabianice','05-800','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Słoneczna','552','Chojnice','32-400','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Akacjowa','446','Oświęcim','32-600','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Grunwaldzka','172','Świecie','41-800','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Sienkiewicza','877','Piotrków Trybunalski','39-300','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Towarowa','905','Lubin','48-300','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Białego Orła','478','Kłodzko','33-300','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Kalinowa','687','Sochaczew','05-500','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Nowa','130','Lędziny','95-100','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Promienna','945','Nowy Tomyśl','28-200','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Klonowa','155','Ustka','59-900','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Łaskotka','436','Chrzanów','43-500','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Księdza Popiełuszki','426','Stawiski','39-300','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Aleja Róż','3','Szczytno','87-100','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Bławatna','912','Głogów','38-200','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Wiatraczek','542','Kraśnik','65-400','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Tęczowa','5
-80','Suwałki','38-600','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Orla','136','Mikołów','35-300','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Marzeń','776','Sanok','24-300','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Jodłowa','46','Nowa Dęba','39-200','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Owocowa','489','Czerwionka-Leszczyny','38-200','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Malwowa','321','Działdowo','48-200','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Ciepła','149','Gorlice','41-300','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Kręta','908','Żyrardów','56-400','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Wierzbowa','230','Jawor','24-100','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Akacjowa','530','Sieradz','26-600','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Stawna','10','Płońsk','32-400','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Leśna','962','Wołów','65-400','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Urokliwa','641','Sokołów Podlaski','39-300','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Strzałowa','720','Września','62-300','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Kwiatowa','376','Chełm','22-100','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Rynkowska','584','Oborniki','85-100','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Szafirowa','584','Zgierz','95-100','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Paprociowa','371','Żnin','88-100','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Gdyńska','324','Dębica','39-200','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Chłopska','303','Nysa','48-300','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Zimowa','428','Miechów','38-500','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Rynkowska','287','Nowy Wiśnicz','32-100','Polska');
-insert into `lokalizacje`(`Ulica`, `Numer_budynku`, `Miejscowosc`, `Kod_pocztowy`, `Kraj`) values ('Fiołkowa','94','Trzebinia','32-540','Polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('aleja jana pawła ii','795','warszawa','00-001','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('floriańska','309','kraków','30-001','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('świętego mikołaja','835','wrocław','50-001','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('piłsudskiego','802','poznań','60-001','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('długa','580','gdańsk','80-001','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('dąbrowskiego','500','szczecin','70-001','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('złota','101','łódź','90-001','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('3 maja','340','lublin','20-001','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('królewska','331','katowice','40-001','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('słowiańska','867','bydgoszcz','85-001','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('kościuszki','18','białystok','15-001','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('lecha','635','toruń','87-100','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('sienkiewicza','907','rzeszów','35-001','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('wyszyńskiego','451','olsztyn','10-001','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('główna','557','gdynia','81-001','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('kwiatowa','351','zielona góra','65-001','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('łaskotka','142','opole','45-000','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('jagiellońska','819','koszalin','75-001','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('sportowa','162','radom','26-600','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('białego orła','271','częstochowa','42-200','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('żeromskiego','334','gliwice','44-100','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('cicha','722','tychy','43-100','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('strzeszyńska','447','sosnowiec','44-280','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('słoneczna','848','elbląg','36-200','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('łaskotka','739','zabrze','41-800','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('węgierska','913','rybnik','41-800','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('wojska polskiego','716','tarnów','32-600','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('bławatna','494','jastrzębie-zdrój','28-400','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('górska','43','mysłowice','41-500','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('graniczna','712','nowy sącz','33-300','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('północna','549','słupsk','08-110','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('mściwoja','761','płock','76-200','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('świerkowa','432','jaworzno','95-100','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('jagodowa','341','kalisz','62-800','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('zielona','523','siedlce','08-110','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('krzywa','224','zamość','67-200','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('orzechowa','210','krosno','46-100','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('staromiejska','425','gorzów wielkopolski','66-400','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('stawna','24','chorzów','41-500','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('warszawska','940','stalowa wola','41-700','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('strzeszyńska','934','łomża','18-400','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('sadowa','318','świnoujście','78-600','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('spokojna','939','kędzierzyn-koźle','47-400','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('głogowska','136','radomsko','47-200','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('lipowa','869','rybnik','44-240','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('parkowa','253','sopot','81-710','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('lechicka','848','świętochłowice','32-600','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('stara','6','ostrów wielkopolski','36-100','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('słowackiego','733','nowa sól','63-000','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('świeżego powietrza','957','kołobrzeg','78-100','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('księcia poniatowskiego','309','bielsko-biała','43-300','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('porzeczkowa','471','gniezno','62-200','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('główna','529','wołomin','05-200','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('topolowa','638','piła','89-200','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('złota','630','starachowice','97-200','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('błękitna','372','dąbrowa górnicza','44-300','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('lechicka','811','sandomierz','27-600','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('kwitnąca','224','białogard','38-500','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('piękna','641','legionowo','05-120','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('urocza','42','żory','45-300','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('polan','276','ciechanów','07-200','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('chłopska','726','pabianice','05-800','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('słoneczna','552','chojnice','32-400','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('akacjowa','446','oświęcim','32-600','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('grunwaldzka','172','świecie','41-800','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('sienkiewicza','877','piotrków trybunalski','39-300','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('towarowa','905','lubin','48-300','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('białego orła','478','kłodzko','33-300','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('kalinowa','687','sochaczew','05-500','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('nowa','130','lędziny','95-100','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('promienna','945','nowy tomyśl','28-200','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('klonowa','155','ustka','59-900','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('łaskotka','436','chrzanów','43-500','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('księdza popiełuszki','426','stawiski','39-300','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('aleja róż','3','szczytno','87-100','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('bławatna','912','głogów','38-200','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('wiatraczek','542','kraśnik','65-400','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('tęczowa','5
+80','suwałki','38-600','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('orla','136','mikołów','35-300','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('marzeń','776','sanok','24-300','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('jodłowa','46','nowa dęba','39-200','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('owocowa','489','czerwionka-leszczyny','38-200','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('malwowa','321','działdowo','48-200','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('ciepła','149','gorlice','41-300','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('kręta','908','żyrardów','56-400','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('wierzbowa','230','jawor','24-100','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('akacjowa','530','sieradz','26-600','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('stawna','10','płońsk','32-400','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('leśna','962','wołów','65-400','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('urokliwa','641','sokołów podlaski','39-300','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('strzałowa','720','września','62-300','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('kwiatowa','376','chełm','22-100','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('rynkowska','584','oborniki','85-100','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('szafirowa','584','zgierz','95-100','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('paprociowa','371','żnin','88-100','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('gdyńska','324','dębica','39-200','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('chłopska','303','nysa','48-300','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('zimowa','428','miechów','38-500','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('rynkowska','287','nowy wiśnicz','32-100','polska');
+insert into `lokalizacje`(`ulica`, `numer_budynku`, `miejscowosc`, `kod_pocztowy`, `kraj`) values ('fiołkowa','94','trzebinia','32-540','polska');
 
-insert into `klienci`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) values ('Jakub','Kowalski','1','+48698234567','jakub.kowalski@example.com');
-insert into `klienci`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) values ('Zofia','Nowak','2','+48721456789','zofia.nowak@example.com');
-insert into `klienci`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) values ('Michał','Wiśniewski','3','+48601987654','michal.wisniewski@example.com');
-insert into `klienci`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) values ('Natalia','Wójcik','4','+48794321876','natalia.wojcik@example.com');
-insert into `klienci`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) values ('Kacper','Kamiński','5','+48605123890','kacper.kaminski@example.com');
-insert into `klienci`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) values ('Oliwia','Lewandowska','6','+48782654321','oliwia.lewandowska@example.com');
-insert into `klienci`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) values ('Tomasz','Zieliński','7','+48609876543','tomasz.zielinski@example.com');
-insert into `klienci`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) values ('Agnieszka','Szymańska','8','+48730987120','agnieszka.szymanska@example.com');
-insert into `klienci`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) values ('Bartosz','Dąbrowski','9','+48785432109','bartosz.dabrowski@example.com');
-insert into `klienci`(`Imie`, `Nazwisko`, `Id_lokalizacja`, `Numer_telefonu`, `Adres_email`) values ('Ewa','Kaczmarek','10','+48602345678','ewa.kaczmarek@example.com');
+insert into `klienci`(`imie`, `nazwisko`, `id_lokalizacja`, `numer_telefonu`, `adres_email`) values ('jakub','kowalski','1','+48698234567','jakub.kowalski@example.com');
+insert into `klienci`(`imie`, `nazwisko`, `id_lokalizacja`, `numer_telefonu`, `adres_email`) values ('zofia','nowak','2','+48721456789','zofia.nowak@example.com');
+insert into `klienci`(`imie`, `nazwisko`, `id_lokalizacja`, `numer_telefonu`, `adres_email`) values ('michał','wiśniewski','3','+48601987654','michal.wisniewski@example.com');
+insert into `klienci`(`imie`, `nazwisko`, `id_lokalizacja`, `numer_telefonu`, `adres_email`) values ('natalia','wójcik','4','+48794321876','natalia.wojcik@example.com');
+insert into `klienci`(`imie`, `nazwisko`, `id_lokalizacja`, `numer_telefonu`, `adres_email`) values ('kacper','kamiński','5','+48605123890','kacper.kaminski@example.com');
+insert into `klienci`(`imie`, `nazwisko`, `id_lokalizacja`, `numer_telefonu`, `adres_email`) values ('oliwia','lewandowska','6','+48782654321','oliwia.lewandowska@example.com');
+insert into `klienci`(`imie`, `nazwisko`, `id_lokalizacja`, `numer_telefonu`, `adres_email`) values ('tomasz','zieliński','7','+48609876543','tomasz.zielinski@example.com');
+insert into `klienci`(`imie`, `nazwisko`, `id_lokalizacja`, `numer_telefonu`, `adres_email`) values ('agnieszka','szymańska','8','+48730987120','agnieszka.szymanska@example.com');
+insert into `klienci`(`imie`, `nazwisko`, `id_lokalizacja`, `numer_telefonu`, `adres_email`) values ('bartosz','dąbrowski','9','+48785432109','bartosz.dabrowski@example.com');
+insert into `klienci`(`imie`, `nazwisko`, `id_lokalizacja`, `numer_telefonu`, `adres_email`) values ('ewa','kaczmarek','10','+48602345678','ewa.kaczmarek@example.com');
 
-insert into `stanowiska`(`Nazwa_stanowiska`) values ('Kierownik');
-insert into `stanowiska`(`Nazwa_stanowiska`) values ('Serwisant');
-insert into `stanowiska`(`Nazwa_stanowiska`) values ('Praktykant');
-insert into `stanowiska`(`Nazwa_stanowiska`) values ('Starzysta');
-insert into `stanowiska`(`Nazwa_stanowiska`) values ('Kasjer');
-insert into `stanowiska`(`Nazwa_stanowiska`) values ('Magazynier');
-insert into `stanowiska`(`Nazwa_stanowiska`) values ('Sprzedawca');
-insert into `stanowiska`(`Nazwa_stanowiska`) values ('Księgowy');
-insert into `stanowiska`(`Nazwa_stanowiska`) values ('Konsultant ds.. IT');
-insert into `stanowiska`(`Nazwa_stanowiska`) values ('Specjalista ds.. Marketingu');
+insert into `stanowiska`(`nazwa_stanowiska`) values ('kierownik');
+insert into `stanowiska`(`nazwa_stanowiska`) values ('serwisant');
+insert into `stanowiska`(`nazwa_stanowiska`) values ('praktykant');
+insert into `stanowiska`(`nazwa_stanowiska`) values ('starzysta');
+insert into `stanowiska`(`nazwa_stanowiska`) values ('kasjer');
+insert into `stanowiska`(`nazwa_stanowiska`) values ('magazynier');
+insert into `stanowiska`(`nazwa_stanowiska`) values ('sprzedawca');
+insert into `stanowiska`(`nazwa_stanowiska`) values ('księgowy');
+insert into `stanowiska`(`nazwa_stanowiska`) values ('konsultant ds.. it');
+insert into `stanowiska`(`nazwa_stanowiska`) values ('specjalista ds.. marketingu');
 
-insert into `pracownicy`( `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) values ('Mateusz','Nowak','ul. Piłsudskiego 15/3 15-444 Białystok','+48512345678','mateusz.nowak@example.com','1','11','5500');
-insert into `pracownicy`( `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) values ('Aleksandra','Kowalska','ul. Kopernika 12/8 87-100 Toruń','+48698234569','aleksandra.kowalska@example.com','1','12','5500');
-insert into `pracownicy`( `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) values ('Michał','Wiśniewski','ul. Hetmańska 45/10 35-003 Rzeszów','+48723987654','michal.wisniewski@example.com','1','13','5500');
-insert into `pracownicy`( `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) values ('Zofia','Kamińska','ul. Pieniężnego 7/2 10-900 Olsztyn','+48604876543','zofia.kaminska@example.com','1','14','5500');
-insert into `pracownicy`( `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) values ('Kacper','Zieliński','ul. Świętojańska 32/5 81-393 Gdynia ','+48785432107','kacper.zielinski@example.com','1','15','5500');
-insert into `pracownicy`( `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) values ('Emilia','Wójcik','ul. Bohaterów Westerplatte 23/6 65-001 Zielona Góra','+48661543210','emilia.wojcik@example.com','1','16','5500');
-insert into `pracownicy`( `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) values ('Piotr','Szymański','ul. Krakowska 52/1 45-018 Opole','+48792876432','piotr.szymanski@example.com','1','17','5500');
-insert into `pracownicy`( `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) values ('Natalia','Lewandowska','ul. Zwycięstwa 20/9 75-037 Koszalin','+48536789321','natalia.lewandowska@example.com','1','18','5500');
-insert into `pracownicy`( `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) values ('Jakub','Dąbrowski','ul. Żeromskiego 101/4 26-600 Radom','+48606123456','jakub.dabrowski@example.com','1','19','5500');
-insert into `pracownicy`( `Imie`, `Nazwisko`, `Adres_zamieszkania`, `Numer_telefonu`, `Adres_email`, `id_stanowisko`, `id_lokalizacja`, `Wynagrodzenie`) values ('Anna','Kaczmarek','Aleja NMP 43/7 42-200 Częstochowa','+48724654321','anna.kaczmarek@example.com','1','20','5500');
+insert into `pracownicy`( `imie`, `nazwisko`, `adres_zamieszkania`, `numer_telefonu`, `adres_email`, `id_stanowisko`, `id_lokalizacja`, `wynagrodzenie`) values ('mateusz','nowak','ul. piłsudskiego 15/3 15-444 białystok','+48512345678','mateusz.nowak@example.com','1','11','5500');
+insert into `pracownicy`( `imie`, `nazwisko`, `adres_zamieszkania`, `numer_telefonu`, `adres_email`, `id_stanowisko`, `id_lokalizacja`, `wynagrodzenie`) values ('aleksandra','kowalska','ul. kopernika 12/8 87-100 toruń','+48698234569','aleksandra.kowalska@example.com','1','12','5500');
+insert into `pracownicy`( `imie`, `nazwisko`, `adres_zamieszkania`, `numer_telefonu`, `adres_email`, `id_stanowisko`, `id_lokalizacja`, `wynagrodzenie`) values ('michał','wiśniewski','ul. hetmańska 45/10 35-003 rzeszów','+48723987654','michal.wisniewski@example.com','1','13','5500');
+insert into `pracownicy`( `imie`, `nazwisko`, `adres_zamieszkania`, `numer_telefonu`, `adres_email`, `id_stanowisko`, `id_lokalizacja`, `wynagrodzenie`) values ('zofia','kamińska','ul. pieniężnego 7/2 10-900 olsztyn','+48604876543','zofia.kaminska@example.com','1','14','5500');
+insert into `pracownicy`( `imie`, `nazwisko`, `adres_zamieszkania`, `numer_telefonu`, `adres_email`, `id_stanowisko`, `id_lokalizacja`, `wynagrodzenie`) values ('kacper','zieliński','ul. świętojańska 32/5 81-393 gdynia ','+48785432107','kacper.zielinski@example.com','1','15','5500');
+insert into `pracownicy`( `imie`, `nazwisko`, `adres_zamieszkania`, `numer_telefonu`, `adres_email`, `id_stanowisko`, `id_lokalizacja`, `wynagrodzenie`) values ('emilia','wójcik','ul. bohaterów westerplatte 23/6 65-001 zielona góra','+48661543210','emilia.wojcik@example.com','1','16','5500');
+insert into `pracownicy`( `imie`, `nazwisko`, `adres_zamieszkania`, `numer_telefonu`, `adres_email`, `id_stanowisko`, `id_lokalizacja`, `wynagrodzenie`) values ('piotr','szymański','ul. krakowska 52/1 45-018 opole','+48792876432','piotr.szymanski@example.com','1','17','5500');
+insert into `pracownicy`( `imie`, `nazwisko`, `adres_zamieszkania`, `numer_telefonu`, `adres_email`, `id_stanowisko`, `id_lokalizacja`, `wynagrodzenie`) values ('natalia','lewandowska','ul. zwycięstwa 20/9 75-037 koszalin','+48536789321','natalia.lewandowska@example.com','1','18','5500');
+insert into `pracownicy`( `imie`, `nazwisko`, `adres_zamieszkania`, `numer_telefonu`, `adres_email`, `id_stanowisko`, `id_lokalizacja`, `wynagrodzenie`) values ('jakub','dąbrowski','ul. żeromskiego 101/4 26-600 radom','+48606123456','jakub.dabrowski@example.com','1','19','5500');
+insert into `pracownicy`( `imie`, `nazwisko`, `adres_zamieszkania`, `numer_telefonu`, `adres_email`, `id_stanowisko`, `id_lokalizacja`, `wynagrodzenie`) values ('anna','kaczmarek','aleja nmp 43/7 42-200 częstochowa','+48724654321','anna.kaczmarek@example.com','1','20','5500');
 
-insert into `typy_produktu`(`Nazwa`) values ('Laptop');
-insert into `typy_produktu`(`Nazwa`) values ('Komputer Stacjonarny');
-insert into `typy_produktu`(`Nazwa`) values ('Monitor');
-insert into `typy_produktu`(`Nazwa`) values ('Klawiatura');
-insert into `typy_produktu`(`Nazwa`) values ('Myszka');
-insert into `typy_produktu`(`Nazwa`) values ('Karta Graficzna');
-insert into `typy_produktu`(`Nazwa`) values ('Procesor');
-insert into `typy_produktu`(`Nazwa`) values ('Dysk HDD');
-insert into `typy_produktu`(`Nazwa`) values ('Dysk SSD');
-insert into `typy_produktu`(`Nazwa`) values ('Płyta Główna');
-insert into `typy_produktu`(`Nazwa`) values ('Obudowa Komputera');
-insert into `typy_produktu`(`Nazwa`) values ('Pamięć RAM');
-insert into `typy_produktu`(`Nazwa`) values ('Zasilacz');
-insert into `typy_produktu`(`Nazwa`) values ('Chłodzenie Powietrzne');
-insert into `typy_produktu`(`Nazwa`) values ('Chłodzenie Wodne');
-insert into `typy_produktu`(`Nazwa`) values ('Karta Dźwiękowa');
-insert into `typy_produktu`(`Nazwa`) values ('Karta Sieciowa');
-insert into `typy_produktu`(`Nazwa`) values ('Napęd Optyczny');
-insert into `typy_produktu`(`Nazwa`) values ('Mikrofon');
-insert into `typy_produktu`(`Nazwa`) values ('Drukarka');
-insert into `typy_produktu`(`Nazwa`) values ('Głośnik');
-insert into `typy_produktu`(`Nazwa`) values ('Słuchawki');
+insert into `typy_produktu`(`nazwa`) values ('laptop');
+insert into `typy_produktu`(`nazwa`) values ('komputer stacjonarny');
+insert into `typy_produktu`(`nazwa`) values ('monitor');
+insert into `typy_produktu`(`nazwa`) values ('klawiatura');
+insert into `typy_produktu`(`nazwa`) values ('myszka');
+insert into `typy_produktu`(`nazwa`) values ('karta graficzna');
+insert into `typy_produktu`(`nazwa`) values ('procesor');
+insert into `typy_produktu`(`nazwa`) values ('dysk hdd');
+insert into `typy_produktu`(`nazwa`) values ('dysk ssd');
+insert into `typy_produktu`(`nazwa`) values ('płyta główna');
+insert into `typy_produktu`(`nazwa`) values ('obudowa komputera');
+insert into `typy_produktu`(`nazwa`) values ('pamięć ram');
+insert into `typy_produktu`(`nazwa`) values ('zasilacz');
+insert into `typy_produktu`(`nazwa`) values ('chłodzenie powietrzne');
+insert into `typy_produktu`(`nazwa`) values ('chłodzenie wodne');
+insert into `typy_produktu`(`nazwa`) values ('karta dźwiękowa');
+insert into `typy_produktu`(`nazwa`) values ('karta sieciowa');
+insert into `typy_produktu`(`nazwa`) values ('napęd optyczny');
+insert into `typy_produktu`(`nazwa`) values ('mikrofon');
+insert into `typy_produktu`(`nazwa`) values ('drukarka');
+insert into `typy_produktu`(`nazwa`) values ('głośnik');
+insert into `typy_produktu`(`nazwa`) values ('słuchawki');
 
-insert into `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) values ('ASUS ROG Strix SCAR 18','1','22299','15','Czarny','Procesor
-intel® Core™ i9-14900HX (24 rdzenie, 32 wątki, 2.20-5.80 GHz, 36 MB cache)
-Chipset
-intel HM770
-Pamięć RAM
-64 GB (DDR5, 5600 MHz)
-Maksymalna obsługiwana ilość pamięci RAM
-64 GB
-Liczba gniazd pamięci (ogółem / wolne)
+insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`, `id_lokalizacja`) values ('asus rog strix scar 18','1','22299','15','czarny','procesor
+intel® core™ i9-14900hx (24 rdzenie, 32 wątki, 2.20-5.80 ghz, 36 mb cache)
+chipset
+intel hm770
+pamięć ram
+64 gb (ddr5, 5600 mhz)
+maksymalna obsługiwana ilość pamięci ram
+64 gb
+liczba gniazd pamięci (ogółem / wolne)
 2/0
-Dysk SSD M.2 PCIe
-2000 GB (2 x 1000 GB)
-Dotykowy ekran
-Nie
-Typ ekranu
-Matowy, LED, IPS
-Przekątna ekranu
+dysk ssd m.2 pcie
+2000 gb (2 x 1000 gb)
+dotykowy ekran
+nie
+typ ekranu
+matowy, led, ips
+przekątna ekranu
 18""
-Rozdzielczość ekranu
-2560 x 1600 (WQXGA)
-Częstotliwość odświeżania ekranu
-240 Hz
-Jasność matrycy
+rozdzielczość ekranu
+2560 x 1600 (wqxga)
+częstotliwość odświeżania ekranu
+240 hz
+jasność matrycy
 500 cd/m²
-Karta graficzna
-NVIDIA GeForce RTX 4090
-Maks. moc karty graficznej (TGP)
-175 W
-Pamięć karty graficznej
-16 GB GDDR6
-Dźwięk
-Wbudowane cztery głośniki
-Wbudowany mikrofon
-Kamera internetowa
-HD
-Łączność
-LAN 2.5 Gb/s
-Wi-Fi 6E
-Moduł Bluetooth 5.3
-Złącza
-USB 3.2 Gen. 2 - 2 szt.
-USB Typu-C (z DisplayPort i Power Delivery) - 1 szt.
-HDMI 2.1 - 1 szt.
-Thunderbolt™ 4 - 1 szt.
-RJ-45 (LAN) - 1 szt.
-Wyjście słuchawkowe/głośnikowe - 1 szt.
-DC-in (wejście zasilania) - 1 szt.
-Typ baterii
-Litowo-jonowa
-Kolor dominujący
-Czarny
-Czytnik linii papilarnych
-Nie
-Podświetlana klawiatura
-Tak
-Kolor podświetlenia klawiatury
-Wielokolorowy
-Zabezpieczenia
-Szyfrowanie TPM
-System operacyjny
-Microsoft Windows 11 Pro
-Dołączone oprogramowanie
-Partycja recovery (opcja przywrócenia systemu z dysku)
-Zasilacz
-20 V
-16,5 A
-330 W
-Dodatkowe informacje
-Wydzielona klawiatura numeryczna
-Wielodotykowy, intuicyjny touchpad
-NVIDIA G-Sync
-Matryca z pokryciem barw 100% DCI-P3
-Technologia DLSS 3
-Wysokość
+karta graficzna
+nvidia geforce rtx 4090
+maks. moc karty graficznej (tgp)
+175 w
+pamięć karty graficznej
+16 gb gddr6
+dźwięk
+wbudowane cztery głośniki
+wbudowany mikrofon
+kamera internetowa
+hd
+łączność
+lan 2.5 gb/s
+wi-fi 6e
+moduł bluetooth 5.3
+złącza
+usb 3.2 gen. 2 - 2 szt.
+usb typu-c (z displayport i power delivery) - 1 szt.
+hdmi 2.1 - 1 szt.
+thunderbolt™ 4 - 1 szt.
+rj-45 (lan) - 1 szt.
+wyjście słuchawkowe/głośnikowe - 1 szt.
+dc-in (wejście zasilania) - 1 szt.
+typ baterii
+litowo-jonowa
+kolor dominujący
+czarny
+czytnik linii papilarnych
+nie
+podświetlana klawiatura
+tak
+kolor podświetlenia klawiatury
+wielokolorowy
+zabezpieczenia
+szyfrowanie tpm
+system operacyjny
+microsoft windows 11 pro
+dołączone oprogramowanie
+partycja recovery (opcja przywrócenia systemu z dysku)
+zasilacz
+20 v
+16,5 a
+330 w
+dodatkowe informacje
+wydzielona klawiatura numeryczna
+wielodotykowy, intuicyjny touchpad
+nvidia g-sync
+matryca z pokryciem barw 100% dci-p3
+technologia dlss 3
+wysokość
 30,8 mm
-Szerokość
+szerokość
 399 mm
-Głębokość
+głębokość
 294 mm
-Waga
+waga
 3,10 kg
-Dołączone akcesoria
-Zasilacz','21');
-insert into `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) values ('G4M3R ELITE','2','18900','10','Czarny','Procesor
-intel Core i9-14900KF (24 rdzenie, 32 wątki, 3.20-6.00 GHz, 36 MB cache)
-Chipset
-intel Z790
-Pamięć RAM
-96 GB (DIMM DDR5, 6000MHz)
-Architektura pamięci
-Dual-channel
-Maksymalna obsługiwana ilość pamięci RAM
-192 GB
-Liczba gniazd pamięci (ogółem / wolne)
+dołączone akcesoria
+zasilacz','21');
+insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`, `id_lokalizacja`) values ('g4m3r elite','2','18900','10','czarny','procesor
+intel core i9-14900kf (24 rdzenie, 32 wątki, 3.20-6.00 ghz, 36 mb cache)
+chipset
+intel z790
+pamięć ram
+96 gb (dimm ddr5, 6000mhz)
+architektura pamięci
+dual-channel
+maksymalna obsługiwana ilość pamięci ram
+192 gb
+liczba gniazd pamięci (ogółem / wolne)
 4/2
-Napięcie pamięci RAM
-1.35 V
-Karta graficzna
-NVIDIA GeForce RTX 4090
-Wielkość pamięci karty graficznej
-24576 MB GDDR6X (pamięć własna)
-Dysk SSD PCIe 4.0
-2000 GB
-Opcje dołożenia dysków
-Możliwość montażu pięciu dysków SATA
-Możliwość montażu dwóch dysków M.2 PCIe
-Wbudowane napędy optyczne
-Brak
-Dźwięk
-Zintegrowana karta dźwiękowa
-Łączność
-Wi-Fi 6E
-LAN 2.5 Gbps
-Bluetooth
-Złącza - panel tylny
-USB 2.0 - 4 szt.
-USB 3.2 Gen. 1 - 4 szt.
-USB 3.2 Gen. 2 - 1 szt.
-USB Type-C - 1 szt.
-Wejście/wyjścia audio - 3 szt.
-RJ-45 (LAN) - 1 szt.
-HDMI (nieaktywne) - 1 szt.
-HDMI (karta graficzna) - 1 szt.
-Display Port (nieaktywne) - 1 szt.
-Display Port (karta graficzna) - 3 szt.
-PS/2 - 1 szt.
-AC-in (wejście zasilania) - 1 szt.
-Złącze antenowe - 2 szt.
-Złącza - panel górny
-USB 3.2 Gen. 1 - 2 szt.
-USB Type-C - 1 szt.
-Wejście mikrofonowe - 1 szt.
-Wyjście słuchawkowe/głośnikowe - 1 szt.
-Porty wewnętrzne (wolne)
-PCI-e x16 - 2 szt.
-PCI-e x1 - 2 szt.
-SATA III - 6 szt.
-M.2 PCIe - 2 szt.
-Kieszeń wewnętrzna 5,25"" - 2 szt.
-Kieszeń wewnętrzna 3,5""/2,5"" - 3 szt.
-Kieszeń wewnętrzna 2,5"" - 2 szt.
-Zasilacz
-1000 W
-Sprawność zasilacza
-80 Plus Gold
-Podświetlenie obudowy
-Wielokolorowe (ARGB)
-Tryby podświetlenia
+napięcie pamięci ram
+1.35 v
+karta graficzna
+nvidia geforce rtx 4090
+wielkość pamięci karty graficznej
+24576 mb gddr6x (pamięć własna)
+dysk ssd pcie 4.0
+2000 gb
+opcje dołożenia dysków
+możliwość montażu pięciu dysków sata
+możliwość montażu dwóch dysków m.2 pcie
+wbudowane napędy optyczne
+brak
+dźwięk
+zintegrowana karta dźwiękowa
+łączność
+wi-fi 6e
+lan 2.5 gbps
+bluetooth
+złącza - panel tylny
+usb 2.0 - 4 szt.
+usb 3.2 gen. 1 - 4 szt.
+usb 3.2 gen. 2 - 1 szt.
+usb type-c - 1 szt.
+wejście/wyjścia audio - 3 szt.
+rj-45 (lan) - 1 szt.
+hdmi (nieaktywne) - 1 szt.
+hdmi (karta graficzna) - 1 szt.
+display port (nieaktywne) - 1 szt.
+display port (karta graficzna) - 3 szt.
+ps/2 - 1 szt.
+ac-in (wejście zasilania) - 1 szt.
+złącze antenowe - 2 szt.
+złącza - panel górny
+usb 3.2 gen. 1 - 2 szt.
+usb type-c - 1 szt.
+wejście mikrofonowe - 1 szt.
+wyjście słuchawkowe/głośnikowe - 1 szt.
+porty wewnętrzne (wolne)
+pci-e x16 - 2 szt.
+pci-e x1 - 2 szt.
+sata iii - 6 szt.
+m.2 pcie - 2 szt.
+kieszeń wewnętrzna 5,25"" - 2 szt.
+kieszeń wewnętrzna 3,5""/2,5"" - 3 szt.
+kieszeń wewnętrzna 2,5"" - 2 szt.
+zasilacz
+1000 w
+sprawność zasilacza
+80 plus gold
+podświetlenie obudowy
+wielokolorowe (argb)
+tryby podświetlenia
 14 trybów
-Dodatkowe informacje
-Chłodzenie wodne AIO 280 mm
-Obsługa DLSS 3
-Dołączone akcesoria
-Kabel zasilający
-Antena WiFi
-System operacyjny
-Microsoft Windows 11 Pro
-Wysokość
+dodatkowe informacje
+chłodzenie wodne aio 280 mm
+obsługa dlss 3
+dołączone akcesoria
+kabel zasilający
+antena wifi
+system operacyjny
+microsoft windows 11 pro
+wysokość
 520 mm
-Szerokość
+szerokość
 230 mm
-Głębokość
+głębokość
 522 mm','22');
-insert into `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) values ('Samsung LS49AG950NPXEN','3','7959','7','Biały','Przeznaczenie produktu
-Dla graczy
-Przekątna ekranu
+insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`, `id_lokalizacja`) values ('samsung ls49ag950npxen','3','7959','7','biały','przeznaczenie produktu
+dla graczy
+przekątna ekranu
 49""
-Powłoka matrycy
-Matowa
-Rodzaj matrycy
-LED, VA
-Typ ekranu
-Zakrzywiony
-Monitor bezramkowy
-Nie
-Rozdzielczość ekranu
-5120 x 1440 (lDUAL-QHD)
-Format obrazu
+powłoka matrycy
+matowa
+rodzaj matrycy
+led, va
+typ ekranu
+zakrzywiony
+monitor bezramkowy
+nie
+rozdzielczość ekranu
+5120 x 1440 (ldual-qhd)
+format obrazu
 32:9
-Częstotliwość odświeżania ekranu
-240 Hz
-Odwzorowanie przestrzeni barw
-Adobe RGB: 95%
-DCI-P3: 95%
-sRGB: 125%
-Liczba wyświetlanych kolorów
+częstotliwość odświeżania ekranu
+240 hz
+odwzorowanie przestrzeni barw
+adobe rgb: 95%
+dci-p3: 95%
+srgb: 125%
+liczba wyświetlanych kolorów
 1,07 mld
-HDR
-HDR 10+
-Czas reakcji
-1 ms (GTG)
-Wbudowany kalibrator
-Nie
-Technologia synchronizacji
-FreeSync™ Premium
-NVIDIA® G-SYNC®
-Technologia ochrony oczu
-Redukcja migotania (Flicker free)
-Filtr światła niebieskiego
-Jasność
+hdr
+hdr 10+
+czas reakcji
+1 ms (gtg)
+wbudowany kalibrator
+nie
+technologia synchronizacji
+freesync™ premium
+nvidia® g-sync®
+technologia ochrony oczu
+redukcja migotania (flicker free)
+filtr światła niebieskiego
+jasność
 2000 cd/m²
-Kontrast statyczny
+kontrast statyczny
 1 000 000:1
-Kontrast dynamiczny
-Mega ∞
-Kąt widzenia w poziomie
+kontrast dynamiczny
+mega ∞
+kąt widzenia w poziomie
 178 stopni
-Kąt widzenia w pionie
+kąt widzenia w pionie
 178 stopni
-Złącza
-HDMI 2.1 - 2 szt.
-DisplayPort - 1 szt.
-Wyjście słuchawkowe - 1 szt.
-USB 3.2 Gen. 1 - 2 szt.
-Tuner TV
-Nie
-Głośniki
-Nie
-Moc głośników
-Nie dotyczy
-Regulacja wysokości (Height)
-Tak
-Regulacja kąta pochylenia (Tilt)
-Tak
-Regulacja kąta obrotu (Swivel)
-Tak
-Możliwość montażu na ścianie - VESA
-VESA 100 x 100 mm
-Pobór mocy podczas spoczynku
-0,5 W
-Kolor
-Biały
-Dodatkowe informacje
-Zakrzywienia ekranu - 1000R
-Podświetlenie LED
-Dołączone akcesoria
-Skrócona instrukcja obsługi
-Instrukcja bezpieczeństwa
-Kabel zasilający
-Szerokość
+złącza
+hdmi 2.1 - 2 szt.
+displayport - 1 szt.
+wyjście słuchawkowe - 1 szt.
+usb 3.2 gen. 1 - 2 szt.
+tuner tv
+nie
+głośniki
+nie
+moc głośników
+nie dotyczy
+regulacja wysokości (height)
+tak
+regulacja kąta pochylenia (tilt)
+tak
+regulacja kąta obrotu (swivel)
+tak
+możliwość montażu na ścianie - vesa
+vesa 100 x 100 mm
+pobór mocy podczas spoczynku
+0,5 w
+kolor
+biały
+dodatkowe informacje
+zakrzywienia ekranu - 1000r
+podświetlenie led
+dołączone akcesoria
+skrócona instrukcja obsługi
+instrukcja bezpieczeństwa
+kabel zasilający
+szerokość
 1149 mm
-Wysokość (z podstawą)
+wysokość (z podstawą)
 537 mm
-Głębokość (z podstawą)
+głębokość (z podstawą)
 418 mm
-Waga
+waga
 14,5 kg','23');
-insert into `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) values ('Razer DeathStalker V2 Pro Clicky','4','899','17','Czarny','Rodzaj przełączników
-Razer™ Clicky Optical Switch
-Typ
-Dla graczy
-Klasyczna
-Łączność
-Przewodowa
-Bezprzewodowa
+insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`, `id_lokalizacja`) values ('razer deathstalker v2 pro clicky','4','899','17','czarny','rodzaj przełączników
+razer™ clicky optical switch
+typ
+dla graczy
+klasyczna
+łączność
+przewodowa
+bezprzewodowa
 interfejs
-2,4 GHz
-Bluetooth
-Klawisze numeryczne
-Tak
-Klawisze multimedialne / funkcyjne
-Tak
-Obsługa makr
-Tak
-Podświetlenie klawiszy
-Tak
-Kolor podświetlenia klawiszy
-Wielokolorowe - RGB
-Rodzaj podświetlenia
-Punktowe - każdy klawisz w innym kolorze
-Strefowe - każda strefa w innym kolorze
-Jednostrefowe - wszystkie klawisze w tym samym kolorze
-Złącza
-USB-C - 1 szt.
-Podpórka pod nadgarstki
-Nie
-Kolor
-Czarny
-Zasilanie
-Akumulator
-Obudowa
-Aluminiowa
-Dodatkowe informacje
-Anti-Ghosting z pełnym N-Key Rollover','22');
-insert into `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) values ('Swiftpoint Z2','5','1099','2','Czarny','Typ myszy
-Dla graczy
-Łączność
-Przewodowa
-Sensor
-Optyczny
-Model sensora
-PixArt PAW 3395
-Rozdzielczość
+2,4 ghz
+bluetooth
+klawisze numeryczne
+tak
+klawisze multimedialne / funkcyjne
+tak
+obsługa makr
+tak
+podświetlenie klawiszy
+tak
+kolor podświetlenia klawiszy
+wielokolorowe - rgb
+rodzaj podświetlenia
+punktowe - każdy klawisz w innym kolorze
+strefowe - każda strefa w innym kolorze
+jednostrefowe - wszystkie klawisze w tym samym kolorze
+złącza
+usb-c - 1 szt.
+podpórka pod nadgarstki
+nie
+kolor
+czarny
+zasilanie
+akumulator
+obudowa
+aluminiowa
+dodatkowe informacje
+anti-ghosting z pełnym n-key rollover','22');
+insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`, `id_lokalizacja`) values ('swiftpoint z2','5','1099','2','czarny','typ myszy
+dla graczy
+łączność
+przewodowa
+sensor
+optyczny
+model sensora
+pixart paw 3395
+rozdzielczość
 26000 dpi
-Liczba przycisków
+liczba przycisków
 13
-Rolka przewijania
+rolka przewijania
 1
-Długość przewodu
+długość przewodu
 2,1 m
-Profil
-Praworęczny
-Dodatkowe informacje
-Programowalne przyciski
-Profile ustawień
-Wbudowana pamięć
-Wbudowany wyświetlacz
-Kolor
-Czarny
-Długość
+profil
+praworęczny
+dodatkowe informacje
+programowalne przyciski
+profile ustawień
+wbudowana pamięć
+wbudowany wyświetlacz
+kolor
+czarny
+długość
 130 mm
-Szerokość
+szerokość
 90 mm
-Wysokość
+wysokość
 40 mm
-Waga
+waga
 117 g','24');
-insert into `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) values ('ASUS GeForce RTX 4070 Ti SUPER ROG STRIX GAMING','6','5099','17','Czarny','Seria karty graficznej
-GeForce RTX z serii 40
-Obsługa Ray tracingu
-Tak
-Technika upscalingu
-Nvidia DLSS 3.5
-Układ graficzny
-GeForce RTX 4070 Ti Super
-Rodzaj złącza
-PCIe 4.0 x16
-Pamięć
-16 GB
-Rodzaj pamięci
-GDDR6X
-Szyna pamięci
+insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`, `id_lokalizacja`) values ('asus geforce rtx 4070 ti super rog strix gaming','6','5099','17','czarny','seria karty graficznej
+geforce rtx z serii 40
+obsługa ray tracingu
+tak
+technika upscalingu
+nvidia dlss 3.5
+układ graficzny
+geforce rtx 4070 ti super
+rodzaj złącza
+pcie 4.0 x16
+pamięć
+16 gb
+rodzaj pamięci
+gddr6x
+szyna pamięci
 256 bit
-Efektywne taktowanie pamięci
-21000 MHz
-Taktowanie rdzenia w trybie boost
-2670 MHz
-2700 MHz OC Mode
-Rdzenie CUDA
+efektywne taktowanie pamięci
+21000 mhz
+taktowanie rdzenia w trybie boost
+2670 mhz
+2700 mhz oc mode
+rdzenie cuda
 8448
-Typ chłodzenia
-Aktywne
-Liczba wentylatorów
+typ chłodzenia
+aktywne
+liczba wentylatorów
 3
-Podświetlenie
-Tak
-Rodzaje wyjść
-HDMI 2.1a - 2 szt.
-DisplayPort 1.4a - 3 szt.
-Liczba obsługiwanych monitorów
+podświetlenie
+tak
+rodzaje wyjść
+hdmi 2.1a - 2 szt.
+displayport 1.4a - 3 szt.
+liczba obsługiwanych monitorów
 4
-Obsługiwane biblioteki
-DirectX 12 Ultimate
-OpenGL 4.6
-Złącze zasilania
+obsługiwane biblioteki
+directx 12 ultimate
+opengl 4.6
+złącze zasilania
 16 pin - 1 szt.
-Rekomendowana moc zasilacza
-750 W
-Długość
+rekomendowana moc zasilacza
+750 w
+długość
 336 mm
-Szerokość
+szerokość
 150 mm
-Wysokość
+wysokość
 63 mm
-Format PCB
-ATX
-Liczba zajmowanych slotów
+format pcb
+atx
+liczba zajmowanych slotów
 3.15 slot
-Dołączone akcesoria
-Wspornik
-Adapter PCIe 16pin do 3x 8pin','25');
-insert into `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) values ('AMD Ryzen 9 9950X','7','2999','10','','Rodzina procesorów
-AMD Ryzen™
-Seria procesora
-Ryzen™ 9 9950X
-Gniazdo procesora (socket)
-Socket AM5
-Obsługiwany chipset
-X670
-X670E
-B650E
-B650
-A620
-X870
-X870E
-Architektura
-Zen 5
-Taktowanie rdzenia
-4.3 GHz (5.7 GHz w trybie turbo)
-Liczba rdzeni fizycznych
+dołączone akcesoria
+wspornik
+adapter pcie 16pin do 3x 8pin','25');
+insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`, `id_lokalizacja`) values ('amd ryzen 9 9950x','7','2999','10','','rodzina procesorów
+amd ryzen™
+seria procesora
+ryzen™ 9 9950x
+gniazdo procesora (socket)
+socket am5
+obsługiwany chipset
+x670
+x670e
+b650e
+b650
+a620
+x870
+x870e
+architektura
+zen 5
+taktowanie rdzenia
+4.3 ghz (5.7 ghz w trybie turbo)
+liczba rdzeni fizycznych
 16 rdzeni
-Liczba wątków
+liczba wątków
 32 wątki
-Odblokowany mnożnik
-Tak
-Pamięć podręczna
-80 MB
-Zintegrowany układ graficzny
-Tak
-Model układu graficznego
-Radeon™ Graphics
-Rodzaj obsługiwanej pamięci
-DDR5-5600
-DDR5-3600
-Proces litograficzny
+odblokowany mnożnik
+tak
+pamięć podręczna
+80 mb
+zintegrowany układ graficzny
+tak
+model układu graficznego
+radeon™ graphics
+rodzaj obsługiwanej pamięci
+ddr5-5600
+ddr5-3600
+proces litograficzny
 4 nm
-Pobór mocy (TDP)
-170 W
-Zastosowane technologie
-AMD EXPO™
-AMD Precision Boost 2
-Dodatkowe informacje
-Obsługa pamięci ECC
-Wersja BOX
-Chłodzenie w zestawie
-Nie','24');
-insert into `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) values ('Seagate IRONWOLF PRO','8','2469','0','','Pojemność
-22000 GB
-Format
+pobór mocy (tdp)
+170 w
+zastosowane technologie
+amd expo™
+amd precision boost 2
+dodatkowe informacje
+obsługa pamięci ecc
+wersja box
+chłodzenie w zestawie
+nie','24');
+insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`, `id_lokalizacja`) values ('seagate ironwolf pro','8','2469','0','','pojemność
+22000 gb
+format
 3.5""
 interfejs
-SATA III (6.0 Gb/s) - 1 szt.
-Pamięć podręczna cache
-512 MB
-Prędkość obrotowa
+sata iii (6.0 gb/s) - 1 szt.
+pamięć podręczna cache
+512 mb
+prędkość obrotowa
 7200 obr./min
-Prędkość odczytu (maksymalna)
-285 MB/s
-Niezawodność MTBF
+prędkość odczytu (maksymalna)
+285 mb/s
+niezawodność mtbf
 2 500 000 godz
-Dodatkowe informacje
-Technologia zapisu CMR
-Zgodność z systemami NAS
-Seagate Rescue Services (usługi odzyskiwania danych)
-Wysokość
+dodatkowe informacje
+technologia zapisu cmr
+zgodność z systemami nas
+seagate rescue services (usługi odzyskiwania danych)
+wysokość
 26,1 mm
-Szerokość
+szerokość
 101,85 mm
-Głębokość
+głębokość
 147 mm
-Waga
+waga
 690 g','26');
-insert into `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) values ('Samsung 4TB M.2 PCIe Gen4 NVMe 990 Pro Heatsink','9','1999','5','Czarny','Przeznaczenie produktu
-PC
-Gaming
-PlayStation 5
-Pojemność
-4000 GB
-Format
-M.2
+insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`, `id_lokalizacja`) values ('samsung 4tb m.2 pcie gen4 nvme 990 pro heatsink','9','1999','5','czarny','przeznaczenie produktu
+pc
+gaming
+playstation 5
+pojemność
+4000 gb
+format
+m.2
 interfejs
-PCIe NVMe 4.0 x4
-Prędkość odczytu (maksymalna)
-7450 MB/s
-Prędkość zapisu (maksymalna)
-6900 MB/s
-Odczyt losowy
-1,200,000 IOPS
-Zapis losowy
-1,550,000 IOPS
-Rodzaj kości pamięci
-TLC
-Niezawodność MTBF
+pcie nvme 4.0 x4
+prędkość odczytu (maksymalna)
+7450 mb/s
+prędkość zapisu (maksymalna)
+6900 mb/s
+odczyt losowy
+1,200,000 iops
+zapis losowy
+1,550,000 iops
+rodzaj kości pamięci
+tlc
+niezawodność mtbf
 1 500 000 godz
-Radiator
-Tak
-Dodatkowe informacje
-Technologia TRIM
-Technologia S.M.A.R.T
-256-bitowe szyfrowanie danych AES
-Dołączone akcesoria
-Instrukcja obsługi
-Kolor
-Czarny
-Wysokość
+radiator
+tak
+dodatkowe informacje
+technologia trim
+technologia s.m.a.r.t
+256-bitowe szyfrowanie danych aes
+dołączone akcesoria
+instrukcja obsługi
+kolor
+czarny
+wysokość
 8,2 mm
-Szerokość
+szerokość
 24 mm
-Głębokość
+głębokość
 80 mm
-Waga
+waga
 28 g','26');
-insert into `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) values ('ASUS ROG STRIX Z790-E GAMING WIFI II','10','2509','19','Czarny','Budowa sekcji zasilania
+insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`, `id_lokalizacja`) values ('asus rog strix z790-e gaming wifi ii','10','2509','19','czarny','budowa sekcji zasilania
 18+1+2
-Rodzaj chłodzenia chipsetu płyty głównej
-Pasywny
-Obsługiwane rodziny procesorów
-intel Core i9
-intel Core i7
-intel Core i5
-intel Core i3
-intel Celeron
-intel Pentium
-Gniazdo procesora
-Socket 1700
-Chipset
-intel Z790
-Architektura procesora
-Raptor Lake Refresh (14 generacja)
-Raptor Lake (13 generacja)
-Alder Lake-S (12 generacja)
-Typ obsługiwanej pamięci
-DDR5-5600 MHz
-DDR5-5400 MHz
-DDR5-5200 MHz
-DDR5-5000 MHz
-DDR5-4800 MHz
-Typ obsługiwanej pamięci OC
-DDR5-8000 MHz
-DDR5-7800 MHz
-DDR5-7600 MHz
-DDR5-7400 MHz
-DDR5-7200 MHz
-DDR5-7000 MHz
-DDR5-6800 MHz
-DDR5-6600 MHz
-DDR5-6400 MHz
-DDR5-6200 MHz
-DDR5-6000 MHz
-DDR5-5800 MHz
-Liczba banków pamięci
-4 x DIMM
-Maksymalna wielkość pamięci RAM
-192 GB
-Architektura pamięci
-Dual-channel
-Wewnętrzne złącza
-SATA III (6 Gb/s) - 4 szt.
-M.2 PCIe NVMe 4.0 x4 / SATA - 1 szt.
-M.2 PCIe NVMe 4.0 x4 - 3 szt.
-M.2 PCIe NVMe 5.0 x4 - 1 szt.
-PCIe 5.0 x16 - 1 szt.
-PCIe 4.0 x16 (tryb x4) - 2 szt.
-USB 3.2 Gen. 2x2 Typu-C - 1 szt.
-USB 3.2 Gen. 1 - 2 szt.
-USB 2.0 - 3 szt.
-Złącze wentylatora CPU 4 pin - 2 szt.
-Złącze wentylatora SYS/CHA - 5 szt.
-Złącze pompy AIO - 1 szt.
-Złącze zasilania 8 pin - 2 szt.
-Złącze zasilania 24 pin - 1 szt.
-Thunderbolt 4 - 1 szt.
-Zewnętrzne złącza
-HDMI - 1 szt.
-DisplayPort - 1 szt.
-RJ45 (LAN) 2.5 Gbps - 1 szt.
-USB Type-C - 2 szt.
-USB 3.2 Gen. 2 - 10 szt.
-Audio jack - 5 szt.
-S/PDIF - 1 szt.
-Złącze anteny Wi-Fi - 2 szt.
-Przycisk Clear CMOS - 1 szt.
-Przycisk USB BIOS Flashback - 1 szt.
-Obsługa RAID
-RAID 0
-RAID 1
-RAID 5
-RAID 10
-Obsługa układów graficznych w procesorach
-Tak
-Układ audio
-Realtek ALC4080
-Łączność bezprzewodowa
-Bluetooth
-Wi-Fi 7 (802.11 be)
-Dodatkowe informacje
-Podświetlenie LED
-Format
-ATX
-Szerokość
+rodzaj chłodzenia chipsetu płyty głównej
+pasywny
+obsługiwane rodziny procesorów
+intel core i9
+intel core i7
+intel core i5
+intel core i3
+intel celeron
+intel pentium
+gniazdo procesora
+socket 1700
+chipset
+intel z790
+architektura procesora
+raptor lake refresh (14 generacja)
+raptor lake (13 generacja)
+alder lake-s (12 generacja)
+typ obsługiwanej pamięci
+ddr5-5600 mhz
+ddr5-5400 mhz
+ddr5-5200 mhz
+ddr5-5000 mhz
+ddr5-4800 mhz
+typ obsługiwanej pamięci oc
+ddr5-8000 mhz
+ddr5-7800 mhz
+ddr5-7600 mhz
+ddr5-7400 mhz
+ddr5-7200 mhz
+ddr5-7000 mhz
+ddr5-6800 mhz
+ddr5-6600 mhz
+ddr5-6400 mhz
+ddr5-6200 mhz
+ddr5-6000 mhz
+ddr5-5800 mhz
+liczba banków pamięci
+4 x dimm
+maksymalna wielkość pamięci ram
+192 gb
+architektura pamięci
+dual-channel
+wewnętrzne złącza
+sata iii (6 gb/s) - 4 szt.
+m.2 pcie nvme 4.0 x4 / sata - 1 szt.
+m.2 pcie nvme 4.0 x4 - 3 szt.
+m.2 pcie nvme 5.0 x4 - 1 szt.
+pcie 5.0 x16 - 1 szt.
+pcie 4.0 x16 (tryb x4) - 2 szt.
+usb 3.2 gen. 2x2 typu-c - 1 szt.
+usb 3.2 gen. 1 - 2 szt.
+usb 2.0 - 3 szt.
+złącze wentylatora cpu 4 pin - 2 szt.
+złącze wentylatora sys/cha - 5 szt.
+złącze pompy aio - 1 szt.
+złącze zasilania 8 pin - 2 szt.
+złącze zasilania 24 pin - 1 szt.
+thunderbolt 4 - 1 szt.
+zewnętrzne złącza
+hdmi - 1 szt.
+displayport - 1 szt.
+rj45 (lan) 2.5 gbps - 1 szt.
+usb type-c - 2 szt.
+usb 3.2 gen. 2 - 10 szt.
+audio jack - 5 szt.
+s/pdif - 1 szt.
+złącze anteny wi-fi - 2 szt.
+przycisk clear cmos - 1 szt.
+przycisk usb bios flashback - 1 szt.
+obsługa raid
+raid 0
+raid 1
+raid 5
+raid 10
+obsługa układów graficznych w procesorach
+tak
+układ audio
+realtek alc4080
+łączność bezprzewodowa
+bluetooth
+wi-fi 7 (802.11 be)
+dodatkowe informacje
+podświetlenie led
+format
+atx
+szerokość
 244 mm
-Wysokość
+wysokość
 305 mm
-Dołączone akcesoria
-Instrukcja obsługi
-Kabel SATA - 2 szt.
-Elementy montażowe
-Antena Wi-Fi 2.4/5/6 GHz - 1 szt.
-Kolor
-Czarny','28');
-insert into `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) values ('ASUS ROG HYPERION GR701','11','1599','5','Czarny','Typ obudowy
-Big Tower
-Panel boczny
-Szkło hartowane
-Podświetlenie
-ARGB
-Standard płyty głównej
-ATX
-microATX
-Mini-ITX
-EATX
-Miejsca na wewnętrzne dyski/napędy
+dołączone akcesoria
+instrukcja obsługi
+kabel sata - 2 szt.
+elementy montażowe
+antena wi-fi 2.4/5/6 ghz - 1 szt.
+kolor
+czarny','28');
+insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`, `id_lokalizacja`) values ('asus rog hyperion gr701','11','1599','5','czarny','typ obudowy
+big tower
+panel boczny
+szkło hartowane
+podświetlenie
+argb
+standard płyty głównej
+atx
+microatx
+mini-itx
+eatx
+miejsca na wewnętrzne dyski/napędy
 2 x 3,5""/2,5""
 2 x 5,25""
-Miejsca na karty rozszerzeń
+miejsca na karty rozszerzeń
 9
-Maksymalna długość karty graficznej
+maksymalna długość karty graficznej
 460 mm
-Maksymalna wysokość chłodzenia CPU
+maksymalna wysokość chłodzenia cpu
 190 mm
-Maksymalna liczba wentylatorów
+maksymalna liczba wentylatorów
 7
-Opcje montażu wentylatorów
+opcje montażu wentylatorów
 3x 120/140 mm (przód)
 1x 120/140 mm (tył)
 3x 120/140 mm (góra)
-Opcje montażu chłodzenia wodnego
+opcje montażu chłodzenia wodnego
 1 x 120 mm (przód) - chłodnica
 1 x 140 mm (przód) - chłodnica
 1 x 240 mm (przód) - chłodnica
@@ -899,117 +899,117 @@ Opcje montażu chłodzenia wodnego
 1 x 280 mm (góra) - chłodnica
 1 x 360 mm (góra) - chłodnica
 1 x 420 mm (góra) - chłodnica
-Liczba zainstalowanych wentylatorów
+liczba zainstalowanych wentylatorów
 4
-Zainstalowane wentylatory
+zainstalowane wentylatory
 3x 140 mm (przód)
 1x 140 mm (tył)
-Przyciski i regulatory
-Kontroler LED
-Power
-Reset
-Wyprowadzone złącza
-USB 3.2 Gen. 1 - 4 szt.
-USB 3.2 Gen. 2 Typu-C - 1 szt.
-USB 3.2 Gen. 2x2 Typu-C - 1 szt.
-Wyjście słuchawkowe/wejście mikrofonowe - 1 szt
-Materiał
-Aluminium
-Stal
-Szkło hartowane
-Kolor
-Czarny
-Dodatkowe informacje
-System aranżowania kabli
-Otwór wspomagający montaż chłodzenia na procesor
-Montaż zasilacza na dole obudowy
-Filtry antykurzowe
-Panele boczne w formie drzwi
-Kontroler / hub wentylatorów
-Dołączone akcesoria
-Instrukcja montażu
-Komplet śrubek i elementów montażowych
-Wysokość
+przyciski i regulatory
+kontroler led
+power
+reset
+wyprowadzone złącza
+usb 3.2 gen. 1 - 4 szt.
+usb 3.2 gen. 2 typu-c - 1 szt.
+usb 3.2 gen. 2x2 typu-c - 1 szt.
+wyjście słuchawkowe/wejście mikrofonowe - 1 szt
+materiał
+aluminium
+stal
+szkło hartowane
+kolor
+czarny
+dodatkowe informacje
+system aranżowania kabli
+otwór wspomagający montaż chłodzenia na procesor
+montaż zasilacza na dole obudowy
+filtry antykurzowe
+panele boczne w formie drzwi
+kontroler / hub wentylatorów
+dołączone akcesoria
+instrukcja montażu
+komplet śrubek i elementów montażowych
+wysokość
 639 mm
-Szerokość
+szerokość
 268 mm
-Głębokość
+głębokość
 659 mm
-Waga
+waga
 21 kg','27');
-insert into `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) values ('Kingston FURY 128GB','12','1779','2','Czarny','Seria
-Beast
-Rodzaj pamięci
-DDR5
-Pojemność całkowita
-128 GB (4x32 GB)
-Pojemność kości
-32 GB
-Liczba modułów
+insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`, `id_lokalizacja`) values ('kingston fury 128gb','12','1779','2','czarny','seria
+beast
+rodzaj pamięci
+ddr5
+pojemność całkowita
+128 gb (4x32 gb)
+pojemność kości
+32 gb
+liczba modułów
 4
-Taktowanie
-5600 MHz
-Opóźnienia (cycle latency)
-CL 40
-Timingi
-CL40-40-40
-Napięcie
-1,1 V
-Obsługiwane profile OC
-intel XMP
-Chłodzenie
-Radiator
-Wysokość z chłodzeniem
+taktowanie
+5600 mhz
+opóźnienia (cycle latency)
+cl 40
+timingi
+cl40-40-40
+napięcie
+1,1 v
+obsługiwane profile oc
+intel xmp
+chłodzenie
+radiator
+wysokość z chłodzeniem
 34,9 mm
-Pamięć ECC
-Tak
-Podświetlenie pamięci
-Nie
-Kolor
-Czarny','29');
-insert into `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) values ('be quiet! DARK POWER PRO 13','13','1999','15','Czarny','Moc maksymalna
-1600 W
-Standard
-ATX 3.0
-Wyprowadzone złącza
-CPU 4+4 (8) pin - 1 szt.
-CPU 8-pin - 1 szt.
-EPS12V 20+4 (24) pin - 1 szt.
-PCI-E 5.0 12+4 (16) pin - 2 szt
-PCI-E 2.0 6+2 (8) pin - 6 szt.
-MOLEX 4-pin - 5 szt.
-SATA - 16 szt.
-Sprawność
-92-94% przy 230V oraz 20-100% obciążeniu.
-Certyfikat
-80 PLUS Titanium
-Zabezpieczenia
-Przed zbyt wysokim prądem (OCP)
-Przeciwprzeciążeniowe (OPP)
-Termiczne (OTP)
-Przeciwprzepięciowe (OVP)
-Przeciwzwarciowe (SCP)
-Przed prądami udarowymi (SIP)
-Przed zbyt niskim napięciem (UVP)
-Typ okablowania
-Modularny
-Średnica wentylatora
+pamięć ecc
+tak
+podświetlenie pamięci
+nie
+kolor
+czarny','29');
+insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`, `id_lokalizacja`) values ('be quiet! dark power pro 13','13','1999','15','czarny','moc maksymalna
+1600 w
+standard
+atx 3.0
+wyprowadzone złącza
+cpu 4+4 (8) pin - 1 szt.
+cpu 8-pin - 1 szt.
+eps12v 20+4 (24) pin - 1 szt.
+pci-e 5.0 12+4 (16) pin - 2 szt
+pci-e 2.0 6+2 (8) pin - 6 szt.
+molex 4-pin - 5 szt.
+sata - 16 szt.
+sprawność
+92-94% przy 230v oraz 20-100% obciążeniu.
+certyfikat
+80 plus titanium
+zabezpieczenia
+przed zbyt wysokim prądem (ocp)
+przeciwprzeciążeniowe (opp)
+termiczne (otp)
+przeciwprzepięciowe (ovp)
+przeciwzwarciowe (scp)
+przed prądami udarowymi (sip)
+przed zbyt niskim napięciem (uvp)
+typ okablowania
+modularny
+średnica wentylatora
 135 mm
-Kolor
-Czarny
-Dodatkowe informacje
-Zgodny z normami CB, CE
-Dołączone akcesoria
-Elementy montażowe
-Wysokość
+kolor
+czarny
+dodatkowe informacje
+zgodny z normami cb, ce
+dołączone akcesoria
+elementy montażowe
+wysokość
 86 mm
-Szerokość
+szerokość
 150 mm
-Głębokość
+głębokość
 200 mm','30');
-insert into `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) values ('Deepcool AK620 Digital ARGB','14','309','1','Czarny','Rodzaj chłodzenia
-Aktywne
-Kompatybilność
+insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`, `id_lokalizacja`) values ('deepcool ak620 digital argb','14','309','1','czarny','rodzaj chłodzenia
+aktywne
+kompatybilność
 2066
 2011-3
 2011
@@ -1018,47 +1018,47 @@ Kompatybilność
 1155
 1151
 1150
-AM5
-AM4
-Rozmiar radiatora
+am5
+am4
+rozmiar radiatora
 127 x 110 x 157 mm
-Materiał radiatora
-Miedź
-Ciepłowody
+materiał radiatora
+miedź
+ciepłowody
 6 x 6 mm
-Liczba wentylatorów
+liczba wentylatorów
 2x 120 mm
-Kontrola obrotów
-PWM
-Prędkość obrotowa
+kontrola obrotów
+pwm
+prędkość obrotowa
 500 - 1850 obr./min
-Rodzaj łożyska
-Fluid Dynamic Bearing
-Maksymalny poziom hałasu
-28 dB
-Maksymalny przepływ powietrza
-68,9 CFM
-Rozmiar wentylatora
+rodzaj łożyska
+fluid dynamic bearing
+maksymalny poziom hałasu
+28 db
+maksymalny przepływ powietrza
+68,9 cfm
+rozmiar wentylatora
 120 x 120 x 25 mm
-Prąd zasilający
-0,12 A
-Podświetlenie
-RGB
-Dodatkowe informacje
-Kolorowy ekran LCD
-Wysokość
+prąd zasilający
+0,12 a
+podświetlenie
+rgb
+dodatkowe informacje
+kolorowy ekran lcd
+wysokość
 162 mm
-Szerokość
+szerokość
 129 mm
-Głębokość
+głębokość
 138 mm
-Dołączone akcesoria
-Pasta termoprzewodząca
-Zestaw montażowy backplate intel & AMD
-Zestaw montażowy','29');
-insert into `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) values ('Corsair iCUE H150i ELITE LCD XT Black','15','1369','8','Czarny','Rodzaj chłodzenia
-Wodne
-Kompatybilność
+dołączone akcesoria
+pasta termoprzewodząca
+zestaw montażowy backplate intel & amd
+zestaw montażowy','29');
+insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`, `id_lokalizacja`) values ('corsair icue h150i elite lcd xt black','15','1369','8','czarny','rodzaj chłodzenia
+wodne
+kompatybilność
 2066
 2011
 1700
@@ -1066,388 +1066,388 @@ Kompatybilność
 1156
 1151
 1150
-sTR4
-AM5
-AM4
-Materiał radiatora
-Aluminium
-Liczba wentylatorów
+str4
+am5
+am4
+materiał radiatora
+aluminium
+liczba wentylatorów
 3x 120 mm
-Kontrola obrotów
-PWM
-Prędkość obrotowa
+kontrola obrotów
+pwm
+prędkość obrotowa
 550 - 2100 obr./min
-Maksymalny poziom hałasu
-34,1 dB
-Maksymalny przepływ powietrza
-65,6 CFM
-Rozmiar wentylatora
+maksymalny poziom hałasu
+34,1 db
+maksymalny przepływ powietrza
+65,6 cfm
+rozmiar wentylatora
 120 x 120 x 25 mm
-Podświetlenie
-RGB
-Dodatkowe informacje
-Kolorowy ekran LCD
-Waga
+podświetlenie
+rgb
+dodatkowe informacje
+kolorowy ekran lcd
+waga
 1100 g
-Dołączone akcesoria
-Zestaw montażowy backplate intel & AMD
-Instrukcja instalacji
-Śrubki montażowe
-Kontroler RGB','27');
-insert into `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) values ('Creative Sound Blaster X AE-5 Plus','16','579','20','Czarny','Typ karty dźwiękowej
-Wewnętrzna
-System dźwięku
+dołączone akcesoria
+zestaw montażowy backplate intel & amd
+instrukcja instalacji
+śrubki montażowe
+kontroler rgb','27');
+insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`, `id_lokalizacja`) values ('creative sound blaster x ae-5 plus','16','579','20','czarny','typ karty dźwiękowej
+wewnętrzna
+system dźwięku
 5.1
 interfejs
-PCI-E
-Procesor dźwięku
-Sound Core3D
-Próbkowanie
+pci-e
+procesor dźwięku
+sound core3d
+próbkowanie
 32 bit
-Częstοtliwość próbkowania
-384 kHz
-Stosunek sygnału do szumu (SNR)
-122 dB
-Obsługiwane standardy dźwięku
-Dolby Surround
-DTS Connect
-Rodzaje wejść / wyjść
-Wyjście słuchawkowe/głośnikowe (jack 3,5 mm) - 4 szt.
-Wejście mikrofonowe - 1 szt.
-Wyjście optyczne S/PDIF Toslink - 1 szt.
-Dodatkowe informacje
-Kontroler audio DAC klasy premium
-Dołączone akcesoria
-Skrócona instrukcja obsługi','30');
-insert into `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) values ('ASUS XG-C100F','17','449','16','Czerwony','Rodzaj
-Przewodowa
+częstοtliwość próbkowania
+384 khz
+stosunek sygnału do szumu (snr)
+122 db
+obsługiwane standardy dźwięku
+dolby surround
+dts connect
+rodzaje wejść / wyjść
+wyjście słuchawkowe/głośnikowe (jack 3,5 mm) - 4 szt.
+wejście mikrofonowe - 1 szt.
+wyjście optyczne s/pdif toslink - 1 szt.
+dodatkowe informacje
+kontroler audio dac klasy premium
+dołączone akcesoria
+skrócona instrukcja obsługi','30');
+insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`, `id_lokalizacja`) values ('asus xg-c100f','17','449','16','czerwony','rodzaj
+przewodowa
 interfejs
-PCI-E
-Rodzaje wejść / wyjść
-SFP+ - 1 szt.
-Maksymalna prędkość transmisji bezprzewodowej
-do 10000 Mb/s
-Dodatkowe informacje
-Aluminiowy radiator
-QoS','24');
-insert into `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) values ('ASUS SDRW-08U5S Slim','18','229','3','Srebrny','Rodzaj napędu
-Zewnętrzny
-Funkcje napędu
-Nagrywanie płyt DVD
-Nagrywanie płyt CD
-Odtwarzanie płyt DVD
-Odtwarzanie płyt CD
+pci-e
+rodzaje wejść / wyjść
+sfp+ - 1 szt.
+maksymalna prędkość transmisji bezprzewodowej
+do 10000 mb/s
+dodatkowe informacje
+aluminiowy radiator
+qos','24');
+insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`, `id_lokalizacja`) values ('asus sdrw-08u5s slim','18','229','3','srebrny','rodzaj napędu
+zewnętrzny
+funkcje napędu
+nagrywanie płyt dvd
+nagrywanie płyt cd
+odtwarzanie płyt dvd
+odtwarzanie płyt cd
 interfejs
-USB 2.0
-Prędkość zapisu
-DVD±R - 8x
-DVD±R DL - 6x
-DVD-RAM - 5x
-DVD+RW - 8x
-DVD-RW - 6x
-CD-R - 24x
-CD-RW - 24x
-Prędkość odczytu
-DVD-ROM - 8x
-CD-ROM - 24x
-DVD±R - 8x
-DVD±R DL - 8x
-DVD-RAM - 5x
-DVD+RW - 8x
-DVD-RW - 8x
-CD-R - 24x
-CD-RW - 24x
-Czas dostępu
-DVD - 160 ms
-CD - 160 ms
-Wysokość
+usb 2.0
+prędkość zapisu
+dvd±r - 8x
+dvd±r dl - 6x
+dvd-ram - 5x
+dvd+rw - 8x
+dvd-rw - 6x
+cd-r - 24x
+cd-rw - 24x
+prędkość odczytu
+dvd-rom - 8x
+cd-rom - 24x
+dvd±r - 8x
+dvd±r dl - 8x
+dvd-ram - 5x
+dvd+rw - 8x
+dvd-rw - 8x
+cd-r - 24x
+cd-rw - 24x
+czas dostępu
+dvd - 160 ms
+cd - 160 ms
+wysokość
 12,9 mm
-Szerokość
+szerokość
 135,5 mm
-Głebokość
+głebokość
 140 mm
-Waga
+waga
 255 g','26');
-insert into `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) values ('HyperX ProCast ','19','1119','2','Czarny','Przeznaczenie
-Komputerowe
-System mocowania
-Statyw biurkowy
-Rodzaj łączności
-Przewodowa
-Charakterystyka kierunkowości
-Kardioidalna
-Złącze
-XLR - 1 szt.
-Czułość
--38 dB
-Zasilanie
-Phantom 48V
-Dodatkowe informacje
-Gwint 3/8""
-Gwint 5/8""
-Uchwyt antywstrząsowy
-Filtr górnoprzepustowy - 80 Hz
-Stosunek sygnału do szumu: 75 dB
-Kolor
-Czarny
-Dołączone akcesoria
-Filtr pop
-Instrukcja obsługi
-Adapter do statywu
-Waga
+insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`, `id_lokalizacja`) values ('hyperx procast ','19','1119','2','czarny','przeznaczenie
+komputerowe
+system mocowania
+statyw biurkowy
+rodzaj łączności
+przewodowa
+charakterystyka kierunkowości
+kardioidalna
+złącze
+xlr - 1 szt.
+czułość
+-38 db
+zasilanie
+phantom 48v
+dodatkowe informacje
+gwint 3/8""
+gwint 5/8""
+uchwyt antywstrząsowy
+filtr górnoprzepustowy - 80 hz
+stosunek sygnału do szumu: 75 db
+kolor
+czarny
+dołączone akcesoria
+filtr pop
+instrukcja obsługi
+adapter do statywu
+waga
 372 g','27');
-insert into `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) values ('HP DesignJet T230','20','4239','4','Czarny','Przeznaczenie produktu
-Do biura i korporacji
-Zastosowanie
-Rysunki liniowe
-Prezentacje
-Renderingi
-Technologia druku
-Atramentowa, kolorowa
-Obsługiwany typ nośnika
-Papier zwykły
-Obsługiwane formaty nośników
-A4
-A3
-A2
-A1
+insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`, `id_lokalizacja`) values ('hp designjet t230','20','4239','4','czarny','przeznaczenie produktu
+do biura i korporacji
+zastosowanie
+rysunki liniowe
+prezentacje
+renderingi
+technologia druku
+atramentowa, kolorowa
+obsługiwany typ nośnika
+papier zwykły
+obsługiwane formaty nośników
+a4
+a3
+a2
+a1
 24""
-System stałego zasilania atramentem (CISS)
-Nie
-Rozmiar zwoju
-Od 279 do 610 mm
-Rodzaje podajników papieru
-Rolka
-Szybkość druku w kolorze
+system stałego zasilania atramentem (ciss)
+nie
+rozmiar zwoju
+od 279 do 610 mm
+rodzaje podajników papieru
+rolka
+szybkość druku w kolorze
 do 1,1 str./min
-Maksymalna rozdzielczość druku
+maksymalna rozdzielczość druku
 2400 x 1200 dpi
-Maksymalna gramatura papieru
+maksymalna gramatura papieru
 280 g/m²
-Druk dwustronny (dupleks)
-Brak
-Wersja z WiFi
-Tak
+druk dwustronny (dupleks)
+brak
+wersja z wifi
+tak
 interfejsy
-USB
-Wi-Fi
-LAN (Ethernet)
-AirPrint
-Wyświetlacz
-Wbudowany
-Liczba wkładów drukujących
+usb
+wi-fi
+lan (ethernet)
+airprint
+wyświetlacz
+wbudowany
+liczba wkładów drukujących
 4
-Dodatkowe informacje
-Drukowanie bezpośrednio ze smartfonów i tabletów
-Automatyczna gilotyna
-Dołączone akcesoria
-Kabel zasilający
-Tusze startowe
-Kolor
-Czarny
-Szerokość
+dodatkowe informacje
+drukowanie bezpośrednio ze smartfonów i tabletów
+automatyczna gilotyna
+dołączone akcesoria
+kabel zasilający
+tusze startowe
+kolor
+czarny
+szerokość
 1013 mm
-Wysokość
+wysokość
 285 mm
-Głębokość
+głębokość
 440 mm
-Waga
+waga
 21,5 kg','29');
-insert into `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) values ('Sony BRAVIA Theatre Bar 9 + SA-RS3S','21','6399','14','Czarny','Liczba kanałów
+insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`, `id_lokalizacja`) values ('sony bravia theatre bar 9 + sa-rs3s','21','6399','14','czarny','liczba kanałów
 7.0.2
-Subwoofer
-Brak
-Łączność bezprzewodowa
-Bluetooth
-Wi-Fi
-AirPlay
-Zakrzywiona konstrukcja
-Nie
-Systemy dźwięku
-Dolby Digital
-Dolby Digital Plus
-Dolby True HD
-DTS
-DTS-ES
-Dolby Dual Mono
-Dolby Atmos
-DTS: X
-IMAX Enhanced
-360 Spatial Sound Mapping
-Odtwarzane formaty plików
-AAC
-SBC
-LDAC
-Rodzaje wejść
-HDMI 1 szt.
-Rodzaje wyjść
-HDMI (eARC)
-Funkcje dodatkowe
-Tryb głosowy
-Tryb nocny
-Spotify Connect
-Informacje uzupełniające
-Technologia wirtualnego dźwięku przestrzennego
-Kolor
-Czarny
-Wysokość
+subwoofer
+brak
+łączność bezprzewodowa
+bluetooth
+wi-fi
+airplay
+zakrzywiona konstrukcja
+nie
+systemy dźwięku
+dolby digital
+dolby digital plus
+dolby true hd
+dts
+dts-es
+dolby dual mono
+dolby atmos
+dts: x
+imax enhanced
+360 spatial sound mapping
+odtwarzane formaty plików
+aac
+sbc
+ldac
+rodzaje wejść
+hdmi 1 szt.
+rodzaje wyjść
+hdmi (earc)
+funkcje dodatkowe
+tryb głosowy
+tryb nocny
+spotify connect
+informacje uzupełniające
+technologia wirtualnego dźwięku przestrzennego
+kolor
+czarny
+wysokość
 64 mm
-Szerokość
+szerokość
 1300 mm
-Głębokość
+głębokość
 113 mm
-Waga
+waga
 5,5 kg
-Dołączone akcesoria
-Kabel HDMI
-Pilot
-Kabel zasilający
-Baterie do pilota
-Uchwyty do montażu na ścianie
-Głośniki
-Podstawa stołowa','28');
-insert into `produkty`(`Nazwa`, `id_typ_produktu`, `Cena`, `Ilosc`, `Kolor`, `Opis`, `id_lokalizacja`) values ('JBL QUANTUM 910 PSP','22','999','20','Biały','Łączność
-Bezprzewodowa i przewodowa
-Rodzaj łączności
-Bluetooth 5.2
-Budowa słuchawek
-Nauszne
-Zamknięte
-System audio
-Stereo 2.0
-Wielokanałowy 7.1 - wirtualne
-Redukcja hałasu
-Aktywna - ANC
-Średnica membrany
+dołączone akcesoria
+kabel hdmi
+pilot
+kabel zasilający
+baterie do pilota
+uchwyty do montażu na ścianie
+głośniki
+podstawa stołowa','28');
+insert into `produkty`(`nazwa`, `id_typ_produktu`, `cena`, `ilosc`, `kolor`, `opis`, `id_lokalizacja`) values ('jbl quantum 910 psp','22','999','20','biały','łączność
+bezprzewodowa i przewodowa
+rodzaj łączności
+bluetooth 5.2
+budowa słuchawek
+nauszne
+zamknięte
+system audio
+stereo 2.0
+wielokanałowy 7.1 - wirtualne
+redukcja hałasu
+aktywna - anc
+średnica membrany
 50 mm
-Pasmo przenoszenia słuchawek
-20 ~ 40000 Hz
-Impedancja słuchawek
-32 Ω
-Czułość słuchawek
-111 dB
-Wbudowany mikrofon
-Posiada, przy słuchawce
-Odłączany mikrofon
-Nie
-Charakterystyka mikrofonu
-Jednokierunkowy
-Pasmo przenoszenia mikrofonu
-100 ~ 8000 Hz
-Czułość mikrofonu
--38 dB
-Zasilanie
-Wbudowany akumulator 1300 mAh
-Czas ładowania
+pasmo przenoszenia słuchawek
+20 ~ 40000 hz
+impedancja słuchawek
+32 ω
+czułość słuchawek
+111 db
+wbudowany mikrofon
+posiada, przy słuchawce
+odłączany mikrofon
+nie
+charakterystyka mikrofonu
+jednokierunkowy
+pasmo przenoszenia mikrofonu
+100 ~ 8000 hz
+czułość mikrofonu
+-38 db
+zasilanie
+wbudowany akumulator 1300 mah
+czas ładowania
 ok. 3,5h
-Maksymalny czas pracy
+maksymalny czas pracy
 do 47 h (przy wyłączonym podświetleniu)
-Kompatybilność
-Android
-Windows
-Mac OS
-iOS
-Nintendo Switch
-Xbox One
-Xbox Series X
-Xbox Series S
-PlayStation 4
-PlayStation 5
-Połączenie z konsolą
-Bezprzewodowo
-Bezprzewodowo – wymagany adapter USB
-Przewodowo – jack 3,5mm
-Zastosowane technologie
-Certyfikat Hi-Res Audio
-A2DP
-HFP
-QuantumSPHERE 360™
-QuantumSURROUND
-Materiał nauszników
-Pianka
-Skóra naturalna
-Dodatkowe informacje
-Regulowany pałąk
-Podświetlane nauszniki
-Pianka memory w nausznicach
-Miękko wyściełany pałąk
-Przetwornik dynamiczny
-Możliwość wyciszania mikrofonu
-Ruchomy mikrofon
-Funkcja śledzenia ruchu głowy
-Kolor
-Biało-niebieskie
-Dołączone akcesoria
-Odbiornik
-Kabel USB
-Kabel Jack 3,5 mm
-Adapter USB-A - USB-C
-Osłona przeciwwietrzna
-Instrukcja obsługi','21');
+kompatybilność
+android
+windows
+mac os
+ios
+nintendo switch
+xbox one
+xbox series x
+xbox series s
+playstation 4
+playstation 5
+połączenie z konsolą
+bezprzewodowo
+bezprzewodowo – wymagany adapter usb
+przewodowo – jack 3,5mm
+zastosowane technologie
+certyfikat hi-res audio
+a2dp
+hfp
+quantumsphere 360™
+quantumsurround
+materiał nauszników
+pianka
+skóra naturalna
+dodatkowe informacje
+regulowany pałąk
+podświetlane nauszniki
+pianka memory w nausznicach
+miękko wyściełany pałąk
+przetwornik dynamiczny
+możliwość wyciszania mikrofonu
+ruchomy mikrofon
+funkcja śledzenia ruchu głowy
+kolor
+biało-niebieskie
+dołączone akcesoria
+odbiornik
+kabel usb
+kabel jack 3,5 mm
+adapter usb-a - usb-c
+osłona przeciwwietrzna
+instrukcja obsługi','21');
 
-insert into `magazyny`(`Nazwa`, `id_lokalizacja`) values ('Magazyn_1','21');
-insert into `magazyny`(`Nazwa`, `id_lokalizacja`) values ('Magazyn_2','22');
-insert into `magazyny`(`Nazwa`, `id_lokalizacja`) values ('Magazyn_3','23');
-insert into `magazyny`(`Nazwa`, `id_lokalizacja`) values ('Magazyn_4','24');
-insert into `magazyny`(`Nazwa`, `id_lokalizacja`) values ('Magazyn_5','25');
-insert into `magazyny`(`Nazwa`, `id_lokalizacja`) values ('Magazyn_6','26');
-insert into `magazyny`(`Nazwa`, `id_lokalizacja`) values ('Magazyn_7','27');
-insert into `magazyny`(`Nazwa`, `id_lokalizacja`) values ('Magazyn_8','28');
-insert into `magazyny`(`Nazwa`, `id_lokalizacja`) values ('Magazyn_9','29');
-insert into `magazyny`(`Nazwa`, `id_lokalizacja`) values ('Magazyn_10','30');
+insert into `magazyny`(`nazwa`, `id_lokalizacja`) values ('magazyn_1','21');
+insert into `magazyny`(`nazwa`, `id_lokalizacja`) values ('magazyn_2','22');
+insert into `magazyny`(`nazwa`, `id_lokalizacja`) values ('magazyn_3','23');
+insert into `magazyny`(`nazwa`, `id_lokalizacja`) values ('magazyn_4','24');
+insert into `magazyny`(`nazwa`, `id_lokalizacja`) values ('magazyn_5','25');
+insert into `magazyny`(`nazwa`, `id_lokalizacja`) values ('magazyn_6','26');
+insert into `magazyny`(`nazwa`, `id_lokalizacja`) values ('magazyn_7','27');
+insert into `magazyny`(`nazwa`, `id_lokalizacja`) values ('magazyn_8','28');
+insert into `magazyny`(`nazwa`, `id_lokalizacja`) values ('magazyn_9','29');
+insert into `magazyny`(`nazwa`, `id_lokalizacja`) values ('magazyn_10','30');
 
-insert into `sklepy`(`nazwa`,`id_pracownik_menager`, `id_lokalizacja`, `Godziny_otwarcia`) values ('TechZone','1','11','09:00 - 18:00');
-insert into `sklepy`(`nazwa`,`id_pracownik_menager`, `id_lokalizacja`, `Godziny_otwarcia`) values ('TechZone','2','12','09:00 - 18:00');
-insert into `sklepy`(`nazwa`,`id_pracownik_menager`, `id_lokalizacja`, `Godziny_otwarcia`) values ('TechZone','3','13','09:00 - 18:00');
-insert into `sklepy`(`nazwa`,`id_pracownik_menager`, `id_lokalizacja`, `Godziny_otwarcia`) values ('TechZone','4','14','09:00 - 18:00');
-insert into `sklepy`(`nazwa`,`id_pracownik_menager`, `id_lokalizacja`, `Godziny_otwarcia`) values ('TechZone','5','15','09:00 - 18:00');
-insert into `sklepy`(`nazwa`,`id_pracownik_menager`, `id_lokalizacja`, `Godziny_otwarcia`) values ('TechZone','6','16','09:00 - 18:00');
-insert into `sklepy`(`nazwa`,`id_pracownik_menager`, `id_lokalizacja`, `Godziny_otwarcia`) values ('TechZone','7','17','09:00 - 18:00');
-insert into `sklepy`(`nazwa`,`id_pracownik_menager`, `id_lokalizacja`, `Godziny_otwarcia`) values ('TechZone','8','18','09:00 - 18:00');
-insert into `sklepy`(`nazwa`,`id_pracownik_menager`, `id_lokalizacja`, `Godziny_otwarcia`) values ('TechZone','9','19','09:00 - 18:00');
-insert into `sklepy`(`nazwa`,`id_pracownik_menager`, `id_lokalizacja`, `Godziny_otwarcia`) values ('TechZone','10','20','09:00 - 18:00');
+insert into `sklepy`(`nazwa`,`id_pracownik_menager`, `id_lokalizacja`, `godziny_otwarcia`) values ('techzone','1','11','09:00 - 18:00');
+insert into `sklepy`(`nazwa`,`id_pracownik_menager`, `id_lokalizacja`, `godziny_otwarcia`) values ('techzone','2','12','09:00 - 18:00');
+insert into `sklepy`(`nazwa`,`id_pracownik_menager`, `id_lokalizacja`, `godziny_otwarcia`) values ('techzone','3','13','09:00 - 18:00');
+insert into `sklepy`(`nazwa`,`id_pracownik_menager`, `id_lokalizacja`, `godziny_otwarcia`) values ('techzone','4','14','09:00 - 18:00');
+insert into `sklepy`(`nazwa`,`id_pracownik_menager`, `id_lokalizacja`, `godziny_otwarcia`) values ('techzone','5','15','09:00 - 18:00');
+insert into `sklepy`(`nazwa`,`id_pracownik_menager`, `id_lokalizacja`, `godziny_otwarcia`) values ('techzone','6','16','09:00 - 18:00');
+insert into `sklepy`(`nazwa`,`id_pracownik_menager`, `id_lokalizacja`, `godziny_otwarcia`) values ('techzone','7','17','09:00 - 18:00');
+insert into `sklepy`(`nazwa`,`id_pracownik_menager`, `id_lokalizacja`, `godziny_otwarcia`) values ('techzone','8','18','09:00 - 18:00');
+insert into `sklepy`(`nazwa`,`id_pracownik_menager`, `id_lokalizacja`, `godziny_otwarcia`) values ('techzone','9','19','09:00 - 18:00');
+insert into `sklepy`(`nazwa`,`id_pracownik_menager`, `id_lokalizacja`, `godziny_otwarcia`) values ('techzone','10','20','09:00 - 18:00');
 
-insert into `dostawcy`(`Nazwa`, `Numer_telefonu`, `Adres_email`) values ('FedEx','+48501234567','fedex@example.com');
-insert into `dostawcy`(`Nazwa`, `Numer_telefonu`, `Adres_email`) values ('UPS','+48602345676','ups@example.com');
-insert into `dostawcy`(`Nazwa`, `Numer_telefonu`, `Adres_email`) values ('GLS','+48600456789','dhl@example.com');
-insert into `dostawcy`(`Nazwa`, `Numer_telefonu`, `Adres_email`) values ('DPD','+48503567890','gls@example.com');
-insert into `dostawcy`(`Nazwa`, `Numer_telefonu`, `Adres_email`) values ('TNT','+48604678901','dpd@example.com');
-insert into `dostawcy`(`Nazwa`, `Numer_telefonu`, `Adres_email`) values ('Hermes','+48505789012','tnt@example.com');
-insert into `dostawcy`(`Nazwa`, `Numer_telefonu`, `Adres_email`) values ('Yodel','+48606890123','hermes@example.com');
-insert into `dostawcy`(`Nazwa`, `Numer_telefonu`, `Adres_email`) values ('PostNL','+48507901234','yodel@example.com');
-insert into `dostawcy`(`Nazwa`, `Numer_telefonu`, `Adres_email`) values ('Chronopost','+48608012345','postnl@example.com');
-insert into `dostawcy`(`Nazwa`, `Numer_telefonu`, `Adres_email`) values ('Aramex','+48509123456','aramex@example.com');
+insert into `dostawcy`(`nazwa`, `numer_telefonu`, `adres_email`) values ('fedex','+48501234567','fedex@example.com');
+insert into `dostawcy`(`nazwa`, `numer_telefonu`, `adres_email`) values ('ups','+48602345676','ups@example.com');
+insert into `dostawcy`(`nazwa`, `numer_telefonu`, `adres_email`) values ('gls','+48600456789','dhl@example.com');
+insert into `dostawcy`(`nazwa`, `numer_telefonu`, `adres_email`) values ('dpd','+48503567890','gls@example.com');
+insert into `dostawcy`(`nazwa`, `numer_telefonu`, `adres_email`) values ('tnt','+48604678901','dpd@example.com');
+insert into `dostawcy`(`nazwa`, `numer_telefonu`, `adres_email`) values ('hermes','+48505789012','tnt@example.com');
+insert into `dostawcy`(`nazwa`, `numer_telefonu`, `adres_email`) values ('yodel','+48606890123','hermes@example.com');
+insert into `dostawcy`(`nazwa`, `numer_telefonu`, `adres_email`) values ('postnl','+48507901234','yodel@example.com');
+insert into `dostawcy`(`nazwa`, `numer_telefonu`, `adres_email`) values ('chronopost','+48608012345','postnl@example.com');
+insert into `dostawcy`(`nazwa`, `numer_telefonu`, `adres_email`) values ('aramex','+48509123456','aramex@example.com');
 
-insert into `typy_platnosci`(`Nazwa`) values ('BLIK');
-insert into `typy_platnosci`(`Nazwa`) values ('Karta Debetowa');
-insert into `typy_platnosci`(`Nazwa`) values ('Karta Kredytowa');
-insert into `typy_platnosci`(`Nazwa`) values ('Przelew Bankowy');
-insert into `typy_platnosci`(`Nazwa`) values ('Gotówka');
-insert into `typy_platnosci`(`Nazwa`) values ('Google Pay');
-insert into `typy_platnosci`(`Nazwa`) values ('Apple Pay');
-insert into `typy_platnosci`(`Nazwa`) values ('Płatność za pobraniem');
-insert into `typy_platnosci`(`Nazwa`) values ('Płatność przy użyciu karty podarunkowej');
-insert into `typy_platnosci`(`Nazwa`) values ('Płatność na raty');
+insert into `typy_platnosci`(`nazwa`) values ('blik');
+insert into `typy_platnosci`(`nazwa`) values ('karta debetowa');
+insert into `typy_platnosci`(`nazwa`) values ('karta kredytowa');
+insert into `typy_platnosci`(`nazwa`) values ('przelew bankowy');
+insert into `typy_platnosci`(`nazwa`) values ('gotówka');
+insert into `typy_platnosci`(`nazwa`) values ('google pay');
+insert into `typy_platnosci`(`nazwa`) values ('apple pay');
+insert into `typy_platnosci`(`nazwa`) values ('płatność za pobraniem');
+insert into `typy_platnosci`(`nazwa`) values ('płatność przy użyciu karty podarunkowej');
+insert into `typy_platnosci`(`nazwa`) values ('płatność na raty');
 
-insert into `typy_dostawy`(`nazwa`) values ('Dostawa do domu');
-insert into `typy_dostawy`(`nazwa`) values ('Dostawa do punktu odbioru');
-insert into `typy_dostawy`(`nazwa`) values ('Dostawa międzynarodowa');
-insert into `typy_dostawy`(`nazwa`) values ('Dostawa ekspresowa do domu');
-insert into `typy_dostawy`(`nazwa`) values ('Dostawa ekspresowa do punktu odbioru');
-insert into `typy_dostawy`(`nazwa`) values ('Dostawa w sobotę do domu');
-insert into `typy_dostawy`(`nazwa`) values ('Dostawa w sobotę do punktu odbioru');
-insert into `typy_dostawy`(`nazwa`) values ('Dostawa za pobraniem ');
+insert into `typy_dostawy`(`nazwa`) values ('dostawa do domu');
+insert into `typy_dostawy`(`nazwa`) values ('dostawa do punktu odbioru');
+insert into `typy_dostawy`(`nazwa`) values ('dostawa międzynarodowa');
+insert into `typy_dostawy`(`nazwa`) values ('dostawa ekspresowa do domu');
+insert into `typy_dostawy`(`nazwa`) values ('dostawa ekspresowa do punktu odbioru');
+insert into `typy_dostawy`(`nazwa`) values ('dostawa w sobotę do domu');
+insert into `typy_dostawy`(`nazwa`) values ('dostawa w sobotę do punktu odbioru');
+insert into `typy_dostawy`(`nazwa`) values ('dostawa za pobraniem ');
 
-insert into `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `id_typ_dostawy`) values ('1', '21', '31', '1', '1', '1', '22299', '2');
-insert into `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `id_typ_dostawy`) values ('2', '22', '32', '2', '1', '2', '18900', '2');
-insert into `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `id_typ_dostawy`) values ('3', '23', '33', '3', '1', '3', '7959', '2');
-insert into `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `id_typ_dostawy`) values ('4', '22', '34', '4', '1', '4', '899', '2');
-insert into `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `id_typ_dostawy`) values ('5', '22', '35', '5', '1', '2', '18900', '2');
-insert into `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `id_typ_dostawy`) values ('6', '2', '36', '6', '1', '5', '1099', '2');
-insert into `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `id_typ_dostawy`) values ('7', '22', '37', '7', '1', '2', '18900', '2');
-insert into `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `id_typ_dostawy`) values ('8', '24', '38', '8', '1', '5', '1099', '2');
-insert into `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `id_typ_dostawy`) values ('9', '22', '37', '7', '1', '2', '18900', '2');
-insert into `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `Kwota_zamowienia`, `id_typ_dostawy`) values ('10', '22', '39', '9', '1', '2', '18900', '2');
+insert into `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `kwota_zamowienia`, `id_typ_dostawy`) values ('1', '21', '31', '1', '1', '1', '22299', '2');
+insert into `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `kwota_zamowienia`, `id_typ_dostawy`) values ('2', '22', '32', '2', '1', '2', '18900', '2');
+insert into `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `kwota_zamowienia`, `id_typ_dostawy`) values ('3', '23', '33', '3', '1', '3', '7959', '2');
+insert into `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `kwota_zamowienia`, `id_typ_dostawy`) values ('4', '22', '34', '4', '1', '4', '899', '2');
+insert into `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `kwota_zamowienia`, `id_typ_dostawy`) values ('5', '22', '35', '5', '1', '2', '18900', '2');
+insert into `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `kwota_zamowienia`, `id_typ_dostawy`) values ('6', '2', '36', '6', '1', '5', '1099', '2');
+insert into `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `kwota_zamowienia`, `id_typ_dostawy`) values ('7', '22', '37', '7', '1', '2', '18900', '2');
+insert into `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `kwota_zamowienia`, `id_typ_dostawy`) values ('8', '24', '38', '8', '1', '5', '1099', '2');
+insert into `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `kwota_zamowienia`, `id_typ_dostawy`) values ('9', '22', '37', '7', '1', '2', '18900', '2');
+insert into `zamowienia`(`id_klienta`, `id_lokalizacja_produktu`, `id_lokalizacja_odbioru`, `id_pracownika`, `id_typ_platnosci`, `id_produkt`, `kwota_zamowienia`, `id_typ_dostawy`) values ('10', '22', '39', '9', '1', '2', '18900', '2');
 
 
 insert into `dostawcy_do_zamowienia`( `id_zamowienia`, `id_dostawca`) values ('1','1');

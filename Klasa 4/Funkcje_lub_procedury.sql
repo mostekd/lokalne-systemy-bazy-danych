@@ -1,95 +1,95 @@
-DELIMITER //
-CREATE PROCEDURE sp_RaportZyskow(IN start_date DATE, IN end_date DATE, IN id_klienta INT)
-BEGIN
-    SELECT 
-        z.id_zamowienia AS 'ID Zamówienia',
-        z.id_klienta AS 'ID Klienta',
-        z.Kwota_zamowienia AS 'Kwota Zamówienia',
-        p.Nazwa AS 'Typ Płatności',
-        d.Nazwa AS 'Dostawca',
-        (z.Kwota_zamowienia - d.koszt_dostawy) AS 'Łączna Wartość Sprzedaży'
-    FROM 
-        Zamowienia z
-    JOIN 
-        Typy_platnosci p ON z.id_typ_platnosci = p.id_typ_platnosci
-    JOIN 
-        Dostawcy_do_zamowienia dz ON z.id_zamowienia = dz.id_zamowienia
-    JOIN
-        Dostawcy d ON dz.id_dostawca = d.id_dostawcy
-    WHERE 
-        z.data_zamowienia BETWEEN start_date AND end_date
-        AND (id_klienta IS NULL OR z.id_klienta = id_klienta);
-
-    SELECT 
-        SUM(z.Kwota_zamowienia - d.koszt_dostawy) AS 'Suma Zysków'
-    FROM 
-        Zamowienia z
-    JOIN 
-        Dostawcy_do_zamowienia dz ON z.id_zamowienia = dz.id_zamowienia
-    JOIN
-        Dostawcy d ON dz.id_dostawca = d.id_dostawcy
-    WHERE 
-        z.data_zamowienia BETWEEN start_date AND end_date
-        AND (id_klienta IS NULL OR z.id_klienta = id_klienta);
-END //
-DELIMITER ;
-
-
-
-DELIMITER //
-CREATE PROCEDURE sp_RaportEfektywnosciPracownikow(IN start_date DATE, IN end_date DATE)
-BEGIN
-    SELECT 
-        pr.imie AS 'Imię Pracownika',
-        pr.nazwisko AS 'Nazwisko Pracownika',
-        s.stanowisko AS 'Stanowisko',
-        COUNT(z.id_zamowienia) AS 'Liczba Zrealizowanych Zamówień',
-        SUM(z.Kwota_zamowienia) AS 'Łączna Kwota Zamówień'
-    FROM 
+delimiter //
+create procedure sp_raportzyskow(in start_date date, in end_date date, in id_klienta int)
+begin
+    select 
+        z.id_zamowienia as 'id zamówienia',
+        z.id_klienta as 'id klienta',
+        z.kwota_zamowienia as 'kwota zamówienia',
+        p.nazwa as 'typ płatności',
+        d.nazwa as 'dostawca',
+        (z.kwota_zamowienia - d.koszt_dostawy) as 'łączna wartość sprzedaży'
+    from 
         zamowienia z
-    JOIN 
-        pracownicy pr ON z.id_pracownika = pr.id_pracownika
-    JOIN 
-        stanowiska s ON pr.id_stanowiska = s.id_stanowiska
-    WHERE 
-        z.data_zamowienia BETWEEN start_date AND end_date
-    GROUP BY 
+    join 
+        typy_platnosci p on z.id_typ_platnosci = p.id_typ_platnosci
+    join 
+        dostawcy_do_zamowienia dz on z.id_zamowienia = dz.id_zamowienia
+    join
+        dostawcy d on dz.id_dostawca = d.id_dostawcy
+    where 
+        z.data_zamowienia between start_date and end_date
+        and (id_klienta is null or z.id_klienta = id_klienta);
+
+    select 
+        sum(z.kwota_zamowienia - d.koszt_dostawy) as 'suma zysków'
+    from 
+        zamowienia z
+    join 
+        dostawcy_do_zamowienia dz on z.id_zamowienia = dz.id_zamowienia
+    join
+        dostawcy d on dz.id_dostawca = d.id_dostawcy
+    where 
+        z.data_zamowienia between start_date and end_date
+        and (id_klienta is null or z.id_klienta = id_klienta);
+end //
+delimiter ;
+
+
+
+delimiter //
+create procedure sp_raportefektywnoscipracownikow(in start_date date, in end_date date)
+begin
+    select 
+        pr.imie as 'imię pracownika',
+        pr.nazwisko as 'nazwisko pracownika',
+        s.stanowisko as 'stanowisko',
+        count(z.id_zamowienia) as 'liczba zrealizowanych zamówień',
+        sum(z.kwota_zamowienia) as 'łączna kwota zamówień'
+    from 
+        zamowienia z
+    join 
+        pracownicy pr on z.id_pracownika = pr.id_pracownika
+    join 
+        stanowiska s on pr.id_stanowiska = s.id_stanowiska
+    where 
+        z.data_zamowienia between start_date and end_date
+    group by 
         pr.id_pracownika;
     
-    SELECT 
-        AVG(SUM(z.Kwota_zamowienia)) OVER () AS 'Średnia Wartość Zamówień na Pracownika',
-        COUNT(z.id_zamowienia) AS 'Ogólna Liczba Obsłużonych Zamówień'
-    FROM 
+    select 
+        avg(sum(z.kwota_zamowienia)) over () as 'średnia wartość zamówień na pracownika',
+        count(z.id_zamowienia) as 'ogólna liczba obsłużonych zamówień'
+    from 
         zamowienia z
-    WHERE 
-        z.data_zamowienia BETWEEN start_date AND end_date;
-END //
-DELIMITER ;
+    where 
+        z.data_zamowienia between start_date and end_date;
+end //
+delimiter ;
 
 
-DELIMITER //
-CREATE PROCEDURE sp_RaportMagazynowy(IN id_magazyn INT)
-BEGIN
-    SELECT 
-        m.nazwa_magazynu AS 'Nazwa Magazynu',
-        p.nazwa AS 'Nazwa Produktu',
-        p.ilosc AS 'Ilość Dostępnych Sztuk',
-        p.cena AS 'Cena Jednostkowa',
-        (p.ilosc * p.cena) AS 'Łączna Wartość Produktów'
-    FROM 
+delimiter //
+create procedure sp_raportmagazynowy(in id_magazyn int)
+begin
+    select 
+        m.nazwa_magazynu as 'nazwa magazynu',
+        p.nazwa as 'nazwa produktu',
+        p.ilosc as 'ilość dostępnych sztuk',
+        p.cena as 'cena jednostkowa',
+        (p.ilosc * p.cena) as 'łączna wartość produktów'
+    from 
         produkty p
-    JOIN 
-        magazyny m ON p.id_lokalizacja = m.id_magazynu
-    WHERE 
+    join 
+        magazyny m on p.id_lokalizacja = m.id_magazynu
+    where 
         m.id_magazynu = id_magazyn;
     
-    SELECT 
-        SUM(p.ilosc * p.cena) AS 'Suma Wartości Produktów w Magazynie'
-    FROM 
+    select 
+        sum(p.ilosc * p.cena) as 'suma wartości produktów w magazynie'
+    from 
         produkty p
-    JOIN 
-        magazyny m ON p.id_lokalizacja = m.id_magazynu
-    WHERE 
+    join 
+        magazyny m on p.id_lokalizacja = m.id_magazynu
+    where 
         m.id_magazynu = id_magazyn;
-END //
-DELIMITER ;
+end //
+delimiter ;
