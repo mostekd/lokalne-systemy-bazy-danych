@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Figury Geometryczne i Matematycy</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <h1><a href="./index.html">FIGURY GEOMETRYCZNE I <br> MATEMATYCY</a></h1>
+        </header>
+        <nav>
+            <p>WYBIERZ FIGURĘ</p>
+            <li>
+                <a href="./kwadrat.html">KWADRAT</a>
+                <ul>
+                    <li>obwód</li>
+                    <li>pole</li>
+                </ul>
+            </li>
+            <li>
+                <a href="./kolo.html">KOŁO</a>
+                <ul>
+                    <li>obwód</li>
+                    <li>pole</li>
+                </ul>
+            </li>
+        </nav>
+        <main>
+            <h3>KWADRAT</h3>
+            <p>
+                Podaj długość boku
+                <input type="text"><button class="liczpole">licz pole</button><button class="liczobwod">licz obwód</button>
+            </p>
+            </p>
+        </main>
+        <footer>
+            <p>Strona stworzona przez: 11</p>
+        </footer>
+        <script>
+            const sideInput = document.querySelector('input');
+            const calculateAreaButton = document.querySelector('.liczpole');
+            const calculatePerimeterButton = document.querySelector('.liczobwod');
+
+            calculateAreaButton.addEventListener('click', calculateArea);
+            calculatePerimeterButton.addEventListener('click', calculatePerimeter);
+
+            function calculateArea() {
+            const side = parseFloat(sideInput.value);
+            if (!isNaN(side) && side > 0) {
+                const area = side ** 2;
+                alert(`Pole kwadratu o boku ${side} wynosi: ${area}`);
+            } else {
+                alert('Wprowadź poprawną wartość długości boku!');
+            }
+            }
+
+            function calculatePerimeter() {
+            const side = parseFloat(sideInput.value);
+            if (!isNaN(side) && side > 0) {
+                const perimeter = 4 * side;
+                alert(`Obwód kwadratu o boku ${side} wynosi: ${perimeter}`);
+            } else {
+                alert('Wprowadź poprawną wartość długości boku!');
+            }
+            }
+        </script>
+    </body>
+</html>

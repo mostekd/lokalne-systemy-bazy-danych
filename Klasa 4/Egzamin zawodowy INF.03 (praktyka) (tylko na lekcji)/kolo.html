@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Figury Geometryczne i Matematycy</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <h1><a href="./index.html">FIGURY GEOMETRYCZNE I <br> MATEMATYCY</a></h1>
+        </header>
+        <nav>
+            <p>WYBIERZ FIGURĘ</p>
+            <li>
+                <a href="./kwadrat.html">KWADRAT</a>
+                <ul>
+                    <li>obwód</li>
+                    <li>pole</li>
+                </ul>
+            </li>
+            <li>
+                <a href="./kolo.html">KOŁO</a>
+                <ul>
+                    <li>obwód</li>
+                    <li>pole</li>
+                </ul>
+            </li>
+        </nav>
+        <main>
+            <h3>KOŁO</h3>
+            <p>
+                Podaj promień koła
+                <input class="" type="text"><button class="liczpole">licz pole</button><button class="liczobwod">licz obwód</button>
+            </p>
+        </main>
+        <footer>
+            <p>Strona stworzona przez: 11</p>
+        </footer>
+        <script>
+            const radiusInput = document.querySelector('input');
+            const calculateAreaButton = document.querySelector('.liczpole');
+            const calculateCircumferenceButton = document.querySelector('.liczobwod');
+
+            calculateAreaButton.addEventListener('click', calculateArea);
+            calculateCircumferenceButton.addEventListener('click', calculateCircumference);
+
+            function calculateArea() {
+            const radius = parseFloat(radiusInput.value);
+            if (!isNaN(radius) && radius > 0) {
+                const area = Math.PI * radius ** 2;
+                alert(`Pole koła o promieniu ${radius} wynosi: ${area.toFixed(2)}`);
+            } else {
+                alert('Wprowadź poprawną wartość promienia!');
+            }
+            }
+
+            function calculateCircumference() {
+            const radius = parseFloat(radiusInput.value);
+            if (!isNaN(radius) && radius > 0) {
+                const circumference = 2 * Math.PI * radius;
+                alert(`Obwód koła o promieniu ${radius} wynosi: ${circumference.toFixed(2)}`);
+            } else {
+                alert('Wprowadź poprawną wartość promienia!');
+            }
+            }
+
+        </script>
+    </body>
+</html>

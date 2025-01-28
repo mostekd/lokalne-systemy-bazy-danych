@@ -1,0 +1,57 @@
+*{
+    margin: 0;
+}
+
+header {
+    font-size: 250%;
+    text-align: center;
+    background-color: gray;
+    color: white;
+    height: 20vh;
+    width: 100vw;
+}
+
+header a {
+    text-decoration: none;
+}
+
+a {
+    color: white;
+}
+
+nav {
+    background-color: gray;
+    height: 70vh;
+    width: 20vw;
+    float: left;
+}
+
+main {
+    height: 70vh;
+    width: 78.9vw;
+    float: left;
+}
+
+footer {
+    align-content: center;
+    font-size: 30px;
+    text-align: center;
+    align-items: center;
+    width: 193vh;
+    height: 10vh;
+    background-color: gray;
+    clear: both;
+}
+
+section img {
+    display: none;
+}
+
+section .kw:hover .kwadrat{
+    display: flex;
+}
+
+
+section .ko:hover .kolo{
+    display: flex;
+}
