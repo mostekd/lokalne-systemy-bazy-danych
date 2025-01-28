@@ -30,14 +30,39 @@
         <main>
             <h3>FIGURY GEOMETRYCZNE</h3>
             <section>
-                <element class="kw">KWADRAT</element>
-                <img class="kwadrat" src="./kwadrat.png" alt="kwadrat">
-                <element class="ko">KOŁO</element>
-                <img class="kolo" src="./kolo.png" alt="koło">
+                <h2 class="kwadrat-text">KWADRAT</h2>
+                <img class="kwadrat" src="kwadrat.jpg" alt="Kwadrat" style="display: none;">
+                <h2 class="kolo-text">KOŁO</h2>
+                <img class="kolo" src="kolo.jpg" alt="Koło" style="display: none;">
             </section>
+
         </main>
         <footer>
             <p>Strona stworzona przez: 11</p>
         </footer>
+        <script>
+            const kwadratText = document.querySelector('section .kwadrat-text');
+            const koloText = document.querySelector('section .kolo-text');
+
+            const kwadratImg = document.querySelector('section .kwadrat');
+            const koloImg = document.querySelector('section .kolo');
+
+            kwadratText.addEventListener('mouseenter', () => {
+            kwadratImg.style.display = 'block';
+            });
+
+            kwadratText.addEventListener('mouseleave', () => {
+            kwadratImg.style.display = 'none';
+            });
+
+            koloText.addEventListener('mouseenter', () => {
+            koloImg.style.display = 'block';
+            });
+
+            koloText.addEventListener('mouseleave', () => {
+            koloImg.style.display = 'none';
+            });
+
+        </script>
     </body>
 </html>
