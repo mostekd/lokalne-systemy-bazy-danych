@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Kwadrat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="baner">
+        <h1>
+            <a href="index.html" style="color: white; text-decoration: none;">
+                FIGURY GEOMETRYCZNE I MATEMATYCY
+            </a>
+        </h1>
+    </div>
+    <div id="panelLewy">
+        <h3>WYBIERZ FIGURĘ</h3>
+        <ol>
+            <li>
+                <a href="kwadrat.html" style="color: white;">KWADRAT</a>
+                <ol type="square">
+                    <li>obwód</li>
+                    <li>pole</li>
+                </ol>
+            </li>
+            <li>
+                <a href="kolo.html" style="color: white;">KOŁO</a>
+                <ol type="square">
+                    <li>obwód</li>
+                    <li>pole</li>
+                </ol>
+            </li>
+        </ol>
+    </div>
+    <div id="panelPrawy">
+        <h1>KWADRAT</h1>
+        <form>
+            <label>Podaj długość boku:</label>
+            <input type="number" id="bok" name="bok">
+            <button type="button" onclick="OP()">licz pole</button>
+            <button type="button" onclick="obliczObwod()">licz obwód</button><br>
+            <text id = "wynik"></text>
+        </form>
+        <script>
+            function OP() {
+                let bok = document.getElementById("bok").value;
+                let wynik = bok * bok;
+                document.getElementById("wynik").innerHTML = wynik;
+                alert("Pole koła: " + (bok * bok));
+            }
+
+            function obliczObwod() {
+                let bok = document.getElementById("bok").value;
+                alert("Obwód kwadratu: " + (4 * bok));
+            }
+        </script>
+    </div>
+    <div id="stopka">Strona stworzona przez: PESEL</div>
+</body>
+</html>

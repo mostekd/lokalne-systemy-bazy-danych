@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Kwadrat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="baner">
+        <h1>
+            <a href="index.html" style="color: white; text-decoration: none;">
+                FIGURY GEOMETRYCZNE I MATEMATYCY
+            </a>
+        </h1>
+    </div>
+    <div id="panelLewy">
+        <h3>WYBIERZ FIGURĘ</h3>
+        <ol>
+            <li>
+                <a href="kwadrat.html" style="color: white;">KWADRAT</a>
+                <ol type="square">
+                    <li>obwód</li>
+                    <li>pole</li>
+                </ol>
+            </li>
+            <li>
+                <a href="kolo.html" style="color: white;">KOŁO</a>
+                <ol type="square">
+                    <li>obwód</li>
+                    <li>pole</li>
+                </ol>
+            </li>
+        </ol>
+    </div>
+    <div id="panelPrawy">
+        <h1>KOŁO</h1>
+        <form>
+            <label>Podaj promień koła:</label>
+            <input type="number" id="promien" name="promien">
+            <button type="button" onclick="OP()">licz pole</button>
+            <button type="button" onclick="obliczObwod()">licz obwód</button><br>
+            <text id = "wynik"></text>
+        </form>
+        <script>
+            function OP() {
+                let promien = document.getElementById("promien").value;
+                let wynik = promien * promien * 3.14;
+                document.getElementById("wynik").innerHTML = wynik;
+                alert("Pole koła: " + (promien * promien * 3.14));
+            }
+
+            function obliczObwod() {
+                let promien = document.getElementById("promien").value;
+                alert("Obwód koła: " + (2 * promien * 3.14));
+            }
+        </script>
+    </div>
+    <div id="stopka">Strona stworzona przez: PESEL</div>
+</body>
+</html>
