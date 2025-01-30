@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Kwadrat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="baner">
+        <h1>
+            <a href="index.html" style="color: white; text-decoration: none;">
+                FIGURY GEOMETRYCZNE I MATEMATYCY
+            </a>
+        </h1>
+    </div>
+    <div id="panelLewy">
+        <h3>WYBIERZ FIGURĘ</h3>
+        <ol>
+            <li type="square">
+                <a href="kwadrat.html" style="color: white;">KWADRAT</a>
+                <ol>
+                    <li type="square">obwód</li>
+                    <li type="square">pole</li>
+                </ol>
+            </li>
+            <li type="square">
+                <a href="kolo.html" style="color: white;">KOŁO</a>
+                <ol>
+                    <li type="square">obwód</li>
+                    <li type="square">pole</li>
+                </ol>
+            </li>
+            <li type="square">
+                <a href="pieciokat.html" style="color: white;">PIĘCIOKĄT</a>
+                <ol>
+                    <li type="square">obwód</li>
+                    <li type="square">pole</li>
+                </ol>
+            </li>
+        </ol>
+    </div>
+    <div id="panelPrawy">
+        <h1>PIĘCIOKĄT</h1>
+        <form>
+            <label>Podaj długość boku:</label>
+            <input type="number" id="bok" name="bok">
+            <button type="button" onclick="liczPole()">licz pole</button>
+            <button type="button" onclick="liczObwod()">licz obwód</button><br>
+        </form>
+        <script>
+            function liczPole() {
+                let bok = document.getElementById("bok").value;
+                var wynik = 5 * (1/2 * bok) * (Math.sqrt((bok ^ 2) - ((1/2 * bok) ^ 2)));
+                alert("Pole pięciokątu: " + wynik );
+            }
+
+            function liczObwod() {
+                let bok = document.getElementById("bok").value;
+                alert("Obwód pięciokątu: " + (5 * bok));
+            }
+        </script>
+    </div>
+    <div id="stopka">Strona stworzona przez: Dawid Mostowski </div>
+</body>
+</html>
