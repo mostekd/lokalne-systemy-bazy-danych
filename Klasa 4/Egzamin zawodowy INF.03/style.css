@@ -1,4 +1,5 @@
 * {
+    margin: 0;
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
@@ -8,5 +9,33 @@ body {
 
 header {
     padding: 30px;
-    background: linear-gradient();
+    background: linear-gradient(to bottom, #A0522D, #F5DEB3);
+}
+
+nav {
+    background-color: wheat;
+    padding: 14px;
+}
+
+main {
+    background-color: wheat;
+    padding: 50px;
+}
+
+footer {
+    padding: 30px;
+    background: linear-gradient(to bottom, #F5DEB3, #A0522D);
+}
+
+a {
+    background-color: sienna;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 10px;
+    margin: 20px;
+}
+
+a:hover {
+    text-decoration: underline;
 }
