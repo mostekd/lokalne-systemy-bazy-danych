@@ -1,95 +1,92 @@
 delimiter //
-create procedure sp_raportzyskow(in start_date date, in end_date date, in id_klienta int)
+create procedure sp_profit_report(in start_date date, in end_date date, in id_customer int)
 begin
     select 
-        z.id_zamowienia as 'id zamówienia',
-        z.id_klienta as 'id klienta',
-        z.kwota_zamowienia as 'kwota zamówienia',
-        p.nazwa as 'typ płatności',
-        d.nazwa as 'dostawca',
-        (z.kwota_zamowienia - d.koszt_dostawy) as 'łączna wartość sprzedaży'
+        o.id_order as 'order id',
+        o.id_customer as 'customer id',
+        o.order_amount as 'order amount',
+        p.name as 'payment type',
+        s.name as 'supplier',
+        (o.order_amount - s.delivery_cost) as 'total sales value'
     from 
-        zamowienia z
+        orders o
     join 
-        typy_platnosci p on z.id_typ_platnosci = p.id_typ_platnosci
+        payment_types p on o.id_payment_type = p.id_payment_type
     join 
-        dostawcy_do_zamowienia dz on z.id_zamowienia = dz.id_zamowienia
+        suppliers_to_order so on o.id_order = so.id_order
     join
-        dostawcy d on dz.id_dostawca = d.id_dostawcy
+        suppliers s on so.id_supplier = s.id_supplier
     where 
-        z.data_zamowienia between start_date and end_date
-        and (id_klienta is null or z.id_klienta = id_klienta);
+        o.order_date between start_date and end_date
+        and (id_customer is null or o.id_customer = id_customer);
 
     select 
-        sum(z.kwota_zamowienia - d.koszt_dostawy) as 'suma zysków'
+        sum(o.order_amount - s.delivery_cost) as 'total profits'
     from 
-        zamowienia z
+        orders o
     join 
-        dostawcy_do_zamowienia dz on z.id_zamowienia = dz.id_zamowienia
+        suppliers_to_order so on o.id_order = so.id_order
     join
-        dostawcy d on dz.id_dostawca = d.id_dostawcy
+        suppliers s on so.id_supplier = s.id_supplier
     where 
-        z.data_zamowienia between start_date and end_date
-        and (id_klienta is null or z.id_klienta = id_klienta);
+        o.order_date between start_date and end_date
+        and (id_customer is null or o.id_customer = id_customer);
 end //
 delimiter ;
 
-
-
 delimiter //
-create procedure sp_raportefektywnoscipracownikow(in start_date date, in end_date date)
+create procedure sp_employee_efficiency_report(in start_date date, in end_date date)
 begin
     select 
-        pr.imie as 'imię pracownika',
-        pr.nazwisko as 'nazwisko pracownika',
-        s.stanowisko as 'stanowisko',
-        count(z.id_zamowienia) as 'liczba zrealizowanych zamówień',
-        sum(z.kwota_zamowienia) as 'łączna kwota zamówień'
+        e.first_name as 'employee first name',
+        e.last_name as 'employee last name',
+        p.position_name as 'position',
+        count(o.id_order) as 'number of completed orders',
+        sum(o.order_amount) as 'total order amount'
     from 
-        zamowienia z
+        orders o
     join 
-        pracownicy pr on z.id_pracownika = pr.id_pracownika
+        employees e on o.id_employee = e.id_employee
     join 
-        stanowiska s on pr.id_stanowiska = s.id_stanowiska
+        positions p on e.id_position = p.id_position
     where 
-        z.data_zamowienia between start_date and end_date
+        o.order_date between start_date and end_date
     group by 
-        pr.id_pracownika;
+        e.id_employee;
     
     select 
-        avg(sum(z.kwota_zamowienia)) over () as 'średnia wartość zamówień na pracownika',
-        count(z.id_zamowienia) as 'ogólna liczba obsłużonych zamówień'
+        avg(sum(o.order_amount)) over () as 'average order value per employee',
+        count(o.id_order) as 'total number of handled orders'
     from 
-        zamowienia z
+        orders o
     where 
-        z.data_zamowienia between start_date and end_date;
+        o.order_date between start_date and end_date;
 end //
 delimiter ;
 
-
 delimiter //
-create procedure sp_raportmagazynowy(in id_magazyn int)
+create procedure sp_warehouse_report(in id_warehouse int)
 begin
     select 
-        m.nazwa_magazynu as 'nazwa magazynu',
-        p.nazwa as 'nazwa produktu',
-        p.ilosc as 'ilość dostępnych sztuk',
-        p.cena as 'cena jednostkowa',
-        (p.ilosc * p.cena) as 'łączna wartość produktów'
+        w.name as 'warehouse name',
+        p.name as 'product name',
+        p.quantity as 'available quantity',
+        p.price as 'unit price',
+        (p.quantity * p.price) as 'total product value'
     from 
-        produkty p
+        products p
     join 
-        magazyny m on p.id_lokalizacja = m.id_magazynu
+        warehouses w on p.id_location = w.id_warehouse
     where 
-        m.id_magazynu = id_magazyn;
+        w.id_warehouse = id_warehouse;
     
     select 
-        sum(p.ilosc * p.cena) as 'suma wartości produktów w magazynie'
+        sum(p.quantity * p.price) as 'total value of products in warehouse'
     from 
-        produkty p
+        products p
     join 
-        magazyny m on p.id_lokalizacja = m.id_magazynu
+        warehouses w on p.id_location = w.id_warehouse
     where 
-        m.id_magazynu = id_magazyn;
+        w.id_warehouse = id_warehouse;
 end //
 delimiter ;

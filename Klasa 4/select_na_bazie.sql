@@ -1,33 +1,81 @@
-select * from lokalizacje;
 
-select imie, nazwisko from klienci;
+-- Simple selects
+select * from customers;
+select first_name, last_name from employees;
+select name, price from products;
 
-select * from pracownicy where wynagrodzenie > 5000;
+-- Select with conditions
+select * from products where price > 1000;
+select * from customers where city = 'Warsaw';
 
-select nazwisko, wynagrodzenie from pracownicy order by wynagrodzenie desc;
+-- Select with ordering
+select * from products order by price desc;
+select * from employees order by last_name asc;
 
-select count(*) as liczba_pracownikow from pracownicy;
+select * from products limit 10;
+select * from customers limit 5;
 
-select id_stanowisko, count(*) as liczba_pracownikow 
-from pracownicy 
-group by id_stanowisko;
+-- Select with join
+select c.first_name, c.last_name, l.city from customers c
+join locations l on c.id_location = l.id_location;
 
-select id_stanowisko, count(*) as liczba_pracownikow 
-from pracownicy 
-group by id_stanowisko 
-having count(*) > 2;
+select e.first_name, e.last_name, p.position_name from employees e
+join positions p on e.id_position = p.id_position;
 
-select k.imie, k.nazwisko, l.miejscowosc 
-from klienci as k
-join lokalizacje as l on k.id_lokalizacja = l.id_lokalizacja;
+-- Select with multiple joins
+select o.id_order, c.first_name, c.last_name, p.name as product_name, o.order_amount from orders o
+join customers c on o.id_customer = c.id_customer
+join products p on o.id_product = p.id_product;
 
-select p.imie, p.nazwisko, s.nazwa_stanowiska 
-from pracownicy as p
-inner join stanowiska as s on p.id_stanowisko = s.id_stanowisko;
+select o.id_order, e.first_name, e.last_name, p.name as product_name, o.order_amount from orders o
+join employees e on o.id_employee = e.id_employee
+join products p on o.id_product = p.id_product;
 
-select p.imie, p.nazwisko, l.miejscowosc, s.nazwa_stanowiska 
-from pracownicy as p
-join lokalizacje as l on p.id_lokalizacja = l.id_lokalizacja
-join stanowiska as s on p.id_stanowisko = s.id_stanowisko;
+-- Select with aggregate functions
+select count(*) as total_customers from customers;
+select avg(price) as average_price from products;
+select sum(order_amount) as total_sales from orders;
 
-select concat(imie, ' ', nazwisko) as pełne_imie from klienci;
+-- Select with group by
+select city, count(*) as customer_count from customers group by city;
+select id_product, sum(quantity) as total_quantity from location_to_product group by id_product;
+
+-- Complex select with subquery
+select c.first_name, c.last_name, (select count(*) from orders o where o.id_customer = c.id_customer) as order_count
+from customers c;
+
+-- Complex select with multiple joins and conditions
+select o.id_order, c.first_name, c.last_name, p.name as product_name, o.order_amount, s.name as supplier_name
+from orders o
+join customers c on o.id_customer = c.id_customer
+join products p on o.id_product = p.id_product
+join suppliers_to_order so on o.id_order = so.id_order
+join suppliers s on so.id_supplier = s.id_supplier
+where o.order_amount > 1000 and s.name = 'FedEx';
+
+-- Complex select with aggregate functions and group by
+select e.first_name, e.last_name, count(o.id_order) as total_orders, sum(o.order_amount) as total_sales
+from employees e
+join orders o on e.id_employee = o.id_employee
+group by e.id_employee
+having total_sales > 5000;
+
+-- Complex select with window functions
+select e.first_name, e.last_name, o.order_amount, sum(o.order_amount) over (partition by e.id_employee) as total_sales_per_employee
+from employees e
+join orders o on e.id_employee = o.id_employee;
+
+-- Complex select with case statement
+select o.id_order, c.first_name, c.last_name, 
+    case 
+        when o.order_amount > 1000 then 'High'
+        when o.order_amount between 500 and 1000 then 'Medium'
+        else 'Low'
+    end as order_value_category
+from orders o
+join customers c on o.id_customer = c.id_customer;
+
+-- Complex select with union
+select first_name, last_name, 'Customer' as role from customers
+union
+select first_name, last_name, 'Employee' as role from employees;
