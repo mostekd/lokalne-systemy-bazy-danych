@@ -1,15 +1,16 @@
-create database if not exists szkola;
+drop database if exists szkola;
+create database szkola;
 use szkola;
 
 create table uczniowie (
     id_uczen int primary key auto_increment,
     imie varchar(50),
-    nazwisko varchar(50),
+    nazwisko varchar(50)
 );
 
 create table przedmioty (
     id_przedmiot int primary key auto_increment,
-    nazwa varchar(50),
+    nazwa varchar(50)
 );
 
 create table oceny (
@@ -23,11 +24,11 @@ create table oceny (
 
 insert into uczniowie (imie, nazwisko) values
 ('Jan', 'Kowalski'),
-('Anna', 'Nowak'),
+('Anna', 'Nowak');
 
 insert into przedmioty (nazwa) values
 ('Informatyka'),
-('Matematyka'),
+('Matematyka');
 
 insert into oceny (id_uczen, id_przedmiot, ocena) values
 (1, 1, 5),
