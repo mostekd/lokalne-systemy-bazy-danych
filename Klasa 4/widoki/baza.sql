@@ -33,4 +33,4 @@ insert into oceny (id_uczen, id_przedmiot, ocena) values
 (1, 1, 5),
 (1, 2, 4),
 (2, 1, 3),
-(2, 2, 5);      
+(2, 2, 5);
