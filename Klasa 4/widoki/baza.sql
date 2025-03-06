@@ -34,4 +34,20 @@ insert into oceny (id_uczen, id_przedmiot, ocena) values
 (1, 1, 5),
 (1, 2, 4),
 (2, 1, 3),
-(2, 2, 5);
+(2, 2, 5),
+(2, 1, 4),
+(2, 2, 3),
+(1, 1, 5),
+(1, 2, 4);
+
+select * from uczniowie as u 
+join oceny as o on u.id_uczen = o.id_uczen 
+join przedmioty as p on o.id_przedmiot = p.id_przedmiot;
+
+create view oceny_uczniow as
+select u.imie, u.nazwisko, p.nazwa, o.ocena
+from uczniowie as u
+join oceny as o on u.id_uczen = o.id_uczen
+join przedmioty as p on o.id_przedmiot = p.id_przedmiot;
+
+select * from oceny_uczniow;
