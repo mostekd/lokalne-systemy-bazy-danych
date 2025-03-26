@@ -1,19 +1,30 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
 body {
     font-family: "Bookman Old Style", serif;
     height: 100vh;
     margin:0;
 }
 
-header , footer{
+header, footer {
     background-color: indigo;
     color: white;
     padding: 10px;
     text-align: center;
 }
 
-footer{
+main {
+    flex: 1; /* Ensures the main content takes up available space */
+}
+
+footer {
     height: 10vh;
-    
+    margin-top: auto; /* Pushes the footer to the bottom */
 }
 
 #inner {
@@ -23,7 +34,6 @@ footer{
     top: 20px;
 }
 
-
 #napis {
     background-color: blueviolet;
     padding: 10px;
@@ -31,7 +41,7 @@ footer{
     height: 50px;
 }
 
-#left , #right {
+#left, #right {
     background-color: lavender;
     height: 500px;
 }
@@ -68,13 +78,13 @@ table {
 table, th, td {
     border: 1px solid indigo;
     border-collapse: collapse;
-  }
+}
 
-  th,td{
+th, td {
     padding: 3px;
-  }
+}
 
-  #napis i {
+#napis i {
     font-size: 24px;
     color: white;
     position: relative;
