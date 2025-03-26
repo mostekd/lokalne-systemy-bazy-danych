@@ -34,7 +34,7 @@
                     ];
                     $day_of_week_pl = $polish_days[date("l")];
 
-                    $formatted_date = date("d-m") . "-2024";
+                    $formatted_date = date("d-m-Y");
 
                     if ($result && mysqli_num_rows($result) > 0) {
                         $row = mysqli_fetch_assoc($result);
